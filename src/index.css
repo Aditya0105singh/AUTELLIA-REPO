@@ -1,0 +1,41 @@
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0A0F19;              /* deep navy/black */
+  --surface: #101623;         /* slightly lifted surface */
+  --panel: #161D2E;           /* panel background */
+  --text-primary: #f0f4f8;    /* near-white for body headings */
+  --text-muted: #a0aec0;      /* muted text */
+  --accent: #4169E1;          /* Royal Blue */
+  --accent-variant: #3a5cc7;  /* hover / darker accent */
+  --secondary-accent: #DAA520; /* Soft Gold */
+  --border: rgba(255,255,255,0.08);
+  --shadow: 0 12px 32px rgba(2,6,23,0.7);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+  color: var(--text-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 20px var(--accent-variant), 0 0 5px var(--accent);
+}
