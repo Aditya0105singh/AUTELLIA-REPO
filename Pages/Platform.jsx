@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "../Components/ui/InfiniteMovingCards.jsx";
 import { StickyScroll } from "../Components/ui/sticky-scroll-reveal.jsx";
 import { Grid } from "../Components/ui/grid-pattern.jsx";
+// import LazyImage from "../src/components/LazyImage.jsx";
 
 export default function Platform() {
   const fadeIn = {
@@ -117,7 +118,7 @@ export default function Platform() {
       {/* Hero Section - Modern Theme with Original Content */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center text-center overflow-hidden px-4"
+        className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 lg:px-8"
         style={{ background: 'var(--gradient-hero)' }}
         data-aos="fade-up"
         role="banner"
@@ -133,20 +134,20 @@ export default function Platform() {
           <motion.h1 
             id="hero-heading"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-4 lg:mb-6 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-5 lg:mb-6 leading-tight px-2 sm:px-0"
           >
             <span className="text-white text-high-contrast">Empowering Enterprises </span>
             <span className="gradient-text">with AI & Automation</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg lg:text-xl font-medium text-slate-300 leading-relaxed mb-6 lg:mb-10 max-w-3xl mx-auto px-4"
+            className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-slate-300 leading-relaxed mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto px-2 sm:px-4"
           >
             Autellia transforms business operations through RPA, AI/ML, Agentic AI, and Data Analytics — delivering efficiency, speed, and smarter decision-making at scale.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-4 justify-center items-center px-2 sm:px-0"
           >
             <Link 
               to={createPageUrl("Demo")}
@@ -170,13 +171,13 @@ export default function Platform() {
       {/* Key Value Propositions */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={staggerContainer}
-        className="py-12 lg:py-24 bg-[--bg]"
+        className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[--bg]"
         data-aos="fade-up"
         aria-labelledby="value-props-heading"
       >
         <div className="container-responsive">
           <h2 id="value-props-heading" className="sr-only">Our Key Value Propositions</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {valueProps.map((prop) => {
               const IconComponent = prop.icon;
               return (
@@ -214,11 +215,11 @@ export default function Platform() {
                     }}
                   />
                   <Grid size={20} />
-                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-[--border] rounded-lg flex items-center justify-center mb-6">
-                    <IconComponent className="w-7 h-7 text-[--accent]" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-[--border] rounded-lg flex items-center justify-center mb-4 sm:mb-6">
+                    <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-[--accent]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[--text-primary] mb-3">{prop.title}</h3>
-                  <p className="text-[--text-muted] leading-relaxed">{prop.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-[--text-primary] mb-2 sm:mb-3">{prop.title}</h3>
+                  <p className="text-sm sm:text-base text-[--text-muted] leading-relaxed">{prop.description}</p>
                 </motion.div>
               );
             })}
@@ -229,28 +230,33 @@ export default function Platform() {
       {/* About Section - Modern Theme */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
-        className="py-12 lg:py-24 glass"
+        className="py-8 sm:py-12 md:py-16 lg:py-24 glass"
         data-aos="fade-up"
         aria-labelledby="about-heading"
       >
         <div className="container-responsive">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
             <motion.div variants={fadeIn}>
-              <h2 id="about-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[--text-primary] mb-4 lg:mb-6">Reimagining How Businesses Operate</h2>
-              <p className="text-base lg:text-lg text-[--text-muted] leading-relaxed mb-6 lg:mb-8">
+              <h2 id="about-heading" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[--text-primary] mb-3 sm:mb-4 lg:mb-6">Reimagining How Businesses Operate</h2>
+              <p className="text-sm sm:text-base lg:text-lg text-[--text-muted] leading-relaxed mb-4 sm:mb-6 lg:mb-8">
                 Founded with a vision to create future-ready enterprises, Autellia combines deep expertise in RPA, AI, and Analytics to empower organizations to reduce costs, improve productivity, and accelerate growth.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-8 text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-8 text-center">
                 {animatedCounters.map((item, idx) => (
-                    <motion.div key={item.label} variants={fadeIn} className="card-modern p-6 text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl" data-aos="zoom-in">
-                        <p className="text-4xl font-bold gradient-text"><CountUp value={item.number} /></p>
-                        <p className="text-sm text-[--text-muted] mt-2">{item.label}</p>
+                    <motion.div key={item.label} variants={fadeIn} className="card-modern p-3 sm:p-4 lg:p-6 text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl" data-aos="zoom-in">
+                        <p className="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text"><CountUp value={item.number} /></p>
+                        <p className="text-xs sm:text-sm text-[--text-muted] mt-1 sm:mt-2">{item.label}</p>
                     </motion.div>
                 ))}
               </div>
             </motion.div>
-            <motion.div variants={fadeIn} className="h-full mt-8 lg:mt-0">
-              <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2572&auto=format&fit=crop" alt="AI and automation technology illustration showing modern business transformation" className="rounded-lg shadow-2xl object-cover h-full w-full" data-aos="fade-right"/>
+            <motion.div variants={fadeIn} className="h-full mt-6 sm:mt-8 lg:mt-0">
+              <img 
+                src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2572&auto=format&fit=crop" 
+                alt="AI and automation technology illustration showing modern business transformation" 
+                className="rounded-lg shadow-2xl object-cover h-full w-full min-h-[250px] sm:min-h-[300px] lg:min-h-[400px]" 
+                loading="lazy"
+              />
             </motion.div>
           </div>
         </div>
@@ -259,14 +265,14 @@ export default function Platform() {
       {/* Industries We Serve */}
        <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
-        className="py-24 bg-[--bg]"
+        className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[--bg]"
         data-aos="fade-up"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[--text-primary] mb-4">Industries We Serve</h2>
+        <div className="container-responsive">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[--text-primary] mb-2 sm:mb-4">Industries We Serve</h2>
           </div>
-          <motion.div variants={staggerContainer} className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <motion.div variants={staggerContainer} className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {industries.map((industry) => {
               const IconComponent = industry.icon;
               return (
@@ -304,10 +310,10 @@ export default function Platform() {
                     }}
                   />
                   <Grid size={18} />
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-[--border] rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <IconComponent className="w-8 h-8 text-[--accent]" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-[--border] rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                    <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-[--accent]" />
                   </div>
-                  <h3 className="text-lg font-bold text-[--text-primary]">{industry.title}</h3>
+                  <h3 className="text-sm sm:text-base lg:text-lg font-bold text-[--text-primary]">{industry.title}</h3>
                 </motion.div>
               );
             })}
@@ -316,11 +322,11 @@ export default function Platform() {
       </motion.section>
 
       {/* Why Choose Us (Sticky Scroll) */}
-      <section className="py-24 glass" data-aos="fade-up">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[--text-primary] mb-4">Why Forward-Thinking Businesses Choose Autellia</h2>
-            <p className="text-lg text-[--text-muted] max-w-2xl mx-auto">Our approach is built on a foundation of deep expertise, strategic partnership, and a relentless commitment to innovation.</p>
+      <section className="py-8 sm:py-12 md:py-16 lg:py-24 glass" data-aos="fade-up">
+        <div className="container-responsive">
+           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[--text-primary] mb-2 sm:mb-4">Why Forward-Thinking Businesses Choose Autellia</h2>
+            <p className="text-sm sm:text-base lg:text-lg text-[--text-muted] max-w-2xl mx-auto px-2 sm:px-0">Our approach is built on a foundation of deep expertise, strategic partnership, and a relentless commitment to innovation.</p>
           </div>
           <StickyScroll content={whyChooseUsContent} />
         </div>
@@ -329,12 +335,12 @@ export default function Platform() {
       {/* Testimonials Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className="py-24 bg-[--bg]"
+        className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[--bg]"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[--text-primary] mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-[--text-muted] max-w-2xl mx-auto">Hear from industry leaders who have transformed their operations with Autellia</p>
+        <div className="container-responsive">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[--text-primary] mb-2 sm:mb-4">What Our Clients Say</h2>
+            <p className="text-sm sm:text-base lg:text-lg text-[--text-muted] max-w-2xl mx-auto px-2 sm:px-0">Hear from industry leaders who have transformed their operations with Autellia</p>
           </div>
           <InfiniteMovingCards
             items={testimonials}
@@ -349,27 +355,29 @@ export default function Platform() {
        {/* Bottom CTA Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className="py-24 bg-[--bg]"
+        className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[--bg]"
         data-aos="fade-up"
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="card-modern p-12">
-            <h2 className="text-4xl font-bold text-[--text-primary] mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-lg text-[--text-muted] mb-8 leading-relaxed">
-              Explore a discovery workshop to identify top ROI use cases in 2 weeks 
-              and stand up a pilot in 30–45 days with measurable outcomes.
-            </p>
-            <Link 
-              to={createPageUrl("Demo")}
-              className="border-magic group"
-            >
-              <span className="border-magic-inner flex items-center justify-center gap-2">
-                Schedule Discovery Workshop
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
+        <div className="container-responsive">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="card-modern p-6 sm:p-8 lg:p-12">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[--text-primary] mb-4 sm:mb-6">
+                Ready to Get Started?
+              </h2>
+              <p className="text-sm sm:text-base lg:text-lg text-[--text-muted] mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
+                Explore a discovery workshop to identify top ROI use cases in 2 weeks 
+                and stand up a pilot in 30–45 days with measurable outcomes.
+              </p>
+              <Link 
+                to={createPageUrl("Demo")}
+                className="border-magic group"
+              >
+                <span className="border-magic-inner flex items-center justify-center gap-2">
+                  Schedule Discovery Workshop
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </motion.section>

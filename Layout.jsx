@@ -236,16 +236,16 @@ export default function Layout({ children, currentPageName }) {
           variants={headerVariants}
           animate={isHeaderHidden ? 'hidden' : 'visible'}
         >
-          <div className="max-w-7xl mx-auto px-4 lg:px-6 h-[60px]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[60px]">
             <div className="flex justify-between items-center h-full">
               {/* Logo */}
-              <Link to={createPageUrl("Platform")} className="flex items-center space-x-2.5">
+              <Link to={createPageUrl("Platform")} className="flex items-center space-x-2 sm:space-x-2.5">
                 <img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/c29fb92fd_logocopy.jpg" 
                   alt="Autellia Logo" 
-                  className="w-8 h-8 object-contain rounded-full"
+                  className="w-7 h-7 sm:w-8 sm:h-8 object-contain rounded-full"
                 />
-                <span className="text-xl font-bold text-white">
+                <span className="text-lg sm:text-xl font-bold text-white">
                   Autellia
                 </span>
               </Link>
@@ -334,10 +334,10 @@ export default function Layout({ children, currentPageName }) {
               >
                 <div className="px-4 py-4 space-y-2">
                   {navigationItems.map((item) => (
-                    <div key={item.title}>
+                    <div key={item.title} className="mobile-menu-item">
                       {item.hasDropdown ? (
                         <div className="space-y-2">
-                          <div className="text-[--text-primary] font-semibold px-2 py-1">
+                          <div className="text-[--text-primary] font-semibold px-2 py-2 text-base">
                             {item.title}
                           </div>
                           {item.dropdownItems.map((dropdownItem) => (
@@ -345,7 +345,7 @@ export default function Layout({ children, currentPageName }) {
                               key={dropdownItem.path}
                               to={createPageUrl(dropdownItem.path)}
                               onClick={() => setIsMobileMenuOpen(false)}
-                              className="block px-4 py-2 text-[--text-muted] hover:text-[--accent]"
+                              className="block px-4 py-3 text-[--text-muted] hover:text-[--accent] text-sm"
                             >
                               {dropdownItem.title}
                             </Link>
@@ -365,7 +365,7 @@ export default function Layout({ children, currentPageName }) {
                           <Link
                             to={item.url || '#'}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-2 py-3 rounded-md font-semibold text-[--text-muted] hover:text-[--text-primary]"
+                            className="block px-2 py-3 rounded-md font-semibold text-[--text-muted] hover:text-[--text-primary] text-base"
                           >
                             {item.title}
                           </Link>
@@ -392,33 +392,33 @@ export default function Layout({ children, currentPageName }) {
         </motion.main>
 
         {/* Vanta Dots Interactive Section */}
-        <VantaDots className="min-h-screen flex items-center justify-center py-20">
-          <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+        <VantaDots className="min-h-[70vh] sm:min-h-[80vh] lg:min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20">
+          <div className="container-responsive text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-12"
+              className="space-y-8 sm:space-y-10 lg:space-y-12"
             >
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent px-2 sm:px-0">
                 Transforming Enterprise Operations
               </h2>
-              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
                 Experience the power of intelligent automation with our cutting-edge AI/ML solutions that revolutionize how enterprises operate.
               </p>
               
               {/* Enhanced Statistics Grid */}
-              <div className="flex justify-center gap-8 mt-20 flex-wrap">
+              <div className="flex justify-center gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20 flex-wrap">
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/15 hover:border-purple-400/40 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[220px]"
+                  className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/15 hover:border-purple-400/40 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[160px] sm:min-w-[200px] lg:min-w-[220px]"
                 >
-                  <div className="text-5xl md:text-6xl font-bold text-white mb-3">500+</div>
-                  <div className="text-base text-gray-400 font-light">Automations Deployed</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3">500+</div>
+                  <div className="text-xs sm:text-sm lg:text-base text-gray-400 font-light">Automations Deployed</div>
                 </motion.div>
                 
                 <motion.div 
@@ -426,10 +426,10 @@ export default function Layout({ children, currentPageName }) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/15 hover:border-cyan-400/40 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[220px]"
+                  className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/15 hover:border-cyan-400/40 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[160px] sm:min-w-[200px] lg:min-w-[220px]"
                 >
-                  <div className="text-5xl md:text-6xl font-bold text-white mb-3">$50M+</div>
-                  <div className="text-base text-gray-400 font-light">Cost Savings Generated</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3">$50M+</div>
+                  <div className="text-xs sm:text-sm lg:text-base text-gray-400 font-light">Cost Savings Generated</div>
                 </motion.div>
                 
                 <motion.div 
@@ -437,10 +437,10 @@ export default function Layout({ children, currentPageName }) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/15 hover:border-indigo-400/40 hover:shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[220px]"
+                  className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/15 hover:border-indigo-400/40 hover:shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[160px] sm:min-w-[200px] lg:min-w-[220px]"
                 >
-                  <div className="text-5xl md:text-6xl font-bold text-white mb-3">95%</div>
-                  <div className="text-base text-gray-400 font-light">Success Rate</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3">95%</div>
+                  <div className="text-xs sm:text-sm lg:text-base text-gray-400 font-light">Success Rate</div>
                 </motion.div>
               </div>
 
@@ -450,14 +450,14 @@ export default function Layout({ children, currentPageName }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="mt-16"
+                className="mt-12 sm:mt-14 lg:mt-16"
               >
                 <button 
                   onClick={handleBookDemo}
-                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#6a5af9] to-[#2acfcf] hover:shadow-lg hover:shadow-[#6a5af9]/30 text-white font-semibold text-lg rounded-full border-none cursor-pointer transition-all duration-300 hover:scale-105"
+                  className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#6a5af9] to-[#2acfcf] hover:shadow-lg hover:shadow-[#6a5af9]/30 text-white font-semibold text-base sm:text-lg rounded-full border-none cursor-pointer transition-all duration-300 hover:scale-105"
                 >
                   Book a Demo
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </button>
