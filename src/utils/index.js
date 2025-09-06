@@ -15,10 +15,10 @@ export const createPageUrl = (pageName) => {
     'Careers': '/careers',
     'Demo': '/demo',
     'Perspectives': '/perspectives',
-    // Map submenu items to the Perspectives page until dedicated routes exist
-    'CaseStudies': '/perspectives',
-    'CallToAction': '/perspectives',
-    'BlogKnowledgeHub': '/perspectives'
+    // Map submenu items to their dedicated routes
+    'CaseStudies': '/case-studies',
+    'CallToAction': '/call-to-action',
+    'BlogKnowledgeHub': '/blog-knowledge-hub'
   };
   
   return pageMap[pageName] || '/';

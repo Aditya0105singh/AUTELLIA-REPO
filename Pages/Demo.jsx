@@ -43,9 +43,9 @@ export default function Demo() {
       <BackgroundRippleEffect />
       
       {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-transparent backdrop-blur-sm relative z-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[--text-primary]">
+      <section className="pt-16 lg:pt-20 pb-12 lg:pb-16 bg-transparent backdrop-blur-sm relative z-10" role="banner">
+        <div className="container-responsive text-center">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 lg:mb-6 text-[--text-primary] text-high-contrast">
             Book a Demo
           </h1>
           <p className="text-xl text-[--text-muted] leading-relaxed max-w-3xl mx-auto">
@@ -80,7 +80,7 @@ export default function Demo() {
       <section className="py-16 bg-transparent backdrop-blur-sm relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[--text-primary] mb-12 text-center">What You'll Get</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
@@ -157,78 +157,77 @@ export default function Demo() {
             </div>
 
             {/* FormSubmit Integration */}
-            <form 
-              action="https://formsubmit.co/mounilkankhara@gmail.com" 
-              method="POST"
-              className="space-y-6"
-            >
+            <form className="space-y-4 lg:space-y-6" role="form" aria-label="Contact form">
               {/* Hidden FormSubmit Configuration */}
               <input type="hidden" name="_subject" value="New Demo Request - Autellia" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-[--text-primary] mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[--panel] text-[--text-primary] placeholder-[--text-muted] border border-[--border] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200"
-                    placeholder="John Doe"
+                    className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[44px]"
+                    placeholder="Enter your full name"
+                    required
+                    aria-required="true"
                   />
                 </div>
                 <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium text-[--text-primary] mb-2">
                     Company *
                   </label>
                   <input
                     type="text"
                     id="company"
                     name="company"
-                    required
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[--panel] text-[--text-primary] placeholder-[--text-muted] border border-[--border] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200"
-                    placeholder="Your Company"
+                    className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[44px]"
+                    placeholder="Enter your company name"
+                    required
+                    aria-required="true"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-[--text-primary] mb-2">
                   Email Address *
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[--panel] text-[--text-primary] placeholder-[--text-muted] border border-[--border] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200"
-                  placeholder="john@company.com"
+                  className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[44px]"
+                  placeholder="Enter your email address"
+                  required
+                  aria-required="true"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-[--text-primary] mb-2">
                   Tell Us About Your Automation Goals *
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  required
-                  rows={5}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[--panel] text-[--text-primary] placeholder-[--text-muted] border border-[--border] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[120px]"
                   placeholder="Describe your current challenges, automation goals, and what you'd like to achieve..."
+                  required
+                  aria-required="true"
                 />
               </div>
 
@@ -243,8 +242,8 @@ export default function Demo() {
                 </span>
               </button>
 
-              <p className="text-sm text-[--text-muted] text-center">
-                We'll respond within 24 hours to schedule your personalized session.
+              <p className="text-base sm:text-lg lg:text-xl text-[--text-muted] mb-6 lg:mb-8 leading-relaxed max-w-3xl mx-auto px-4">
+                Discover how Autellia can transform your business operations with a personalized discovery workshop.
               </p>
             </form>
           </div>

@@ -17,6 +17,9 @@ import ManagedServices from '../Pages/ManagedServices.jsx'
 import Careers from '../Pages/Careers.jsx'
 import Demo from '../Pages/Demo.jsx'
 import Perspectives from '../Pages/Perspectives.jsx'
+import CaseStudies from '../Pages/CaseStudies.jsx'
+import CallToAction from '../Pages/CallToAction.jsx'
+import BlogKnowledgeHub from '../Pages/BlogKnowledgeHub.jsx'
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
         <Route path="/careers" element={<Layout><Careers /></Layout>} />
         <Route path="/demo" element={<Layout><Demo /></Layout>} />
         <Route path="/perspectives" element={<Layout><Perspectives /></Layout>} />
+        <Route path="/case-studies" element={<Layout><CaseStudies /></Layout>} />
+        <Route path="/call-to-action" element={<Layout><CallToAction /></Layout>} />
+        <Route path="/blog-knowledge-hub" element={<Layout><BlogKnowledgeHub /></Layout>} />
       </Routes>
     </Router>
   )

@@ -114,36 +114,39 @@ export default function Platform() {
 
   return (
     <div className="bg-[--bg] text-[--text-primary]">
-      {/* Hero Section */}
+      {/* Hero Section - Modern Theme with Original Content */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="relative min-h-[80vh] flex items-center justify-center text-center overflow-hidden bg-[--bg]"
+        className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center text-center overflow-hidden px-4"
+        style={{ background: 'var(--gradient-hero)' }}
         data-aos="fade-up"
+        role="banner"
+        aria-labelledby="hero-heading"
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url("https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68b360ce5958737474a5849d/41f9f612a_image.png")' }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/80 to-slate-900/95 backdrop-blur-sm"></div>
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/15 to-cyan-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.h1 
+            id="hero-heading"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight"
-            style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)' }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-4 lg:mb-6 leading-tight"
           >
-            Empowering the Autonomous Enterprise
+            <span className="text-white text-high-contrast">Empowering Enterprises </span>
+            <span className="gradient-text">with AI & Automation</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl font-medium text-slate-200 leading-relaxed mb-10 max-w-3xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl font-medium text-slate-300 leading-relaxed mb-6 lg:mb-10 max-w-3xl mx-auto px-4"
           >
-            Autellia Technology helps enterprises transform operations with RPA, AI/ML, Agentic AI, 
-            and Data Analytics – unlocking efficiency, speed, and smarter decision-making.
+            Autellia transforms business operations through RPA, AI/ML, Agentic AI, and Data Analytics — delivering efficiency, speed, and smarter decision-making at scale.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center items-center"
           >
             <Link 
               to={createPageUrl("Demo")}
@@ -156,11 +159,9 @@ export default function Platform() {
             </Link>
             <Link
               to={createPageUrl("Solutions")}
-              className="border-magic"
+              className="btn-secondary inline-flex items-center gap-2 px-6 py-3"
             >
-              <span className="border-magic-inner">
-                Explore Solutions
-              </span>
+              Explore Solutions
             </Link>
           </motion.div>
         </div>
@@ -169,18 +170,20 @@ export default function Platform() {
       {/* Key Value Propositions */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={staggerContainer}
-        className="py-24 bg-[--bg]"
+        className="py-12 lg:py-24 bg-[--bg]"
         data-aos="fade-up"
+        aria-labelledby="value-props-heading"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="container-responsive">
+          <h2 id="value-props-heading" className="sr-only">Our Key Value Propositions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {valueProps.map((prop) => {
               const IconComponent = prop.icon;
               return (
                 <motion.div 
                   key={prop.title} 
                   variants={fadeIn} 
-                  className="group relative overflow-hidden p-8 rounded-xl bg-[--surface]/50 border border-[--border] transition-all duration-300 transform hover:-translate-y-3 hover:scale-[1.02] shadow-lg hover:shadow-[0_20px_50px_rgba(65,105,225,0.15)]"
+                  className="card-modern group relative overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:scale-[1.02] shadow-lg hover:shadow-[0_20px_50px_rgba(99,102,241,0.15)]"
                   onMouseMove={(e) => {
                     const rect = e.currentTarget.getBoundingClientRect();
                     const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -211,7 +214,7 @@ export default function Platform() {
                     }}
                   />
                   <Grid size={20} />
-                  <div className="w-14 h-14 bg-[--panel] border border-[--border] rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-[--border] rounded-lg flex items-center justify-center mb-6">
                     <IconComponent className="w-7 h-7 text-[--accent]" />
                   </div>
                   <h3 className="text-xl font-bold text-[--text-primary] mb-3">{prop.title}</h3>
@@ -223,30 +226,31 @@ export default function Platform() {
         </div>
       </motion.section>
 
-      {/* About Section - Redesigned */}
+      {/* About Section - Modern Theme */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
-        className="py-24 bg-[--surface]"
+        className="py-12 lg:py-24 glass"
         data-aos="fade-up"
+        aria-labelledby="about-heading"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="container-responsive">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div variants={fadeIn}>
-              <h2 className="text-4xl font-bold text-[--text-primary] mb-6">Reimagining How Businesses Operate</h2>
-              <p className="text-lg text-[--text-muted] leading-relaxed mb-8">
+              <h2 id="about-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[--text-primary] mb-4 lg:mb-6">Reimagining How Businesses Operate</h2>
+              <p className="text-base lg:text-lg text-[--text-muted] leading-relaxed mb-6 lg:mb-8">
                 Founded with a vision to create future-ready enterprises, Autellia combines deep expertise in RPA, AI, and Analytics to empower organizations to reduce costs, improve productivity, and accelerate growth.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-8 text-center">
                 {animatedCounters.map((item, idx) => (
-                    <motion.div key={item.label} variants={fadeIn} className={`${idx % 2 === 0 ? 'bg-slate-900' : 'bg-slate-800'} p-6 rounded-xl border border-slate-700 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl`} data-aos="zoom-in">
-                        <p className="text-4xl font-bold text-white"><CountUp value={item.number} /></p>
-                        <p className="text-sm text-slate-300 mt-2">{item.label}</p>
+                    <motion.div key={item.label} variants={fadeIn} className="card-modern p-6 text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl" data-aos="zoom-in">
+                        <p className="text-4xl font-bold gradient-text"><CountUp value={item.number} /></p>
+                        <p className="text-sm text-[--text-muted] mt-2">{item.label}</p>
                     </motion.div>
                 ))}
               </div>
             </motion.div>
-            <motion.div variants={fadeIn} className="h-full">
-              <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2572&auto=format&fit=crop" alt="AI Illustration" className="rounded-lg shadow-2xl object-cover h-full w-full" data-aos="fade-right"/>
+            <motion.div variants={fadeIn} className="h-full mt-8 lg:mt-0">
+              <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2572&auto=format&fit=crop" alt="AI and automation technology illustration showing modern business transformation" className="rounded-lg shadow-2xl object-cover h-full w-full" data-aos="fade-right"/>
             </motion.div>
           </div>
         </div>
@@ -269,7 +273,7 @@ export default function Platform() {
                 <motion.div 
                   key={industry.title} 
                   variants={fadeIn} 
-                  className="group text-center relative overflow-hidden p-6 rounded-xl bg-[--surface]/60 border border-[--border] transition-all duration-300 transform hover:-translate-y-3 hover:scale-[1.02] shadow-sm hover:shadow-[0_18px_40px_rgba(65,105,225,0.12)]"
+                  className="card-modern group text-center relative overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:scale-[1.02] shadow-sm hover:shadow-[0_18px_40px_rgba(99,102,241,0.12)]"
                   onMouseMove={(e) => {
                     const rect = e.currentTarget.getBoundingClientRect();
                     const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -300,7 +304,7 @@ export default function Platform() {
                     }}
                   />
                   <Grid size={18} />
-                  <div className="w-16 h-16 bg-[--surface] border border-[--border] rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-[--border] rounded-full flex items-center justify-center mb-4 mx-auto">
                     <IconComponent className="w-8 h-8 text-[--accent]" />
                   </div>
                   <h3 className="text-lg font-bold text-[--text-primary]">{industry.title}</h3>
@@ -312,7 +316,7 @@ export default function Platform() {
       </motion.section>
 
       {/* Why Choose Us (Sticky Scroll) */}
-      <section className="py-24 bg-slate-800" data-aos="fade-up">
+      <section className="py-24 glass" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[--text-primary] mb-4">Why Forward-Thinking Businesses Choose Autellia</h2>
@@ -325,7 +329,7 @@ export default function Platform() {
       {/* Testimonials Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className="py-24 bg-[--surface]"
+        className="py-24 bg-[--bg]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -349,7 +353,7 @@ export default function Platform() {
         data-aos="fade-up"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="border border-[--border] bg-[--surface] rounded-lg p-12">
+          <div className="card-modern p-12">
             <h2 className="text-4xl font-bold text-[--text-primary] mb-6">
               Ready to Get Started?
             </h2>

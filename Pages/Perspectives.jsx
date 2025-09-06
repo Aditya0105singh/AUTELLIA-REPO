@@ -2,7 +2,7 @@
 import React from "react";
 import { Building2, Heart, ShoppingCart, Monitor, FileText, Headphones, CreditCard, Shield, CheckCircle, Lightbulb, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-// import { Grid } from "../components/ui/Grid"; // Component not found, commenting out
+// Grid component not available, removing references
 import { BackgroundRippleEffect } from "../Components/ui/BackgroundRippleEffect.jsx";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
@@ -123,7 +123,6 @@ export default function Perspectives() {
               const IconComponent = industry.icon;
               return (
                 <motion.div key={index} variants={itemVariants} className="group relative rounded-2xl p-8 border border-gray-700 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-900/20 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
-                  <Grid size={20}/>
                   <div className="w-12 h-12 bg-gray-900 border border-gray-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
                     <IconComponent className="w-6 h-6 text-cyan-400" />
                   </div>
@@ -148,7 +147,6 @@ export default function Perspectives() {
               const IconComponent = useCase.icon;
               return (
                 <motion.div key={index} variants={itemVariants} className="rounded-2xl p-8 border border-gray-700 hover:shadow-xl hover:shadow-cyan-900/20 transition-shadow duration-300 relative overflow-hidden">
-                   <Grid size={20}/>
                   <div className="w-12 h-12 bg-gray-900 border border-gray-700 rounded-xl flex items-center justify-center mb-6 relative z-10">
                     <IconComponent className="w-6 h-6 text-cyan-400" />
                   </div>
@@ -211,7 +209,6 @@ export default function Perspectives() {
           <div className="grid md:grid-cols-3 gap-8">
             {differentiators.map((diff, index) => (
               <motion.div key={index} variants={itemVariants} className="rounded-2xl p-8 border border-gray-700 text-center hover:shadow-xl hover:shadow-cyan-900/20 transition-shadow duration-300 relative overflow-hidden">
-                <Grid size={20}/>
                 <div className="w-12 h-12 bg-gray-900 border border-gray-700 rounded-xl flex items-center justify-center mx-auto mb-6 relative z-10">
                   <span className="text-cyan-400 text-xl font-bold">{index + 1}</span>
                 </div>
