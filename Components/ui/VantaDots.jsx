@@ -6,30 +6,53 @@ const VantaDots = ({ children, className = "" }) => {
 
   useEffect(() => {
     // Initialize Vanta effect when component mounts
-    if (vantaRef.current && window.VANTA) {
-      vantaEffect.current = window.VANTA.NET({
-        el: vantaRef.current,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        scale: 1.0,
-        scaleMobile: 1.0,
-        backgroundColor: 0x000000, // Pure black background
-        color: 0x888888, // Brighter gray lines for shooting star effect
-        points: 8.0, // Number of moving dots
-        maxDistance: 18.0, // How far lines can connect
-        spacing: 20.0, // Spread of points
-        showDots: true,
-        showLines: true
-      });
+    const initVanta = () => {
+      if (vantaRef.current && window.VANTA && window.THREE) {
+        try {
+          vantaEffect.current = window.VANTA.WAVES({
+            el: vantaRef.current,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x4191c, // Wave color
+            shininess: 15.00,
+            waveHeight: 23.00,
+            waveSpeed: 1.10,
+            zoom: 0.71
+          });
+        } catch (error) {
+          console.warn('Vanta.js initialization failed:', error);
+        }
+      }
+    };
+
+    // Try to initialize immediately, or wait for scripts to load
+    if (window.VANTA && window.THREE) {
+      initVanta();
+    } else {
+      const checkVanta = setInterval(() => {
+        if (window.VANTA && window.THREE) {
+          clearInterval(checkVanta);
+          initVanta();
+        }
+      }, 100);
+      
+      // Clear interval after 5 seconds to avoid infinite checking
+      setTimeout(() => clearInterval(checkVanta), 5000);
     }
 
     // Cleanup function to destroy effect on unmount
     return () => {
       if (vantaEffect.current) {
-        vantaEffect.current.destroy();
+        try {
+          vantaEffect.current.destroy();
+        } catch (error) {
+          console.warn('Vanta.js cleanup failed:', error);
+        }
         vantaEffect.current = null;
       }
     };
@@ -40,11 +63,12 @@ const VantaDots = ({ children, className = "" }) => {
       ref={vantaRef} 
       className={`relative overflow-hidden ${className}`}
       style={{
-        background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%)'
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)'
       }}
     >
-      {/* Very subtle overlays that won't compete with content */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/1 via-transparent to-gray-400/2 pointer-events-none"></div>
+      {/* Enhanced gradient overlays for better visual depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-purple-900/5 to-blue-900/10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
       
       {/* Content overlay with proper z-index */}
       <div className="relative z-10">

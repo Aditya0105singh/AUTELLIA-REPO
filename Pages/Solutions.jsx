@@ -245,13 +245,15 @@ export default function Solutions() {
           <p className="text-xl mb-8 leading-relaxed text-[--text-muted]">
             Contact us today to discover how intelligent automation and agentic AI can drive your business forward.
           </p>
-          <Link
-            to={createPageUrl("Demo")}
+          <a
+            href="https://cal.com/autellia-technology-43lknv"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bg-[--accent] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[--accent-variant] transition-all duration-300 btn-glow flex items-center justify-center gap-2 max-w-sm mx-auto"
           >
             Get in Touch
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </a>
         </div>
       </motion.section>
     </div>

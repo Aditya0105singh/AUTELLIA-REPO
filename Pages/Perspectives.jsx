@@ -232,13 +232,13 @@ export default function Perspectives() {
               Let's discuss how our automation and AI solutions can drive measurable outcomes for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to={createPageUrl("Demo")} className="relative inline-flex h-14 overflow-hidden rounded-xl p-[1px] focus:outline-none group">
+              <a href="https://cal.com/autellia-technology-43lknv" target="_blank" rel="noopener noreferrer" className="relative inline-flex h-14 overflow-hidden rounded-xl p-[1px] focus:outline-none group">
                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#1e293b_50%,#06b6d4_100%)]" />
                 <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-900 px-8 py-4 text-lg font-semibold text-white backdrop-blur-3xl gap-2">
                   Schedule Consultation
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </Link>
+              </a>
               <button className="bg-gray-700/50 border border-gray-600 text-gray-200 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-600/50 hover:border-gray-500 transition-all duration-300 transform hover:scale-105">
                 Download Case Studies
               </button>

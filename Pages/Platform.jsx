@@ -149,15 +149,17 @@ export default function Platform() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-4 justify-center items-center px-2 sm:px-0"
           >
-            <Link 
-              to={createPageUrl("Demo")}
+            <a 
+              href="https://cal.com/autellia-technology-43lknv"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-magic group"
             >
               <span className="border-magic-inner flex items-center justify-center gap-2">
                 Book a Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-            </Link>
+            </a>
             <Link
               to={createPageUrl("Solutions")}
               className="btn-secondary inline-flex items-center gap-2 px-6 py-3"
@@ -368,15 +370,17 @@ export default function Platform() {
                 Explore a discovery workshop to identify top ROI use cases in 2 weeks 
                 and stand up a pilot in 30–45 days with measurable outcomes.
               </p>
-              <Link 
-                to={createPageUrl("Demo")}
+              <a 
+                href="https://cal.com/autellia-technology-43lknv"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border-magic group"
               >
                 <span className="border-magic-inner flex items-center justify-center gap-2">
                   Schedule Discovery Workshop
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

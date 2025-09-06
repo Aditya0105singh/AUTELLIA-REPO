@@ -121,12 +121,7 @@ export default function Layout({ children, currentPageName }) {
 
   // Cal.com booking handler
   const handleBookDemo = () => {
-    // TODO: Replace with your actual Cal.com URL after setup
-    // For now, redirect to a contact form or placeholder
-    const calUrl = 'https://cal.com/autellia/demo'; // Replace 'autellia' with your actual username
-    
-    // Check if Cal.com account is set up (you'll know when the URL works)
-    // For now, this will show the 404 until you complete Cal.com setup
+    const calUrl = 'https://cal.com/autellia-technology-43lknv';
     window.open(calUrl, '_blank', 'noopener,noreferrer');
   };
 

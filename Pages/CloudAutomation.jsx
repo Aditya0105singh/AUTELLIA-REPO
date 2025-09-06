@@ -156,8 +156,10 @@ export default function CloudAutomation() {
               that unlocks scalability, resilience, and innovation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to={createPageUrl("Demo")}
+              <a 
+                href="https://cal.com/autellia-technology-43lknv"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="relative inline-flex h-14 overflow-hidden rounded-xl p-[1px] focus:outline-none group"
               >
                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#1e293b_50%,#06b6d4_100%)]" />
@@ -165,7 +167,7 @@ export default function CloudAutomation() {
                   Start Your Cloud Journey
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </Link>
+              </a>
               <Link 
                 to={createPageUrl("Solutions")}
                 className="inline-flex items-center gap-2 bg-gray-700/50 text-gray-200 px-8 py-4 rounded-xl font-semibold text-lg border border-gray-600 hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-300"
