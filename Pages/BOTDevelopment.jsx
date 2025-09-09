@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
 import { Bot, Code, Zap, CheckCircle, ArrowRight, Cog } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
 export default function BOTDevelopment() {
+  const { isDark } = useTheme();
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -68,7 +70,9 @@ export default function BOTDevelopment() {
   }));
 
   return (
-    <div className="min-h-screen relative overflow-hidden text-gray-200 bg-transparent">
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
+      isDark ? 'text-gray-200 bg-transparent' : 'text-gray-900 bg-white'
+    }`}>
       {/* Background Ripple Effect */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {ripples.map(ripple => (

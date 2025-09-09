@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
 import { Code, CheckCircle, ArrowRight, Database, Cloud } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
 export default function SoftwareDevelopment() {
+  const { isDark } = useTheme();
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -55,7 +57,9 @@ export default function SoftwareDevelopment() {
   ];
 
   return (
-    <div className="min-h-screen bg-transparent text-gray-200 relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
+      isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
+    }`}>
       
       {/* Hero Section */}
       <motion.section 

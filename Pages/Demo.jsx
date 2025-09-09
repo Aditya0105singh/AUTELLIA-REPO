@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Calendar, Users, Target, Send, CheckCircle } from "lucide-react";
 import { BackgroundRippleEffect } from "../Components/ui/BackgroundRippleEffect.jsx";
+import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
 export default function Demo() {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -38,7 +40,9 @@ export default function Demo() {
   ];
 
   return (
-    <div className="min-h-screen bg-[--bg] text-[--text-primary] relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
+      isDark ? 'bg-[--bg] text-[--text-primary]' : 'bg-white text-gray-900'
+    }`}>
       {/* Global Background Grid Animation */}
       <BackgroundRippleEffect />
       

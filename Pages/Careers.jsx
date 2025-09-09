@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Users, Rocket, Heart, Globe, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { BackgroundRippleEffect } from "../Components/ui/BackgroundRippleEffect.jsx";
+import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
 export default function Careers() {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -64,7 +66,9 @@ export default function Careers() {
   ];
 
   return (
-    <div className="min-h-screen bg-[--bg] text-[--text-primary] relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
+      isDark ? 'bg-[--bg] text-[--text-primary]' : 'bg-white text-gray-900'
+    }`}>
       <BackgroundRippleEffect />
       
       {/* Hero Section */}
@@ -141,66 +145,73 @@ export default function Careers() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={containerVariants} initial="hidden" whileInView="visible" className="space-y-6">
-              <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300">
-                <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[--accent] text-sm font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[--text-primary] mb-2">Technical Excellence</h3>
-                  <p className="text-[--text-muted] text-sm">Work with the latest automation platforms, AI technologies, and cloud infrastructure</p>
-                </div>
-              </motion.div>
-              <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300">
-                 <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[--accent] text-sm font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[--text-primary] mb-2">Leadership Development</h3>
-                  <p className="text-[--text-muted] text-sm">Lead high-impact projects and mentor junior team members in a collaborative environment</p>
-                </div>
-              </motion.div>
-              <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300">
-                 <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[--accent] text-sm font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[--text-primary] mb-2">Industry Impact</h3>
-                  <p className="text-[--text-muted] text-sm">Shape the future of enterprise automation across multiple industries and use cases</p>
-                </div>
-              </motion.div>
+          <motion.div 
+            variants={containerVariants} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300 h-full">
+              <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-[--accent] text-sm font-bold">✓</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-[--text-primary] mb-2">Technical Excellence</h3>
+                <p className="text-[--text-muted] text-sm">Work with the latest automation platforms, AI technologies, and cloud infrastructure</p>
+              </div>
             </motion.div>
-            <motion.div variants={containerVariants} initial="hidden" whileInView="visible" className="space-y-6">
-              <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300">
-                <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[--accent] text-sm font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[--text-primary] mb-2">Continuous Learning</h3>
-                  <p className="text-[--text-muted] text-sm">Access to certifications, conferences, and training on emerging technologies</p>
-                </div>
-              </motion.div>
-              <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300">
-                 <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[--accent] text-sm font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[--text-primary] mb-2">Global Exposure</h3>
-                  <p className="text-[--text-muted] text-sm">Work with international clients and contribute to global automation initiatives</p>
-                </div>
-              </motion.div>
-              <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300">
-                 <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-[--accent] text-sm font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[--text-primary] mb-2">Innovation Culture</h3>
-                  <p className="text-[--text-muted] text-sm">Contribute to R&D initiatives and help develop next-generation automation solutions</p>
-                </div>
-              </motion.div>
+            
+            <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300 h-full">
+              <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-[--accent] text-sm font-bold">✓</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-[--text-primary] mb-2">Continuous Learning</h3>
+                <p className="text-[--text-muted] text-sm">Access to certifications, conferences, and training on emerging technologies</p>
+              </div>
             </motion.div>
-          </div>
+            
+            <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300 h-full">
+              <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-[--accent] text-sm font-bold">✓</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-[--text-primary] mb-2">Leadership Development</h3>
+                <p className="text-[--text-muted] text-sm">Lead high-impact projects and mentor junior team members in a collaborative environment</p>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300 h-full">
+              <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-[--accent] text-sm font-bold">✓</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-[--text-primary] mb-2">Global Exposure</h3>
+                <p className="text-[--text-muted] text-sm">Work with international clients and contribute to global automation initiatives</p>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300 h-full">
+              <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-[--accent] text-sm font-bold">✓</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-[--text-primary] mb-2">Industry Impact</h3>
+                <p className="text-[--text-muted] text-sm">Shape the future of enterprise automation across multiple industries and use cases</p>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-[--border] bg-[--surface] hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300 h-full">
+              <div className="w-8 h-8 bg-[--panel] border border-[--border] rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-[--accent] text-sm font-bold">✓</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-[--text-primary] mb-2">Innovation Culture</h3>
+                <p className="text-[--text-muted] text-sm">Contribute to R&D initiatives and help develop next-generation automation solutions</p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -222,7 +233,7 @@ export default function Careers() {
             </div>
 
             <form 
-              action="https://formsubmit.co/mounilkankhara@gmail.com" 
+              action="https://formsubmit.co/adityasingh01517@gmail.com" 
               method="POST"
               className="space-y-6"
             >

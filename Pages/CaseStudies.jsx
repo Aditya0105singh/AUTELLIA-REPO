@@ -4,8 +4,10 @@ import { BackgroundRippleEffect } from "../Components/ui/BackgroundRippleEffect.
 import { Building2, TrendingUp, Clock, DollarSign, Users, CheckCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
+import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
 export default function CaseStudies() {
+  const { isDark } = useTheme();
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -89,7 +91,9 @@ export default function CaseStudies() {
   ];
 
   return (
-    <div className="min-h-screen bg-transparent text-gray-200">
+    <div className={`min-h-screen transition-colors duration-500 ${
+      isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
+    }`}>
       <BackgroundRippleEffect />
       
       {/* Hero Section */}

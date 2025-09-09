@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "../../src/contexts/ThemeContext.jsx";
 
 export const InfiniteMovingCards = ({
   items,
@@ -7,6 +9,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }) => {
+  const { isDark } = useTheme();
   const containerRef = React.useRef(null);
   const scrollerRef = React.useRef(null);
   const [start, setStart] = useState(false);
@@ -24,11 +27,11 @@ export const InfiniteMovingCards = ({
   const getSpeed = useCallback(() => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
+        containerRef.current.style.setProperty("--animation-duration", "60s");
       } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
-      } else {
         containerRef.current.style.setProperty("--animation-duration", "80s");
+      } else {
+        containerRef.current.style.setProperty("--animation-duration", "120s");
       }
     }
   }, [speed]);
@@ -55,54 +58,75 @@ export const InfiniteMovingCards = ({
   }, [addAnimation]);
 
   return (
-    <div
-      ref={containerRef}
-      className={`scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] ${className}`}
-    >
-      <ul
-        ref={scrollerRef}
-        className={`flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap ${
-          start ? "animate-scroll" : ""
-        } ${pauseOnHover ? "hover:[animation-play-state:paused]" : ""}`}
+    <div className="relative w-full overflow-hidden py-8">
+
+      <div
+        ref={containerRef}
+        className={`scroller relative z-10 max-w-7xl mx-auto overflow-hidden ${
+          isDark 
+            ? '[mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]'
+            : '[mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]'
+        } ${className}`}
       >
+        <motion.ul
+          ref={scrollerRef}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className={`flex min-w-full shrink-0 gap-6 py-6 w-max flex-nowrap ${
+            start ? "animate-scroll" : ""
+          } ${pauseOnHover ? "hover:[animation-play-state:paused]" : ""}`}
+        >
         {items.map((item, idx) => (
-          <li
-            className="w-[350px] max-w-full relative rounded-2xl border border-[--border] px-8 py-6 bg-[--panel]"
+          <motion.li
             key={item.name + idx}
+            whileHover={{ 
+              y: -4,
+              transition: { type: "spring", stiffness: 300, damping: 20 }
+            }}
+            className={`w-[350px] max-w-full relative rounded-xl p-6 transition-all duration-300 ${
+              isDark 
+                ? 'border border-[--border] bg-[--surface] hover:shadow-lg' 
+                : 'border border-gray-200 bg-white hover:shadow-lg'
+            }`}
           >
             <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className="relative z-20 text-sm leading-[1.6] text-[--text-muted] font-normal">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] text-[--text-primary] font-normal">
-                    {item.name}
-                  </span>
-                  <span className="text-sm leading-[1.6] text-[--text-muted] font-normal">
-                    {item.title}
-                  </span>
+              
+              <p className={`text-base leading-relaxed mb-6 transition-colors duration-300 ${
+                isDark ? 'text-[--text-muted]' : 'text-gray-700'
+              }`}>
+                "{item.quote}"
+              </p>
+              
+              <div className="flex flex-col">
+                <span className={`text-sm font-semibold transition-colors duration-300 ${
+                  isDark ? 'text-[--text-primary]' : 'text-gray-900'
+                }`}>
+                  {item.name}
+                </span>
+                <span className={`text-xs transition-colors duration-300 ${
+                  isDark ? 'text-[--text-muted]' : 'text-gray-600'
+                }`}>
+                  {item.title}
                 </span>
               </div>
             </blockquote>
-          </li>
+          </motion.li>
         ))}
-      </ul>
-      <style jsx>{`
-        .animate-scroll {
-          animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
-        }
+        </motion.ul>
         
-        @keyframes scroll {
-          to {
-            transform: translate(calc(-50% - 0.5rem));
+        <style jsx>{`
+          .animate-scroll {
+            animation: scroll var(--animation-duration, 120s) var(--animation-direction, forwards) linear infinite;
           }
-        }
-      `}</style>
+          
+          @keyframes scroll {
+            to {
+              transform: translate(calc(-50% - 1.5rem));
+            }
+          }
+        `}</style>
+      </div>
     </div>
   );
 };

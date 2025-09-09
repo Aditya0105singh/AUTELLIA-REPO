@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
 import { FileText, Scan, Zap, CheckCircle, ArrowRight, Database } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
 export default function DocumentProcessing() {
+  const { isDark } = useTheme();
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -56,7 +58,9 @@ export default function DocumentProcessing() {
 
   return (
     // Changed bg-gray-950 to bg-transparent for ripple visibility.
-    <div className="min-h-screen bg-transparent text-gray-200 relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
+      isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
+    }`}>
       {/* Global Background Ripple Effect */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Ripple 1 */}

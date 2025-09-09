@@ -4,8 +4,10 @@ import { BackgroundRippleEffect } from "../Components/ui/BackgroundRippleEffect.
 import { BookOpen, TrendingUp, Users, Calendar, ArrowRight, Tag, Clock, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
+import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
 export default function BlogKnowledgeHub() {
+  const { isDark } = useTheme();
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -125,7 +127,9 @@ export default function BlogKnowledgeHub() {
   ];
 
   return (
-    <div className="min-h-screen bg-transparent text-gray-200">
+    <div className={`min-h-screen transition-colors duration-500 ${
+      isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
+    }`}>
       <BackgroundRippleEffect />
       
       {/* Hero Section */}

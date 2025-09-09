@@ -1,10 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown } from 'lucide-react'
-import VantaDots from './Components/ui/VantaDots'
-import { createPageUrl } from "./src/utils";
-import { BackgroundBeams } from "./Components/ui/background-beams.jsx";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { createPageUrl } from './src/utils/index.js';
+import VantaDots from './Components/ui/VantaDots.jsx';
+import { useTheme } from './src/contexts/ThemeContext.jsx';
+import ThemeToggle from './Components/ui/ThemeToggle.jsx';
+import ExploreSolutionModal from './Components/ui/ExploreSolutionModal.jsx';
+import { BackgroundBeams } from './Components/ui/background-beams.jsx';
  
 import {
   Navbar as MotionNavbar,
@@ -18,10 +20,34 @@ import {
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
+  const { isDark } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHeaderHidden, setIsHeaderHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Enhanced scroll effect for sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollThreshold = 10;
+      
+      // Set scrolled state for background change
+      setIsScrolled(currentScrollY > scrollThreshold);
+      
+      // Hide/show header based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHeaderHidden(true);
+      } else {
+        setIsHeaderHidden(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const services = [
     { title: "Automation Consulting & Strategy", path: "AutomationConsulting" },
@@ -90,17 +116,6 @@ export default function Layout({ children, currentPageName }) {
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      setIsScrolled(currentY > 8);
-      const isScrollingDown = currentY > lastScrollY;
-      setIsHeaderHidden(isScrollingDown && currentY > 80);
-      setLastScrollY(currentY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
 
   const headerVariants = {
     visible: { y: 0, transition: { type: 'spring', stiffness: 500, damping: 40 } },
@@ -216,62 +231,98 @@ export default function Layout({ children, currentPageName }) {
           color: var(--accent-light);
         }
       `}</style>
-      <div className="min-h-screen w-full bg-[--bg] text-[--text-primary] font-sans relative overflow-hidden">
+      <div className={`min-h-screen w-full font-sans relative overflow-hidden transition-colors duration-500 ${
+        isDark 
+          ? 'bg-[--bg] text-[--text-primary]' 
+          : 'bg-white text-gray-900'
+      }`}>
         {/* Skip to content link for accessibility */}
-        <a href="#main-content" className="skip-to-content">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">
           Skip to main content
         </a>
-        {showBeams && (
-          <BackgroundBeams />
-        )}
-        
-        {/* Basic Header */}
-        <motion.header
-          className={`fixed top-0 left-0 right-0 z-50 w-full bg-black/20 backdrop-blur-md border-b border-white/10 ${isScrolled ? 'shadow-2xl shadow-black/30' : 'shadow-none'}`}
+
+        {/* Enhanced Sticky Header with Glassmorphism */}
+        <motion.header 
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-xl border-b ${
+            isScrolled 
+              ? isDark 
+                ? 'bg-slate-900/90 border-slate-700/50 shadow-2xl shadow-black/20' 
+                : 'bg-white/90 border-gray-200/50 shadow-xl shadow-gray-900/5'
+              : isDark 
+                ? 'bg-transparent border-transparent' 
+                : 'bg-transparent border-transparent'
+          }`}
           variants={headerVariants}
           animate={isHeaderHidden ? 'hidden' : 'visible'}
+          initial="visible"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[60px]">
-            <div className="flex justify-between items-center h-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20">
+            <div className="flex items-center justify-between h-full w-full">
               {/* Logo */}
-              <Link to={createPageUrl("Platform")} className="flex items-center space-x-2 sm:space-x-2.5">
-                <img 
+              <Link to={createPageUrl("Platform")} className="flex items-center space-x-3 group">
+                <motion.img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/c29fb92fd_logocopy.jpg" 
                   alt="Autellia Logo" 
-                  className="w-7 h-7 sm:w-8 sm:h-8 object-contain rounded-full"
+                  className="w-8 h-8 object-contain rounded-full transition-all duration-300 group-hover:scale-110"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
                 />
-                <span className="text-lg sm:text-xl font-bold text-white">
+                <span className={`text-xl font-bold transition-all duration-300 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:to-purple-600 group-hover:bg-clip-text ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>
                   Autellia
                 </span>
               </Link>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center space-x-1">
+              {/* Center Navigation */}
+              <nav className="hidden md:flex items-center justify-end flex-1 mr-16 space-x-12">
                 {navigationItems.map((item) => (
                   <div key={item.title} className="relative group">
                     {item.hasDropdown ? (
                       <div>
-                        <button className="flex items-center gap-1 px-4 py-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-200">
+                        <button className={`flex items-center gap-1 font-medium text-sm transition-all duration-200 ${
+                          isDark 
+                            ? 'text-slate-300 hover:text-white' 
+                            : 'text-gray-700 hover:text-gray-900'
+                        }`}>
                           {item.title}
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
                         </button>
                         {/* Dropdown */}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[9999]">
                           <motion.div
-                            initial={{ opacity: 0, y: 6 }}
+                            initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.15 }}
-                            className="w-72 bg-[--panel] border border-[--border] rounded-lg shadow-xl py-2"
+                            transition={{ duration: 0.2 }}
+                            className={`min-w-[220px] w-auto border rounded-lg shadow-xl py-2 transition-colors duration-300 ${
+                              isDark 
+                                ? 'bg-slate-900/95 border-slate-700/50 backdrop-blur-sm' 
+                                : 'bg-white/95 border-gray-200/50 backdrop-blur-sm'
+                            }`}
                           >
                             {item.dropdownItems.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.path}
                                 to={createPageUrl(dropdownItem.path)}
-                                className="block px-4 py-3 text-sm text-[--text-muted] hover:text-[--accent] hover:bg-[--surface] transition-colors"
+                                className={`block px-4 py-2.5 text-sm transition-all duration-200 whitespace-nowrap ${
+                                  isDark 
+                                    ? 'text-slate-300 hover:text-white hover:bg-indigo-500/15' 
+                                    : 'text-gray-700 hover:text-indigo-600 hover:bg-indigo-50'
+                                }`}
                               >
-                                {dropdownItem.title}
+                                {dropdownItem.title
+                                  .replace('Automation Consulting & Strategy', 'Automation Consulting')
+                                  .replace('BOT Development & Deployment', 'BOT Development')
+                                  .replace('AI/ML Model Training & Integration', 'AI/ML Integration')
+                                  .replace('Business Process Optimization', 'Process Optimization')
+                                  .replace('Data Analytics & Visualization', 'Data Analytics')
+                                  .replace('Intelligent Document Processing (IDP)', 'Document Processing')
+                                  .replace('Custom Software Development', 'Software Development')
+                                  .replace('Cloud Infrastructure & Automation', 'Cloud Automation')
+                                  .replace('Managed Services & Support', 'Managed Services')
+                                }
                               </Link>
                             ))}
                           </motion.div>
@@ -280,17 +331,20 @@ export default function Layout({ children, currentPageName }) {
                     ) : item.isButton ? (
                       <button
                         onClick={handleBookDemo}
-                        className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/25 cursor-pointer border-none"
+                        className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-md transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/25 cursor-pointer border-none text-sm"
                       >
                         {item.title}
                       </button>
                     ) : (
                       <Link
                         to={item.url}
-                        className={`px-4 py-2 font-medium rounded-lg transition-all duration-200 ${
+                        className={`font-medium text-sm transition-all duration-200 ${
                           location.pathname === item.url
-                            ? 'text-white bg-white/10'
-                            : 'text-slate-300 hover:text-white hover:bg-white/10'
+                            ? (isDark ? 'text-white' : 'text-indigo-600')
+                            : (isDark 
+                                ? 'text-slate-300 hover:text-white' 
+                                : 'text-gray-700 hover:text-gray-900'
+                              )
                         }`}
                       >
                         {item.title}
@@ -299,19 +353,32 @@ export default function Layout({ children, currentPageName }) {
                   </div>
                 ))}
               </nav>
+              
+              {/* Theme Toggle - Far Right */}
+              <div className="hidden md:flex items-center">
+                <ThemeToggle />
+              </div>
 
-              {/* Mobile Menu Button */}
-              <button
-                className="md:hidden p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-expanded={isMobileMenuOpen}
-                aria-controls="mobile-menu"
-                aria-label="Toggle menu"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
+              {/* Mobile Theme Toggle and Menu Button */}
+              <div className="md:hidden flex items-center space-x-2">
+                <ThemeToggle className="scale-75" />
+                <motion.button
+                  className={`p-2 rounded-lg transition-all duration-200 ${
+                    isDark 
+                      ? 'text-slate-300 hover:text-white hover:bg-white/10' 
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  whileTap={{ scale: 0.95 }}
+                  aria-expanded={isMobileMenuOpen}
+                  aria-controls="mobile-menu"
+                  aria-label="Toggle menu"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </motion.button>
+              </div>
             </div>
           </div>
 
@@ -325,14 +392,20 @@ export default function Layout({ children, currentPageName }) {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="md:hidden bg-[--surface] border-t border-[--border] overflow-hidden"
+                className={`md:hidden border-t overflow-hidden transition-colors duration-300 ${
+                  isDark 
+                    ? 'bg-[--surface] border-[--border]' 
+                    : 'bg-gray-50 border-gray-200'
+                }`}
               >
                 <div className="px-4 py-4 space-y-2">
                   {navigationItems.map((item) => (
                     <div key={item.title} className="mobile-menu-item">
                       {item.hasDropdown ? (
                         <div className="space-y-2">
-                          <div className="text-[--text-primary] font-semibold px-2 py-2 text-base">
+                          <div className={`font-semibold px-2 py-2 text-base transition-colors duration-300 ${
+                            isDark ? 'text-[--text-primary]' : 'text-gray-900'
+                          }`}>
                             {item.title}
                           </div>
                           {item.dropdownItems.map((dropdownItem) => (
@@ -340,7 +413,11 @@ export default function Layout({ children, currentPageName }) {
                               key={dropdownItem.path}
                               to={createPageUrl(dropdownItem.path)}
                               onClick={() => setIsMobileMenuOpen(false)}
-                              className="block px-4 py-3 text-[--text-muted] hover:text-[--accent] text-sm"
+                              className={`block px-4 py-3 text-sm transition-colors duration-200 ${
+                                isDark 
+                                  ? 'text-[--text-muted] hover:text-[--accent]' 
+                                  : 'text-gray-600 hover:text-brand-purple'
+                              }`}
                             >
                               {dropdownItem.title}
                             </Link>
@@ -352,7 +429,7 @@ export default function Layout({ children, currentPageName }) {
                               setIsMobileMenuOpen(false);
                               handleBookDemo();
                             }}
-                            className="block w-full px-2 py-3 rounded-md font-semibold border-magic text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-none cursor-pointer"
+                            className="block w-full px-4 py-3 rounded-lg font-semibold text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white border-none cursor-pointer transition-all duration-200 text-sm"
                           >
                             {item.title}
                           </button>
@@ -360,7 +437,11 @@ export default function Layout({ children, currentPageName }) {
                           <Link
                             to={item.url || '#'}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-2 py-3 rounded-md font-semibold text-[--text-muted] hover:text-[--text-primary] text-base"
+                            className={`block px-2 py-3 rounded-md font-semibold text-base transition-colors duration-200 ${
+                              isDark 
+                                ? 'text-[--text-muted] hover:text-[--text-primary]' 
+                                : 'text-gray-600 hover:text-gray-900'
+                            }`}
                           >
                             {item.title}
                           </Link>
@@ -380,7 +461,7 @@ export default function Layout({ children, currentPageName }) {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="pt-16"
+          className="pt-20"
           role="main"
         >
           {children}
@@ -396,8 +477,11 @@ export default function Layout({ children, currentPageName }) {
               viewport={{ once: true }}
               className="space-y-8 sm:space-y-10 lg:space-y-12"
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent px-2 sm:px-0">
-                Transforming Enterprise Operations
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight px-2 sm:px-0">
+                <span className="block text-white mb-2">Transforming Enterprise</span>
+                <span className="block bg-gradient-to-r from-indigo-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+                  Operations
+                </span>
               </h2>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
                 Experience the power of intelligent automation with our cutting-edge AI/ML solutions that revolutionize how enterprises operate.
@@ -447,179 +531,276 @@ export default function Layout({ children, currentPageName }) {
                 viewport={{ once: true }}
                 className="mt-12 sm:mt-14 lg:mt-16"
               >
-                <button 
-                  onClick={handleBookDemo}
-                  className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#6a5af9] to-[#2acfcf] hover:shadow-lg hover:shadow-[#6a5af9]/30 text-white font-semibold text-base sm:text-lg rounded-full border-none cursor-pointer transition-all duration-300 hover:scale-105"
-                >
-                  Book a Demo
-                  <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </button>
+                <ExploreSolutionModal 
+                  triggerText="Book a Demo"
+                  triggerClassName="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:shadow-indigo-500/30 text-white font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105"
+                />
               </motion.div>
             </motion.div>
           </div>
         </VantaDots>
 
-        {/* Footer with x.ai-style background */}
-        <footer className="relative mt-auto" role="contentinfo">
-          {/* x.ai-style layered gradient background */}
-          <div className="relative overflow-hidden" style={{
-            background: `
-              radial-gradient(120% 80% at 50% 140%, rgba(99,102,241,0.75) 0%, rgba(99,102,241,0.55) 15%, rgba(99,102,241,0.35) 30%, rgba(99,102,241,0.18) 50%, rgba(99,102,241,0.08) 70%, rgba(13,13,13,0) 85%),
-              radial-gradient(130% 90% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 85%, rgba(0,0,0,0.65) 100%),
-              radial-gradient(50% 20% at 50% -10%, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 60%),
-              linear-gradient(to bottom, #0b0b0c, #080808)
-            `
-          }}>
-            {/* Noise overlay */}
-            <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-              backgroundSize: '256px 256px'
-            }}></div>
-            
-            {/* Stars effect */}
-            <div className="stars absolute inset-0 pointer-events-none">
-              <div className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-40 animate-pulse" style={{
-                left: '10%', top: '20%',
-                boxShadow: '0 0 6px rgba(255,255,255,0.8)',
-                animation: 'twinkle 3s infinite alternate'
-              }}></div>
-              <div className="absolute w-0.5 h-0.5 bg-slate-300 rounded-full opacity-30 animate-pulse" style={{
-                left: '25%', top: '40%',
-                boxShadow: '0 0 4px rgba(204,204,204,0.6)',
-                animation: 'twinkle 4s infinite alternate-reverse'
-              }}></div>
-              <div className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-50 animate-pulse" style={{
-                left: '70%', top: '15%',
-                boxShadow: '0 0 6px rgba(255,255,255,0.8)',
-                animation: 'twinkle 2.5s infinite alternate'
-              }}></div>
-              <div className="absolute w-0.5 h-0.5 bg-slate-400 rounded-full opacity-25 animate-pulse" style={{
-                left: '85%', top: '35%',
-                boxShadow: '0 0 4px rgba(148,163,184,0.5)',
-                animation: 'twinkle 3.5s infinite alternate-reverse'
-              }}></div>
-              <div className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-35 animate-pulse" style={{
-                left: '45%', top: '60%',
-                boxShadow: '0 0 5px rgba(255,255,255,0.7)',
-                animation: 'twinkle 4.2s infinite alternate'
-              }}></div>
-            </div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-              {/* Company Info - Enhanced Full Width Row */}
-              <div className="mb-12 pb-8 border-b border-slate-700/50">
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className="relative">
+        {/* Simplified Footer */}
+        <footer className={`mt-auto border-t transition-colors duration-300 ${
+          isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-200'
+        }`} role="contentinfo">
+          <div className="relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+              {/* Enhanced Company Header */}
+              <div className="text-center mb-16">
+                <div className="flex flex-col items-center space-y-6">
+                  <div className="relative group">
                     <img 
                       src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/c29fb92fd_logocopy.jpg" 
                       alt="Autellia Logo" 
-                      className="w-16 h-16 object-contain rounded-full ring-2 ring-indigo-500/30 shadow-lg shadow-indigo-500/20"
+                      className={`w-20 h-20 object-contain rounded-2xl ring-4 shadow-2xl transition-all duration-500 group-hover:scale-105 ${
+                        isDark 
+                          ? 'ring-indigo-500/40 shadow-indigo-500/30' 
+                          : 'ring-brand-purple/40 shadow-brand-purple/30'
+                      }`}
                     />
-                    <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full opacity-20 blur-sm"></div>
+                    <div className={`absolute -inset-2 bg-gradient-to-r rounded-2xl opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 ${
+                      isDark 
+                        ? 'from-indigo-500 via-purple-500 to-cyan-400' 
+                        : 'from-brand-purple via-brand-purple-light to-indigo-400'
+                    }`}></div>
                   </div>
-                  <div>
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                  
+                  <div className="space-y-3">
+                    <h2 className={`text-4xl md:text-5xl font-black bg-gradient-to-r bg-clip-text text-transparent transition-all duration-300 ${
+                      isDark 
+                        ? 'from-white via-indigo-200 to-purple-200' 
+                        : 'from-gray-900 via-indigo-700 to-purple-700'
+                    }`}>
                       Autellia
                     </h2>
-                    <p className="text-indigo-400/80 text-sm font-medium tracking-wide">Technology Solutions</p>
+                    <p className={`text-base font-semibold tracking-wider uppercase transition-colors duration-300 ${
+                      isDark ? 'text-indigo-400' : 'text-brand-purple'
+                    }`}>Technology Solutions</p>
+                    
+                    <div className={`w-24 h-1 mx-auto rounded-full bg-gradient-to-r ${
+                      isDark ? 'from-indigo-500 via-purple-500 to-cyan-400' : 'from-brand-purple via-indigo-500 to-purple-600'
+                    }`}></div>
                   </div>
+                  
+                  <p className={`text-lg md:text-xl leading-relaxed max-w-4xl font-light transition-colors duration-300 ${
+                    isDark ? 'text-slate-300' : 'text-gray-600'
+                  }`}>
+                    Empowering enterprises with intelligent automation, AI/ML solutions, and data analytics to unlock efficiency, speed, and smarter decision-making.
+                  </p>
                 </div>
-                <p className="text-slate-300/90 leading-relaxed text-lg max-w-3xl font-light">
-                  Empowering enterprises with intelligent automation, AI/ML solutions, and data analytics to unlock efficiency, speed, and smarter decision-making.
-                </p>
               </div>
 
-              {/* Three Equal Columns - Services, Quick Links, Industries */}
-              <div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 items-start">
-                  {/* Services */}
+              {/* Enhanced Navigation Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 mb-16">
+                  {/* Services Column */}
                   <div className="group">
-                    <div className="flex items-center space-x-2 mb-6">
-                      <div className="w-1 h-6 bg-gradient-to-b from-indigo-400 to-purple-500 rounded-full"></div>
-                      <h3 className="text-sm font-bold text-white uppercase tracking-wider group-hover:text-indigo-300 transition-colors duration-300">SERVICES</h3>
-                    </div>
-                    <ul className="space-y-2">
-                      {services.slice(0, 4).map((service) => (
-                        <li key={service.path}>
+                    <div className={`p-6 rounded-2xl transition-all duration-300 ${
+                      isDark 
+                        ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 group-hover:border-indigo-500/30' 
+                        : 'bg-gradient-to-br from-white/80 to-gray-50/60 border border-gray-200/50 group-hover:border-brand-purple/30'
+                    }`}>
+                      <div className="flex items-center space-x-3 mb-6">
+                        <div className={`w-2 h-8 bg-gradient-to-b rounded-full transition-all duration-300 ${
+                          isDark ? 'from-indigo-400 to-purple-500' : 'from-brand-purple to-brand-purple-light'
+                        }`}></div>
+                        <h3 className={`text-lg font-bold tracking-wide transition-colors duration-300 ${
+                          isDark 
+                            ? 'text-white group-hover:text-indigo-300' 
+                            : 'text-gray-900 group-hover:text-brand-purple'
+                        }`}>Services</h3>
+                      </div>
+                      <ul className="space-y-3">
+                        {services.slice(0, 6).map((service) => (
+                          <li key={service.path}>
+                            <Link 
+                              to={createPageUrl(service.path)} 
+                              className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                                isDark 
+                                  ? 'text-slate-400 hover:text-indigo-300 hover:bg-slate-800/50 focus:text-indigo-400' 
+                                  : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                              }`}
+                              aria-label={`Learn more about ${service.title}`}
+                            >
+                              <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                                isDark ? 'bg-indigo-400 group-hover/link:bg-indigo-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                              }`}></div>
+                              <span>{service.title}</span>
+                            </Link>
+                          </li>
+                        ))}
+                        <li className="pt-2">
                           <Link 
-                            to={createPageUrl(service.path)} 
-                            className="text-slate-400 hover:text-indigo-300 hover:translate-x-1 transition-all duration-200 text-sm focus:outline-none focus:text-indigo-400 block py-2 group-hover:text-slate-300"
-                            aria-label={`Learn more about ${service.title}`}
+                            to={createPageUrl("Solutions")} 
+                            className={`text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${
+                              isDark ? 'text-indigo-400 hover:text-indigo-300' : 'text-brand-purple hover:text-brand-purple-light'
+                            }`}
                           >
-                            {service.title}
+                            View All Services →
                           </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Quick Links */}
-                  <div className="group">
-                    <div className="flex items-center space-x-2 mb-6">
-                      <div className="w-1 h-6 bg-gradient-to-b from-purple-400 to-pink-500 rounded-full"></div>
-                      <h3 className="text-sm font-bold text-white uppercase tracking-wider group-hover:text-purple-300 transition-colors duration-300">QUICK LINKS</h3>
-                    </div>
-                    <nav aria-label="Footer navigation">
-                      <ul className="space-y-2">
-                        <li>
-                          <Link to={createPageUrl("Platform")} className="text-slate-400 hover:text-purple-300 hover:translate-x-1 transition-all duration-200 text-sm focus:outline-none focus:text-purple-400 block py-2 group-hover:text-slate-300">
-                            Platform
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={createPageUrl("Solutions")} className="text-slate-400 hover:text-purple-300 hover:translate-x-1 transition-all duration-200 text-sm focus:outline-none focus:text-purple-400 block py-2 group-hover:text-slate-300">
-                            Solutions
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={createPageUrl("Perspectives")} className="text-slate-400 hover:text-purple-300 hover:translate-x-1 transition-all duration-200 text-sm focus:outline-none focus:text-purple-400 block py-2 group-hover:text-slate-300">
-                            Perspectives
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to={createPageUrl("Careers")} className="text-slate-400 hover:text-purple-300 hover:translate-x-1 transition-all duration-200 text-sm focus:outline-none focus:text-purple-400 block py-2 group-hover:text-slate-300">
-                            Careers
-                          </Link>
-                        </li>
-                        <li>
-                          <button 
-                            onClick={handleBookDemo}
-                            className="text-slate-300 hover:text-purple-300 hover:translate-x-1 transition-all duration-200 text-sm focus:outline-none focus:text-purple-400 block py-2 font-semibold bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg px-3 py-2 border border-purple-500/20 hover:border-purple-400/40 hover:shadow-lg hover:shadow-purple-500/10 cursor-pointer w-full text-left"
-                          >
-                            📅 Book a Demo
-                          </button>
                         </li>
                       </ul>
-                    </nav>
+                    </div>
                   </div>
 
-                  {/* Industries */}
+                  {/* Quick Links Column */}
                   <div className="group">
-                    <div className="flex items-center space-x-2 mb-6">
-                      <div className="w-1 h-6 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
-                      <h3 className="text-sm font-bold text-white uppercase tracking-wider group-hover:text-cyan-300 transition-colors duration-300">INDUSTRIES</h3>
+                    <div className={`p-6 rounded-2xl transition-all duration-300 ${
+                      isDark 
+                        ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 group-hover:border-purple-500/30' 
+                        : 'bg-gradient-to-br from-white/80 to-gray-50/60 border border-gray-200/50 group-hover:border-brand-purple/30'
+                    }`}>
+                      <div className="flex items-center space-x-3 mb-6">
+                        <div className={`w-2 h-8 bg-gradient-to-b rounded-full transition-all duration-300 ${
+                          isDark ? 'from-purple-400 to-pink-500' : 'from-brand-purple to-brand-purple-light'
+                        }`}></div>
+                        <h3 className={`text-lg font-bold tracking-wide transition-colors duration-300 ${
+                          isDark 
+                            ? 'text-white group-hover:text-purple-300' 
+                            : 'text-gray-900 group-hover:text-brand-purple'
+                        }`}>Quick Links</h3>
+                      </div>
+                      <nav aria-label="Footer navigation">
+                        <ul className="space-y-3">
+                          <li>
+                            <Link to={createPageUrl("Platform")} className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                              isDark 
+                                ? 'text-slate-400 hover:text-purple-300 hover:bg-slate-800/50 focus:text-purple-400' 
+                                : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                            }`}>
+                              <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                                isDark ? 'bg-purple-400 group-hover/link:bg-purple-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                              }`}></div>
+                              <span>Platform</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to={createPageUrl("Solutions")} className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                              isDark 
+                                ? 'text-slate-400 hover:text-purple-300 hover:bg-slate-800/50 focus:text-purple-400' 
+                                : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                            }`}>
+                              <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                                isDark ? 'bg-purple-400 group-hover/link:bg-purple-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                              }`}></div>
+                              <span>Solutions</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to={createPageUrl("Perspectives")} className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                              isDark 
+                                ? 'text-slate-400 hover:text-purple-300 hover:bg-slate-800/50 focus:text-purple-400' 
+                                : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                            }`}>
+                              <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                                isDark ? 'bg-purple-400 group-hover/link:bg-purple-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                              }`}></div>
+                              <span>Perspectives</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to={createPageUrl("Careers")} className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                              isDark 
+                                ? 'text-slate-400 hover:text-purple-300 hover:bg-slate-800/50 focus:text-purple-400' 
+                                : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                            }`}>
+                              <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                                isDark ? 'bg-purple-400 group-hover/link:bg-purple-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                              }`}></div>
+                              <span>Careers</span>
+                            </Link>
+                          </li>
+                          <li className="pt-3">
+                            <ExploreSolutionModal 
+                              triggerText="📅 Book a Demo"
+                              triggerClassName={`w-full px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 ${
+                                isDark 
+                                  ? 'text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg hover:shadow-xl' 
+                                  : 'text-white bg-gradient-to-r from-brand-purple to-indigo-600 hover:from-brand-purple-light hover:to-indigo-500 shadow-lg hover:shadow-xl'
+                              }`}
+                            />
+                          </li>
+                        </ul>
+                      </nav>
                     </div>
-                    <ul className="space-y-3 text-sm">
-                      <li><span className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 block py-1 cursor-default group-hover:text-slate-300">🏦 Banking & Finance</span></li>
-                      <li><span className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 block py-1 cursor-default group-hover:text-slate-300">🏥 Healthcare</span></li>
-                      <li><span className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 block py-1 cursor-default group-hover:text-slate-300">🏭 Manufacturing</span></li>
-                      <li><span className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 block py-1 cursor-default group-hover:text-slate-300">🛒 Retail & E-commerce</span></li>
-                    </ul>
+                  </div>
+
+                  {/* Perspectives Column */}
+                  <div className="group">
+                    <div className={`p-6 rounded-2xl transition-all duration-300 ${
+                      isDark 
+                        ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/30 border border-slate-700/50 group-hover:border-cyan-500/30' 
+                        : 'bg-gradient-to-br from-white/80 to-gray-50/60 border border-gray-200/50 group-hover:border-brand-purple/30'
+                    }`}>
+                      <div className="flex items-center space-x-3 mb-6">
+                        <div className={`w-2 h-8 bg-gradient-to-b rounded-full transition-all duration-300 ${
+                          isDark ? 'from-cyan-400 to-blue-500' : 'from-brand-purple to-brand-purple-light'
+                        }`}></div>
+                        <h3 className={`text-lg font-bold tracking-wide transition-colors duration-300 ${
+                          isDark 
+                            ? 'text-white group-hover:text-cyan-300' 
+                            : 'text-gray-900 group-hover:text-brand-purple'
+                        }`}>Perspectives</h3>
+                      </div>
+                      <ul className="space-y-3">
+                        <li>
+                          <Link to="/case-studies" className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                            isDark 
+                              ? 'text-slate-400 hover:text-cyan-300 hover:bg-slate-800/50 focus:text-cyan-400' 
+                              : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                          }`}>
+                            <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                              isDark ? 'bg-cyan-400 group-hover/link:bg-cyan-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                            }`}></div>
+                            <span>📊 Case Studies</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/call-to-action" className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                            isDark 
+                              ? 'text-slate-400 hover:text-cyan-300 hover:bg-slate-800/50 focus:text-cyan-400' 
+                              : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                          }`}>
+                            <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                              isDark ? 'bg-cyan-400 group-hover/link:bg-cyan-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                            }`}></div>
+                            <span>📞 Call-to-Action</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/blog-knowledge-hub" className={`group/link flex items-center space-x-2 hover:translate-x-2 transition-all duration-300 text-sm focus:outline-none block py-2 px-3 rounded-lg ${
+                            isDark 
+                              ? 'text-slate-400 hover:text-cyan-300 hover:bg-slate-800/50 focus:text-cyan-400' 
+                              : 'text-gray-600 hover:text-brand-purple hover:bg-gray-100/50 focus:text-brand-purple'
+                          }`}>
+                            <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                              isDark ? 'bg-cyan-400 group-hover/link:bg-cyan-300' : 'bg-brand-purple group-hover/link:bg-brand-purple-light'
+                            }`}></div>
+                            <span>📚 Blog/Knowledge Hub</span>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+
 
             {/* Clean Footer Bottom Bar */}
-            <div className="border-t border-slate-700/50 py-4 px-6 max-w-7xl mx-auto">
+            <div className={`border-t py-4 px-6 max-w-7xl mx-auto transition-colors duration-300 ${
+              isDark ? 'border-slate-700/50' : 'border-gray-300/50'
+            }`}>
               <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 {/* Left: Copyright + Tagline */}
                 <div className="text-center md:text-left">
-                  <p className="text-slate-400/80 text-xs font-light">
+                  <p className={`text-xs font-light transition-colors duration-300 ${
+                    isDark ? 'text-slate-400/80' : 'text-gray-500'
+                  }`}>
                     © {new Date().getFullYear()} Autellia Technology. All Rights Reserved.
                   </p>
-                  <p className="text-slate-500 text-xs mt-0.5">Innovating the future of enterprise technology</p>
+                  <p className={`text-xs mt-0.5 transition-colors duration-300 ${
+                    isDark ? 'text-slate-500' : 'text-gray-400'
+                  }`}>Innovating the future of enterprise technology</p>
                 </div>
                 
                 {/* Right: Social Icons */}
@@ -629,7 +810,11 @@ export default function Layout({ children, currentPageName }) {
                     href="https://www.linkedin.com/company/autellia" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-blue-400 hover:bg-slate-700 transition-colors duration-200"
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-200 ${
+                      isDark 
+                        ? 'bg-slate-800 text-slate-400 hover:text-blue-400 hover:bg-slate-700' 
+                        : 'bg-gray-100 text-gray-600 hover:text-blue-600 hover:bg-gray-200'
+                    }`}
                     aria-label="Follow us on LinkedIn"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -642,7 +827,11 @@ export default function Layout({ children, currentPageName }) {
                     href="https://www.youtube.com/@autellia" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-400 hover:bg-slate-700 transition-colors duration-200"
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-200 ${
+                      isDark 
+                        ? 'bg-slate-800 text-slate-400 hover:text-red-400 hover:bg-slate-700' 
+                        : 'bg-gray-100 text-gray-600 hover:text-red-600 hover:bg-gray-200'
+                    }`}
                     aria-label="Subscribe to our YouTube channel"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
