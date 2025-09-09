@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm install && npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "framework": "vite"
+  "installCommand": "npm install --force",
+  "buildCommand": "npm run build",
+  "framework": "vite",
+  "outputDirectory": "dist"
 }
