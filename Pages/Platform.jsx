@@ -235,8 +235,24 @@ export default function Platform() {
         role="banner"
         aria-labelledby="hero-heading"
       >
-        {/* Animated background elements */}
+        {/* Background Image with Blur Overlay */}
         <div className="absolute inset-0 overflow-hidden">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')`
+            }}
+          />
+          
+          {/* Blur Overlay */}
+          <div className={`absolute inset-0 backdrop-blur-sm ${
+            isDark 
+              ? 'bg-gray-900/70' 
+              : 'bg-white/60'
+          }`} />
+          
+          {/* Animated gradient elements */}
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/15 to-cyan-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
@@ -248,7 +264,7 @@ export default function Platform() {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-5 lg:mb-6 leading-tight px-2 sm:px-0"
           >
             <span className={`text-high-contrast transition-colors duration-300 ${
-              isDark ? 'text-white' : 'text-gray-900'
+              isDark ? 'text-white' : 'text-black'
             }`}>Empowering Enterprises </span>
             <span className="gradient-text">with AI & Automation</span>
           </motion.h1>
