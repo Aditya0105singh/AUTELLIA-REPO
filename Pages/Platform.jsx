@@ -249,7 +249,7 @@ export default function Platform() {
           <div className={`absolute inset-0 backdrop-blur-sm ${
             isDark 
               ? 'bg-gray-900/70' 
-              : 'bg-white/60'
+              : 'bg-gray-900/70'
           }`} />
           
           {/* Animated gradient elements */}
@@ -266,15 +266,13 @@ export default function Platform() {
             <span className={`text-high-contrast transition-colors duration-300 ${
               isDark ? 'text-white' : 'text-black'
             }`}>Empowering Enterprises </span>
-            <span className="gradient-text">with AI & Automation</span>
+            <span className="gradient-text">with AI & Intelligent Automation</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className={`text-sm sm:text-base md:text-lg lg:text-xl font-medium leading-relaxed mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto px-2 sm:px-4 transition-colors duration-300 ${
-              isDark ? 'text-slate-300' : 'text-gray-600'
-            }`}
+            className={`text-sm sm:text-base md:text-lg lg:text-xl font-medium leading-relaxed mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto px-2 sm:px-4 transition-colors duration-300 text-white`}
           >
-            Autellia transforms business operations through RPA, AI/ML, Agentic AI, and Data Analytics — delivering efficiency, speed, and smarter decision-making at scale.
+            Transform your enterprise with cutting-edge AI and intelligent automation solutions. We deliver breakthrough efficiency, accelerated growth, and data-driven insights that revolutionize how modern businesses operate and compete.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
@@ -282,11 +280,11 @@ export default function Platform() {
           >
             <ExploreSolutionModal 
               triggerText="Book a Free Consultation"
-              triggerClassName="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-indigo-500/25"
+              triggerClassName="inline-flex items-center px-8 py-4 font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25"
             />
             <ExploreSolutionModal 
               triggerText="Explore Solutions"
-              triggerClassName="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white font-semibold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-indigo-500/25"
+              triggerClassName="inline-flex items-center gap-2 px-8 py-4 font-semibold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white hover:shadow-indigo-500/25"
             />
           </motion.div>
         </div>
@@ -486,7 +484,7 @@ export default function Platform() {
               triggerClassName={`inline-flex items-center px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 hover:scale-105 shadow-lg ${
                 isDark 
                   ? 'bg-gradient-to-r from-[--accent] to-purple-500 hover:from-[--accent]/90 hover:to-purple-500/90 text-white hover:shadow-[--accent]/25'
-                  : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-lg'
               }`}
             />
           </motion.div>
@@ -558,43 +556,256 @@ export default function Platform() {
         </div>
       </motion.section>
 
-      {/* Why Choose Us (Sticky Scroll) */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-24 glass" data-aos="fade-up">
-        <div className="container-responsive">
-           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4 transition-colors duration-300 ${
-              isDark ? 'text-[--text-primary]' : 'text-gray-900'
+      {/* Why Choose Us - Redesigned */}
+      <section className={`py-16 sm:py-20 md:py-24 lg:py-32 transition-colors duration-500 ${
+        isDark ? 'bg-[--bg]' : 'bg-white'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 transition-colors duration-300 ${
+              isDark ? 'text-white' : 'text-gray-900'
             }`}>Why Forward-Thinking Businesses Choose Autellia</h2>
-            <p className={`text-sm sm:text-base lg:text-lg max-w-2xl mx-auto px-2 sm:px-0 transition-colors duration-300 ${
-              isDark ? 'text-[--text-muted]' : 'text-gray-600'
-            }`}>Our approach is built on a foundation of deep expertise, strategic partnership, and a relentless commitment to innovation.</p>
+            <p className={`text-base sm:text-lg lg:text-xl max-w-3xl mx-auto transition-colors duration-300 ${
+              isDark ? 'text-gray-400' : 'text-gray-700'
+            }`}>We combine expertise, innovation, and trust to deliver scalable automation solutions.</p>
           </div>
-          <Timeline data={whyChooseUsContent} />
+
+          {/* Hero Metrics Card */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className={`mb-12 p-8 rounded-2xl border transition-all duration-300 ${
+              isDark 
+                ? 'bg-gradient-to-r from-purple-900/20 to-indigo-900/20 border-purple-700/30' 
+                : 'bg-gradient-to-r from-purple-50 to-indigo-50 border-purple-200'
+            }`}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
+                  isDark ? 'text-purple-400' : 'text-purple-600'
+                }`}>500+</div>
+                <div className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Projects Delivered</div>
+              </div>
+              <div>
+                <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
+                  isDark ? 'text-indigo-400' : 'text-indigo-600'
+                }`}>98%</div>
+                <div className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Success Rate</div>
+              </div>
+              <div>
+                <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
+                  isDark ? 'text-cyan-400' : 'text-cyan-600'
+                }`}>10x</div>
+                <div className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Average ROI</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Feature Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* Enterprise Security Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              className={`p-6 rounded-xl border transition-all duration-300 hover:shadow-xl ${
+                isDark 
+                  ? 'bg-gray-900/50 border-gray-700 hover:border-emerald-500/50' 
+                  : 'bg-white border-gray-200 hover:border-emerald-400 shadow-lg'
+              }`}
+            >
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
+                isDark ? 'bg-emerald-900/30' : 'bg-emerald-100'
+              }`}>
+                <svg className={`w-6 h-6 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                Enterprise-Grade Security
+              </h3>
+              <ul className={`space-y-2 mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <li className="flex items-start">
+                  <span className="mr-2">🔒</span>
+                  <span>Vendor-agnostic, secure by design</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2">✅</span>
+                  <span>Full compliance coverage</span>
+                </li>
+              </ul>
+              <div className="flex flex-wrap gap-2">
+                {['SOC2', 'GDPR', 'HIPAA', 'ISO'].map((cert) => (
+                  <span key={cert} className={`px-2 py-1 rounded text-xs font-medium ${
+                    isDark 
+                      ? 'bg-emerald-900/30 text-emerald-400 border border-emerald-700/50' 
+                      : 'bg-emerald-100 text-emerald-700'
+                  }`}>
+                    {cert}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Built for Scale Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              className={`p-6 rounded-xl border transition-all duration-300 hover:shadow-xl ${
+                isDark 
+                  ? 'bg-gray-900/50 border-gray-700 hover:border-blue-500/50' 
+                  : 'bg-white border-gray-200 hover:border-blue-400 shadow-lg'
+              }`}
+            >
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
+                isDark ? 'bg-blue-900/30' : 'bg-blue-100'
+              }`}>
+                <svg className={`w-6 h-6 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                Built for Scale
+              </h3>
+              <ul className={`space-y-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <li className="flex items-start">
+                  <span className="mr-2">⚙️</span>
+                  <span>Cloud-native architecture</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2">🚀</span>
+                  <span>Microservices & agile delivery</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2">📈</span>
+                  <span>Enterprise-ready solutions</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Measurable ROI Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              className={`p-6 rounded-xl border transition-all duration-300 hover:shadow-xl ${
+                isDark 
+                  ? 'bg-gray-900/50 border-gray-700 hover:border-purple-500/50' 
+                  : 'bg-white border-gray-200 hover:border-purple-400 shadow-lg'
+              }`}
+            >
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
+                isDark ? 'bg-purple-900/30' : 'bg-purple-100'
+              }`}>
+                <svg className={`w-6 h-6 ${isDark ? 'text-purple-400' : 'text-purple-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                Measurable Impact
+              </h3>
+              <ul className={`space-y-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <li className="flex items-start">
+                  <span className="mr-2">📊</span>
+                  <span>Data-driven insights</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2">💡</span>
+                  <span>Turn data into decisions</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2">🎯</span>
+                  <span>Competitive advantage</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Trust Indicators */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className={`mt-12 text-center p-6 rounded-xl ${
+              isDark ? 'bg-gray-900/30' : 'bg-gray-50'
+            }`}
+          >
+            <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>
+              <span className="font-semibold">Trusted by Fortune 500 companies</span> • 
+              <span className="ml-2">Serving clients across 12+ industries</span>
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Testimonials Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className={`py-8 sm:py-12 md:py-16 lg:py-24 transition-colors duration-500 ${
-          isDark ? 'bg-[--bg]' : 'bg-gray-50'
+        className={`py-16 transition-colors duration-500 ${
+          isDark ? 'bg-[--bg]' : 'bg-white'
         }`}
       >
-        <div className="container-responsive">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4 transition-colors duration-300 ${
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className={`text-4xl font-bold mb-4 transition-colors duration-300 ${
               isDark ? 'text-[--text-primary]' : 'text-gray-900'
             }`}>What Our Clients Say</h2>
-            <p className={`text-sm sm:text-base lg:text-lg max-w-2xl mx-auto px-2 sm:px-0 transition-colors duration-300 ${
-              isDark ? 'text-[--text-muted]' : 'text-gray-600'
-            }`}>Hear from industry leaders who have transformed their operations with Autellia</p>
           </div>
-          <InfiniteMovingCards
-            items={testimonials}
-            direction="right"
-            speed="slow"
-            pauseOnHover={true}
-          />
+          
+          {/* Clean White Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                text: "Autellia's RPA bots handle our entire order-to-cash process. The reliability and accuracy are exceptional.",
+                name: "David Park",
+                title: "Operations Manager, RetailPlus",
+              },
+              {
+                text: "The process optimization consulting helped us identify bottlenecks we didn't know existed. ROI was achieved in just 6 weeks.",
+                name: "Lisa Thompson",
+                title: "Process Excellence Lead, HealthCare United",
+              },
+              {
+                text: "Autellia transformed our operations with intelligent automation. We achieved 80% cost reduction in our invoice processing within 3 months.",
+                name: "Sarah Johnson",
+                title: "CFO, Global Manufacturing Corp",
+              },
+            ].map((testimonial, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className={`p-6 rounded-xl transition-all duration-300 hover:shadow-lg ${
+                  isDark 
+                    ? 'bg-gradient-to-br from-[--surface] to-[--panel] border border-[--border] hover:border-[--accent]/40'
+                    : 'bg-white border border-gray-100 shadow-md hover:shadow-lg'
+                }`}
+              >
+                <p className={`text-lg italic mb-4 transition-colors duration-300 ${
+                  isDark ? 'text-[--text-muted]' : 'text-gray-700'
+                }`}>"{testimonial.text}"</p>
+                <div className={`font-semibold transition-colors duration-300 ${
+                  isDark ? 'text-[--text-primary]' : 'text-gray-900'
+                }`}>{testimonial.name}</div>
+                <div className={`text-sm transition-colors duration-300 ${
+                  isDark ? 'text-[--text-muted]' : 'text-gray-500'
+                }`}>{testimonial.title}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
 
@@ -603,31 +814,31 @@ export default function Platform() {
        {/* Bottom CTA Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className={`py-8 sm:py-12 md:py-16 lg:py-24 transition-colors duration-500 ${
-          isDark ? 'bg-[--bg]' : 'bg-white'
+        className={`py-16 transition-colors duration-500 ${
+          isDark ? 'bg-[--bg]' : 'bg-white border-t border-gray-100'
         }`}
         data-aos="fade-up"
       >
-        <div className="container-responsive">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="card-modern p-6 sm:p-8 lg:p-12">
-              <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 transition-colors duration-300 ${
-                isDark ? 'text-[--text-primary]' : 'text-gray-900'
-              }`}>
-                Ready to Get Started?
-              </h2>
-              <p className={`text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0 transition-colors duration-300 ${
-                isDark ? 'text-[--text-muted]' : 'text-gray-600'
-              }`}>
-                Explore a discovery workshop to identify top ROI use cases in 2 weeks 
-                and stand up a pilot in 30–45 days with measurable outcomes.
-              </p>
-              <ExploreSolutionModal 
-                triggerText="Schedule Discovery Workshop"
-                triggerClassName="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-indigo-500/25"
-              />
-            </div>
-          </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className={`text-3xl font-bold mb-4 transition-colors duration-300 ${
+            isDark ? 'text-[--text-primary]' : 'text-gray-900'
+          }`}>
+            Ready to Get Started?
+          </h2>
+          <p className={`text-gray-600 max-w-2xl mx-auto mb-8 transition-colors duration-300 ${
+            isDark ? 'text-[--text-muted]' : 'text-gray-600'
+          }`}>
+            Explore a discovery workshop to identify top ROI use cases in 2 weeks 
+            and stand up a pilot in 30–45 days with measurable outcomes.
+          </p>
+          <ExploreSolutionModal 
+            triggerText="Schedule Discovery Workshop →"
+            triggerClassName={`px-6 py-3 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-md ${
+              isDark 
+                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25'
+                : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg'
+            }`}
+          />
         </div>
       </motion.section>
     </div>

@@ -102,10 +102,14 @@ export default function CaseStudies() {
         className="pt-20 pb-16 bg-transparent relative"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className={`text-5xl md:text-6xl font-bold mb-6 transition-colors duration-300 ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
             Case Studies
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
+          <p className={`text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300 ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             Real-world success stories showcasing how our automation and AI solutions 
             have transformed enterprise operations across industries
           </p>
@@ -123,11 +127,19 @@ export default function CaseStudies() {
               const IconComponent = metric.icon;
               return (
                 <motion.div key={index} variants={itemVariants} className="text-center">
-                  <div className="w-16 h-16 bg-gray-800 border border-gray-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="w-8 h-8 text-cyan-400" />
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors duration-300 ${
+                    isDark ? 'bg-gray-800 border border-gray-700' : 'bg-blue-50 border border-blue-200'
+                  }`}>
+                    <IconComponent className={`w-8 h-8 transition-colors duration-300 ${
+                      isDark ? 'text-cyan-400' : 'text-blue-600'
+                    }`} />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2">{metric.value}</div>
-                  <div className="text-gray-400">{metric.label}</div>
+                  <div className={`text-3xl font-bold mb-2 transition-colors duration-300 ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>{metric.value}</div>
+                  <div className={`transition-colors duration-300 ${
+                    isDark ? 'text-gray-400' : 'text-gray-600'
+                  }`}>{metric.label}</div>
                 </motion.div>
               );
             })}
@@ -141,7 +153,9 @@ export default function CaseStudies() {
         className="py-16 bg-transparent"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Featured Success Stories</h2>
+          <h2 className={`text-3xl font-bold mb-12 text-center transition-colors duration-300 ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>Featured Success Stories</h2>
           
           <div className="space-y-12">
             {caseStudies.map((study, index) => {
@@ -150,44 +164,70 @@ export default function CaseStudies() {
                 <motion.div 
                   key={study.id} 
                   variants={itemVariants}
-                  className="border border-gray-700 rounded-3xl p-8 lg:p-12 hover:shadow-xl hover:shadow-cyan-900/20 transition-all duration-300"
+                  className={`rounded-3xl p-8 lg:p-12 hover:shadow-xl transition-all duration-300 ${
+                    isDark 
+                      ? 'border border-gray-700 hover:shadow-cyan-900/20' 
+                      : 'border border-gray-200 bg-white hover:shadow-blue-500/10 shadow-lg'
+                  }`}
                 >
                   <div className="grid lg:grid-cols-3 gap-8">
                     {/* Left Column - Overview */}
                     <div className="lg:col-span-1">
                       <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 bg-gray-800 border border-gray-700 rounded-xl flex items-center justify-center">
-                          <IconComponent className="w-6 h-6 text-cyan-400" />
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                          isDark ? 'bg-gray-800 border border-gray-700' : 'bg-blue-50 border border-blue-200'
+                        }`}>
+                          <IconComponent className={`w-6 h-6 transition-colors duration-300 ${
+                            isDark ? 'text-cyan-400' : 'text-blue-600'
+                          }`} />
                         </div>
                         <div>
-                          <div className="text-sm text-cyan-400 font-medium">{study.industry}</div>
-                          <div className="text-xs text-gray-500">Case Study #{study.id}</div>
+                          <div className={`text-sm font-medium transition-colors duration-300 ${
+                            isDark ? 'text-cyan-400' : 'text-blue-600'
+                          }`}>{study.industry}</div>
+                          <div className={`text-xs transition-colors duration-300 ${
+                            isDark ? 'text-gray-500' : 'text-gray-500'
+                          }`}>Case Study #{study.id}</div>
                         </div>
                       </div>
                       
-                      <h3 className="text-2xl font-bold text-white mb-4">{study.title}</h3>
+                      <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${
+                        isDark ? 'text-white' : 'text-gray-900'
+                      }`}>{study.title}</h3>
                       
                       <div className="space-y-4">
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-300 mb-2">Challenge</h4>
-                          <p className="text-gray-400 text-sm">{study.challenge}</p>
+                          <h4 className={`text-sm font-semibold mb-2 transition-colors duration-300 ${
+                            isDark ? 'text-gray-300' : 'text-gray-700'
+                          }`}>Challenge</h4>
+                          <p className={`text-sm transition-colors duration-300 ${
+                            isDark ? 'text-gray-400' : 'text-gray-600'
+                          }`}>{study.challenge}</p>
                         </div>
                         
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-300 mb-2">Solution</h4>
-                          <p className="text-gray-400 text-sm">{study.solution}</p>
+                          <h4 className={`text-sm font-semibold mb-2 transition-colors duration-300 ${
+                            isDark ? 'text-gray-300' : 'text-gray-700'
+                          }`}>Solution</h4>
+                          <p className={`text-sm transition-colors duration-300 ${
+                            isDark ? 'text-gray-400' : 'text-gray-600'
+                          }`}>{study.solution}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Middle Column - Results */}
                     <div className="lg:col-span-1">
-                      <h4 className="text-lg font-semibold text-white mb-4">Key Results</h4>
+                      <h4 className={`text-lg font-semibold mb-4 transition-colors duration-300 ${
+                        isDark ? 'text-white' : 'text-gray-900'
+                      }`}>Key Results</h4>
                       <div className="space-y-3">
                         {study.results.map((result, idx) => (
                           <div key={idx} className="flex items-start gap-3">
                             <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-300 text-sm">{result}</span>
+                            <span className={`text-sm transition-colors duration-300 ${
+                              isDark ? 'text-gray-300' : 'text-gray-700'
+                            }`}>{result}</span>
                           </div>
                         ))}
                       </div>
@@ -197,10 +237,14 @@ export default function CaseStudies() {
                     <div className="lg:col-span-1">
                       <div className="space-y-6">
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-300 mb-3">Technologies Used</h4>
+                          <h4 className={`text-sm font-semibold mb-3 transition-colors duration-300 ${
+                            isDark ? 'text-gray-300' : 'text-gray-700'
+                          }`}>Technologies Used</h4>
                           <div className="flex flex-wrap gap-2">
                             {study.technologies.map((tech, idx) => (
-                              <span key={idx} className="px-3 py-1 bg-gray-800 border border-gray-700 rounded-full text-xs text-gray-300">
+                              <span key={idx} className={`px-3 py-1 rounded-full text-xs transition-colors duration-300 ${
+                                isDark ? 'bg-gray-800 border border-gray-700 text-gray-300' : 'bg-blue-50 border border-blue-200 text-blue-700'
+                              }`}>
                                 {tech}
                               </span>
                             ))}
@@ -209,11 +253,17 @@ export default function CaseStudies() {
                         
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <h4 className="text-sm font-semibold text-gray-300 mb-1">Timeline</h4>
-                            <div className="text-cyan-400 font-semibold">{study.timeline}</div>
+                            <h4 className={`text-sm font-semibold mb-1 transition-colors duration-300 ${
+                              isDark ? 'text-gray-300' : 'text-gray-700'
+                            }`}>Timeline</h4>
+                            <div className={`font-semibold transition-colors duration-300 ${
+                              isDark ? 'text-cyan-400' : 'text-blue-600'
+                            }`}>{study.timeline}</div>
                           </div>
                           <div>
-                            <h4 className="text-sm font-semibold text-gray-300 mb-1">ROI</h4>
+                            <h4 className={`text-sm font-semibold mb-1 transition-colors duration-300 ${
+                              isDark ? 'text-gray-300' : 'text-gray-700'
+                            }`}>ROI</h4>
                             <div className="text-green-400 font-semibold">{study.roi}</div>
                           </div>
                         </div>
@@ -233,15 +283,25 @@ export default function CaseStudies() {
         className="py-16 bg-transparent"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="border border-gray-700 rounded-3xl p-12 text-white hover:shadow-xl hover:shadow-blue-900/20 transition-all duration-300">
-            <h2 className="text-3xl font-bold mb-6">Ready to Write Your Success Story?</h2>
-            <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+          <div className={`rounded-3xl p-12 hover:shadow-xl transition-all duration-300 ${
+            isDark 
+              ? 'border border-gray-700 text-white hover:shadow-blue-900/20' 
+              : 'border border-gray-200 bg-white text-gray-900 hover:shadow-blue-500/10 shadow-lg'
+          }`}>
+            <h2 className={`text-3xl font-bold mb-6 transition-colors duration-300 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Ready to Write Your Success Story?</h2>
+            <p className={`text-xl mb-8 leading-relaxed transition-colors duration-300 ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               Join hundreds of enterprises who have transformed their operations with our automation solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to={createPageUrl("Demo")} className="relative inline-flex h-14 overflow-hidden rounded-xl p-[1px] focus:outline-none group">
                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#1e293b_50%,#06b6d4_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-900 px-8 py-4 text-lg font-semibold text-white backdrop-blur-3xl gap-2">
+                <span className={`inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold backdrop-blur-3xl gap-2 transition-colors duration-300 ${
+                  isDark ? 'bg-slate-900 text-white' : 'bg-blue-600 text-white'
+                }`}>
                   Schedule Discovery Call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>

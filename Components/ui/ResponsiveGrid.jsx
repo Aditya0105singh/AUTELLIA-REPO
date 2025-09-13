@@ -158,7 +158,7 @@ export const TestimonialCard = ({
         relative p-8 rounded-2xl border backdrop-blur-sm
         ${isDark 
           ? 'bg-slate-800/30 border-slate-700/50' 
-          : 'bg-white/60 border-gray-200/50'
+          : 'bg-black/60 border-gray-700/50'
         }
         shadow-lg hover:shadow-2xl transition-all duration-500
         ${className}
@@ -247,7 +247,7 @@ export const StatsCard = ({
         relative p-6 rounded-2xl border backdrop-blur-sm text-center
         ${isDark 
           ? 'bg-slate-800/30 border-slate-700/50' 
-          : 'bg-white/60 border-gray-200/50'
+          : 'bg-black/60 border-gray-700/50'
         }
         shadow-lg hover:shadow-2xl transition-all duration-500
         ${className}

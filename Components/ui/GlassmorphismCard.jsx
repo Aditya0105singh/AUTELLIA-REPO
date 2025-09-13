@@ -14,7 +14,7 @@ export const GlassmorphismCard = ({
   const intensities = {
     light: isDark 
       ? 'bg-white/5 backdrop-blur-sm border-white/10' 
-      : 'bg-white/60 backdrop-blur-sm border-white/20',
+      : 'bg-black/60 backdrop-blur-sm border-gray-700/20',
     medium: isDark 
       ? 'bg-white/10 backdrop-blur-md border-white/20' 
       : 'bg-white/80 backdrop-blur-md border-white/30',

@@ -22,6 +22,9 @@ import CaseStudies from '../Pages/CaseStudies.jsx'
 import CallToAction from '../Pages/CallToAction.jsx'
 import BlogKnowledgeHub from '../Pages/BlogKnowledgeHub.jsx'
 import NotFound from '../Pages/NotFound.jsx'
+import TermsOfService from '../Pages/TermsOfService.jsx'
+import PrivacyPolicy from '../Pages/PrivacyPolicy.jsx'
+import ThankYou from '../Pages/ThankYou.jsx'
 
 function App() {
   return (
@@ -46,6 +49,9 @@ function App() {
           <Route path="/case-studies" element={<Layout><CaseStudies /></Layout>} />
           <Route path="/call-to-action" element={<Layout><CallToAction /></Layout>} />
           <Route path="/blog-knowledge-hub" element={<Layout><BlogKnowledgeHub /></Layout>} />
+          <Route path="/terms-of-service" element={<Layout><TermsOfService /></Layout>} />
+          <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
+          <Route path="/thank-you" element={<Layout><ThankYou /></Layout>} />
           {/* 404 Not Found - Must be last */}
           <Route path="*" element={<NotFound />} />
         </Routes>

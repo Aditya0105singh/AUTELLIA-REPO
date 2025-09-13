@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
-import { Target, Users, BarChart3, CheckCircle, ArrowRight, Lightbulb } from "lucide-react";
+import { Target, Users, BarChart3, CheckCircle, ArrowRight, Lightbulb, Zap, TrendingUp, Shield, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "../src/contexts/ThemeContext.jsx";
 
@@ -30,23 +30,28 @@ export default function AutomationConsulting() {
   };
 
   const benefits = [
-    "Strategic roadmap for automation initiatives",
-    "ROI analysis and business case development",
-    "Technology platform selection and architecture design",
-    "Center of Excellence (CoE) setup and governance",
-    "Change management and stakeholder alignment"
+    { icon: Target, title: "Strategic Roadmap", desc: "Comprehensive automation strategy aligned with business goals" },
+    { icon: TrendingUp, title: "ROI Analysis", desc: "Detailed business case development and value assessment" },
+    { icon: Zap, title: "Technology Selection", desc: "Platform evaluation and architecture design" },
+    { icon: Shield, title: "Governance Framework", desc: "Center of Excellence setup and best practices" },
+    { icon: Users, title: "Change Management", desc: "Stakeholder alignment and adoption strategies" }
   ];
 
   const deliverables = [
     {
+      icon: BarChart3,
       title: "Automation Assessment Report",
-      description: "Comprehensive analysis of current processes and automation readiness"
+      description: "Comprehensive analysis of current processes and automation readiness",
+      timeline: "2-3 weeks"
     },
     {
+      icon: Target,
       title: "Strategic Roadmap",
-      description: "Prioritized implementation plan with timeline and resource requirements"
+      description: "Prioritized implementation plan with timeline and resource requirements",
+      timeline: "3-4 weeks"
     },
     {
+      icon: Lightbulb,
       title: "Technology Blueprint",
       description: "Recommended platform architecture and integration strategy"
     },
@@ -87,75 +92,225 @@ export default function AutomationConsulting() {
 
   return (
     <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
-      isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
+      isDark ? 'bg-[--bg] text-[--text-primary]' : 'bg-gray-50 text-gray-900'
     }`}>
-      {/* Global Background Ripple Effect */}
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0 overflow-hidden">
-        <BackgroundRipple delay={0} duration={30} size="300px" top="10%" left="15%" color="rgba(7,143,156,0.05)" blur={100} />
-        <BackgroundRipple delay={5} duration={35} size="400px" top="60%" left="70%" color="rgba(7,143,156,0.05)" blur={120} />
-        <BackgroundRipple delay={10} duration={25} size="250px" top="30%" left="80%" color="rgba(7,143,156,0.05)" blur={80} />
-        <BackgroundRipple delay={15} duration={40} size="350px" top="85%" left="25%" color="rgba(7,143,156,0.05)" blur={110} />
-        <BackgroundRipple delay={20} duration={32} size="280px" top="5%" left="40%" color="rgba(7,143,156,0.05)" blur={90} />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80')`
+          }}
+        />
+        <div className={`absolute inset-0 backdrop-blur-sm ${
+          isDark ? 'bg-gray-900/80' : 'bg-white/85'
+        }`} />
+        
+        {/* Animated gradient elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       {/* Hero Section */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="pt-20 pb-16 bg-transparent backdrop-blur-sm relative z-10"
+        className="relative z-10 pt-24 pb-20"
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="w-16 h-16 bg-cyan-500/20 border border-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
-            <Target className="w-8 h-8 text-cyan-400" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div 
+              initial={{ scale: 0 }} 
+              animate={{ scale: 1 }} 
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-8 ${
+                isDark ? 'bg-cyan-500/20 border border-cyan-500/30' : 'bg-cyan-100 border border-cyan-200'
+              }`}
+            >
+              <Target className={`w-10 h-10 ${
+                isDark ? 'text-cyan-400' : 'text-cyan-600'
+              }`} />
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              Automation Consulting
+              <span className="block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                & Strategy
+              </span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className={`text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}
+            >
+              Transform your business with strategic automation consulting that aligns technology 
+              initiatives with business outcomes and maximizes ROI.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link 
+                to={createPageUrl('demo')}
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Get Started
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link 
+                to={createPageUrl('case-studies')}
+                className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                  isDark 
+                    ? 'border border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500' 
+                    : 'border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400'
+                }`}
+              >
+                View Case Studies
+              </Link>
+            </motion.div>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-            Automation Consulting & Strategy
-          </h1>
-          <p className="text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
-            Transform your business with strategic automation consulting that aligns technology 
-            initiatives with business outcomes and maximizes ROI.
-          </p>
+        </div>
+      </motion.section>
+
+      {/* Key Benefits Section */}
+      <motion.section 
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true, amount: 0.2 }} 
+        variants={containerVariants}
+        className="relative z-10 py-20"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.h2 
+              variants={itemVariants}
+              className={`text-3xl md:text-5xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              Why Choose Our Consulting?
+            </motion.h2>
+            <motion.p 
+              variants={itemVariants}
+              className={`text-xl max-w-3xl mx-auto ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}
+            >
+              Our strategic approach ensures successful automation transformation with measurable business impact.
+            </motion.p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className={`group p-8 rounded-2xl transition-all duration-300 hover:scale-105 ${
+                    isDark 
+                      ? 'bg-gray-800/50 border border-gray-700/50 hover:bg-gray-800/70 hover:border-gray-600' 
+                      : 'bg-white/80 border border-gray-200 hover:bg-white hover:border-gray-300 shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 transition-colors duration-300 ${
+                    isDark 
+                      ? 'bg-cyan-500/20 text-cyan-400 group-hover:bg-cyan-500/30' 
+                      : 'bg-cyan-100 text-cyan-600 group-hover:bg-cyan-200'
+                  }`}>
+                    <IconComponent className="w-7 h-7" />
+                  </div>
+                  <h3 className={`text-xl font-bold mb-3 ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {benefit.title}
+                  </h3>
+                  <p className={`leading-relaxed ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}>
+                    {benefit.desc}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </motion.section>
 
       {/* Overview */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
-        className="py-16 relative z-10"
+        className="py-20 relative z-10"
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="border border-gray-700 rounded-3xl p-12">
-            <h2 className="text-3xl font-bold text-white mb-6">Strategic Automation Planning</h2>
-            <p className="text-lg text-gray-400 leading-relaxed mb-6">
-              Our automation consulting services help organizations develop comprehensive strategies 
-              for digital transformation through intelligent automation. We work with your leadership 
-              team to identify high-impact opportunities, design scalable automation architectures, 
-              and establish governance frameworks that ensure sustainable success.
-            </p>
-            <p className="text-lg text-gray-400 leading-relaxed">
-              From initial assessment to full-scale implementation roadmaps, our consultants bring 
-              deep industry expertise and proven methodologies to accelerate your automation journey 
-              while minimizing risks and maximizing business value.
-            </p>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Key Benefits */}
-      <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16 bg-transparent relative z-10"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Key Benefits</h2>
-          <div className="space-y-4">
-            {benefits.map((benefit, index) => (
-              <motion.div key={index} variants={itemVariants} className="flex items-start gap-4 p-6 rounded-xl border border-gray-700">
-                <div className="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <CheckCircle className="w-4 h-4 text-gray-900" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`rounded-3xl p-12 md:p-16 ${
+            isDark 
+              ? 'bg-gray-800/50 border border-gray-700/50' 
+              : 'bg-white/80 border border-gray-200 shadow-xl'
+          }`}>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>
+                  Strategic Automation Planning
+                </h2>
+                <p className={`text-lg leading-relaxed mb-8 ${
+                  isDark ? 'text-gray-300' : 'text-gray-600'
+                }`}>
+                  Our automation consulting services help organizations develop comprehensive strategies 
+                  for digital transformation through intelligent automation. We work with your leadership 
+                  team to identify high-impact opportunities, design scalable automation architectures, 
+                  and establish governance frameworks that ensure sustainable success.
+                </p>
+                <p className={`text-lg leading-relaxed ${
+                  isDark ? 'text-gray-400' : 'text-gray-500'
+                }`}>
+                  From initial assessment to full-scale implementation roadmaps, our consultants bring 
+                  deep industry expertise and proven methodologies to accelerate your automation journey 
+                  while minimizing risks and maximizing business value.
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <div className={`w-full max-w-md p-8 rounded-2xl ${
+                  isDark ? 'bg-cyan-500/10 border border-cyan-500/20' : 'bg-cyan-50 border border-cyan-200'
+                }`}>
+                  <div className="text-center">
+                    <Clock className={`w-12 h-12 mx-auto mb-4 ${
+                      isDark ? 'text-cyan-400' : 'text-cyan-600'
+                    }`} />
+                    <h3 className={`text-xl font-bold mb-2 ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      Typical Timeline
+                    </h3>
+                    <p className={`text-lg ${
+                      isDark ? 'text-cyan-300' : 'text-cyan-700'
+                    }`}>
+                      4-8 weeks
+                    </p>
+                    <p className={`text-sm mt-2 ${
+                      isDark ? 'text-gray-400' : 'text-gray-600'
+                    }`}>
+                      From assessment to strategy delivery
+                    </p>
+                  </div>
                 </div>
-                <p className="text-lg text-gray-300 leading-relaxed">{benefit}</p>
-              </motion.div>
-            ))}
+              </div>
+            </div>
           </div>
         </div>
       </motion.section>
@@ -163,20 +318,71 @@ export default function AutomationConsulting() {
       {/* Deliverables */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16 relative z-10"
+        className="py-20 relative z-10"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">What You'll Receive</h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.h2 
+              variants={itemVariants}
+              className={`text-3xl md:text-5xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              What You'll Receive
+            </motion.h2>
+            <motion.p 
+              variants={itemVariants}
+              className={`text-xl max-w-3xl mx-auto ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}
+            >
+              Comprehensive deliverables designed to guide your automation transformation journey.
+            </motion.p>
+          </div>
+          
           <div className="grid md:grid-cols-2 gap-8">
-            {deliverables.map((deliverable, index) => (
-              <motion.div key={index} variants={itemVariants} className="rounded-2xl p-8 border border-gray-700">
-                <div className="w-12 h-12 bg-cyan-500/20 border border-cyan-500 rounded-xl flex items-center justify-center mb-6">
-                  <Lightbulb className="w-6 h-6 text-cyan-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">{deliverable.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{deliverable.description}</p>
-              </motion.div>
-            ))}
+            {deliverables.map((deliverable, index) => {
+              const IconComponent = deliverable.icon || Lightbulb;
+              return (
+                <motion.div 
+                  key={index} 
+                  variants={itemVariants} 
+                  className={`group p-8 rounded-2xl transition-all duration-300 hover:scale-105 ${
+                    isDark 
+                      ? 'bg-gray-800/50 border border-gray-700/50 hover:bg-gray-800/70 hover:border-gray-600' 
+                      : 'bg-white/80 border border-gray-200 hover:bg-white hover:border-gray-300 shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 transition-colors duration-300 ${
+                    isDark 
+                      ? 'bg-cyan-500/20 text-cyan-400 group-hover:bg-cyan-500/30' 
+                      : 'bg-cyan-100 text-cyan-600 group-hover:bg-cyan-200'
+                  }`}>
+                    <IconComponent className="w-7 h-7" />
+                  </div>
+                  <h3 className={`text-xl font-bold mb-3 ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {deliverable.title}
+                  </h3>
+                  <p className={`leading-relaxed mb-4 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}>
+                    {deliverable.description}
+                  </p>
+                  {deliverable.timeline && (
+                    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm ${
+                      isDark 
+                        ? 'bg-cyan-500/20 text-cyan-300' 
+                        : 'bg-cyan-100 text-cyan-700'
+                    }`}>
+                      <Clock className="w-4 h-4" />
+                      {deliverable.timeline}
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </motion.section>
@@ -184,31 +390,40 @@ export default function AutomationConsulting() {
       {/* CTA Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
-        className="py-16 bg-transparent relative z-10"
+        className="py-20 relative z-10"
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="backdrop-blur rounded-3xl p-12 shadow-xl border border-gray-700/50">
-            <h2 className="text-3xl font-bold text-white mb-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className={`rounded-3xl p-12 md:p-16 ${
+            isDark 
+              ? 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50' 
+              : 'bg-gradient-to-br from-white/80 to-gray-50/80 border border-gray-200 shadow-xl'
+          }`}>
+            <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>
               Ready to Build Your Automation Strategy?
             </h2>
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+            <p className={`text-lg md:text-xl mb-8 leading-relaxed ${
+              isDark ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               Let our experts help you develop a comprehensive automation roadmap 
               that drives measurable business outcomes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                to={createPageUrl("Demo")}
-                className="relative inline-flex h-14 overflow-hidden rounded-xl p-[1px] focus:outline-none group"
+                to={createPageUrl("demo")}
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#1e293b_50%,#06b6d4_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-900 px-8 py-4 text-lg font-semibold text-white backdrop-blur-3xl gap-2">
-                  Schedule Consultation
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
+                Schedule Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link 
-                to={createPageUrl("Solutions")}
-                className="inline-flex items-center gap-2 bg-gray-700/50 text-gray-200 px-8 py-4 rounded-xl font-semibold text-lg border border-gray-600 hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-300"
+                to={createPageUrl("solutions")}
+                className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                  isDark 
+                    ? 'border border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500' 
+                    : 'border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400'
+                }`}
               >
                 View All Services
               </Link>

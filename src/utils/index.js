@@ -18,7 +18,12 @@ export const createPageUrl = (pageName) => {
     // Map submenu items to their dedicated routes
     'CaseStudies': '/case-studies',
     'CallToAction': '/call-to-action',
-    'BlogKnowledgeHub': '/blog-knowledge-hub'
+    'BlogKnowledgeHub': '/blog-knowledge-hub',
+    // Legal pages
+    'TermsOfService': '/terms-of-service',
+    'PrivacyPolicy': '/privacy-policy',
+    // Thank you page
+    'ThankYou': '/thank-you'
   };
   
   return pageMap[pageName] || '/';

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../src/contexts/ThemeContext';
 import { cn } from '../../src/lib/utils';
-import { Send, User, Mail, MessageSquare, X } from 'lucide-react';
+import { ArrowRight, User, Mail, MessageSquare, X } from 'lucide-react';
 
 const ExploreSolutionModal = ({ triggerText = "Explore Solutions", triggerClassName = "" }) => {
   const { isDark } = useTheme();
@@ -38,13 +38,13 @@ const ExploreSolutionModal = ({ triggerText = "Explore Solutions", triggerClassN
       <button
         onClick={openModal}
         className={cn(
-          "group relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-indigo-700 transform hover:-translate-y-0.5",
+          "group relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-10 py-6 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-indigo-700 transform hover:-translate-y-0.5",
           triggerClassName
         )}
       >
-        <span className="relative z-10 flex items-center gap-2">
+        <span className="relative z-10 flex items-center justify-center gap-3">
           {triggerText}
-          <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
         </span>
         <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </button>
@@ -132,7 +132,7 @@ const ExploreSolutionModal = ({ triggerText = "Explore Solutions", triggerClassN
             {/* Form */}
             <div className="px-8 py-6">
               <form 
-                action="https://formsubmit.co/adityasingh01517@gmail.com" 
+                action="https://formsubmit.co/autelliatechnology@gmail.com" 
                 method="POST" 
                 className="space-y-6"
               >

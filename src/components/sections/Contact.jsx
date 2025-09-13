@@ -9,13 +9,13 @@ import { cn } from '@/lib/utils';
 const ContactInfo = [
   {
     title: 'Email',
-    value: 'adityasingh01517@gmail.com',
+    value: 'autelliatechnology@gmail.com',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
       </svg>
     ),
-    link: 'mailto:adityasingh01517@gmail.com',
+    link: 'mailto:autelliatechnology@gmail.com',
   },
   {
     title: 'Office',
@@ -114,7 +114,15 @@ export function Contact() {
           </div>
 
           <div className="bg-card p-8 rounded-xl shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              action="https://formsubmit.co/autelliatechnology@gmail.com" 
+              method="POST" 
+              className="space-y-6"
+            >
+              <input type="hidden" name="_subject" value="New Contact Form Submission - Autellia" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://autellia.com/thank-you" />
               {submitStatus.message && (
                 <div className={`p-4 rounded-md ${submitStatus.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
                   {submitStatus.message}
@@ -125,12 +133,11 @@ export function Contact() {
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
                     Name
                   </label>
-                  <Input
+                  <input
                     id="name"
                     name="name"
                     type="text"
-                    value={formData.name}
-                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
                     required
                   />
                 </div>
@@ -138,12 +145,11 @@ export function Contact() {
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
                     Email
                   </label>
-                  <Input
+                  <input
                     id="email"
                     name="email"
                     type="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
                     required
                   />
                 </div>
@@ -152,12 +158,11 @@ export function Contact() {
                 <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-1">
                   Subject
                 </label>
-                <Input
+                <input
                   id="subject"
                   name="subject"
                   type="text"
-                  value={formData.subject}
-                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
                   required
                 />
               </div>
@@ -165,19 +170,18 @@ export function Contact() {
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
                   Message
                 </label>
-                <Textarea
+                <textarea
                   id="message"
                   name="message"
                   rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 resize-none"
                   required
                 />
               </div>
               <div>
-                <Button type="submit" disabled={isSubmitting} className="w-full">
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </Button>
+                <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/25">
+                  Send Message
+                </button>
               </div>
             </form>
           </div>

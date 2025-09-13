@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Container } from '../ui/container';
+import { Button } from '../ui/button';
 
 // Simple utility function
 const cn = (...classes) => classes.filter(Boolean).join(' ');
@@ -31,26 +33,45 @@ export function Hero({
     show: { y: 0, opacity: 1, transition: { duration: 0.6 } },
   };
 
-  const backgroundClasses = {
-    default: 'bg-gradient-to-br from-background via-background to-muted/10',
-    gradient: 'bg-gradient-to-br from-primary/5 via-background to-secondary/5',
-    dark: 'bg-background',
-    pattern: 'bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background',
-  };
-
   return (
     <section 
       ref={containerRef}
       className={cn(
         'relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28',
-        backgroundClasses[background] || backgroundClasses.default,
         className
       )}
     >
-      {/* Background elements */}
+      {/* Background Video */}
+      <div className="absolute inset-0 -z-20">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover object-center"
+          poster="/hero-bg.jpg"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+          {/* Fallback image */}
+          <img
+            src="/hero-bg.jpg"
+            alt="AI Technology Background"
+            className="w-full h-full object-cover object-center"
+          />
+        </video>
+      </div>
+
+      {/* Theme-aware overlay for contrast */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-black/80 via-black/70 to-black/60 dark:from-black/80 dark:via-black/70 dark:to-black/60 transition-colors duration-500" />
+
+      {/* Additional gradient overlay for better text contrast */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-transparent to-transparent dark:from-black/90 dark:via-transparent dark:to-transparent" />
+
+      {/* Decorative elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 left-1/2 -z-10 -translate-x-1/2 sm:top-0 sm:h-[72rem] sm:w-[72rem] sm:-translate-x-[30rem] md:-translate-x-[25rem] lg:-translate-x-[15rem] xl:-translate-x-0">
-          <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]" />
+          <div className="absolute inset-0 bg-grid-white/[0.02] dark:bg-grid-white/[0.05] [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]" />
           <svg
             viewBox="0 0 1108 632"
             aria-hidden="true"
@@ -83,14 +104,14 @@ export function Hero({
           
           <motion.h1 
             variants={item}
-            className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl"
+            className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
           >
             {title}
           </motion.h1>
           
           <motion.p 
             variants={item}
-            className="mt-6 text-lg leading-8 text-muted-foreground"
+            className="mt-6 text-lg leading-8 text-white"
           >
             {subtitle}
           </motion.p>
@@ -127,8 +148,8 @@ export function Hero({
               ))}
             </div>
             <div className="text-sm leading-6">
-              <p className="font-semibold text-foreground">Trusted by 10,000+ businesses</p>
-              <p className="text-muted-foreground">Join our growing community</p>
+              <p className="font-semibold text-white">Trusted by 10,000+ businesses</p>
+              <p className="text-white/80">Join our growing community</p>
             </div>
           </motion.div>
         </motion.div>
