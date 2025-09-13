@@ -151,25 +151,17 @@ export default function Layout({ children, currentPageName }) {
 
   // Cal.com booking handler
   const handleBookDemo = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    console.log('Book Demo clicked'); // Debug log
     
     const calUrl = 'https://cal.com/autellia-technology-43lknv';
     
-    // Try to open in new tab/window
-    try {
-      const newWindow = window.open(calUrl, '_blank', 'noopener,noreferrer');
-      
-      // Fallback if popup blocked
-      if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-        // Popup was blocked, redirect in same tab
-        window.location.href = calUrl;
-      }
-    } catch (error) {
-      console.error('Error opening Cal.com:', error);
-      // Fallback to same tab redirect
-      window.location.href = calUrl;
-    }
+    // Direct redirect approach
+    window.open(calUrl, '_blank');
   };
 
   return (

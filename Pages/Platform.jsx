@@ -832,7 +832,7 @@ export default function Platform() {
             and stand up a pilot in 30–45 days with measurable outcomes.
           </p>
           <ExploreSolutionModal 
-            triggerText="Schedule Discovery Workshop →"
+            triggerText="Schedule Discovery Workshop"
             triggerClassName={`px-6 py-3 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-md ${
               isDark 
                 ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25'
