@@ -55,7 +55,7 @@ const Footer = () => {
   );
 
   const socialLinks = [
-    { icon: Linkedin, url: 'https://linkedin.com/company/autellia-technology', label: 'LinkedIn' },
+    { icon: Linkedin, url: 'https://www.linkedin.com/company/autellia/', label: 'LinkedIn' },
     { icon: Youtube, url: 'https://youtube.com/@autellia-technology', label: 'YouTube' },
     { icon: XIcon, url: 'https://x.com/autellia_tech', label: 'X (formerly Twitter)' }
   ];

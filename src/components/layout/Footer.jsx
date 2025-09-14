@@ -43,7 +43,7 @@ const footerLinks = {
     },
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/company/autellia',
+      href: 'https://www.linkedin.com/company/autellia/',
       icon: Icons.linkedin,
     },
   ],
