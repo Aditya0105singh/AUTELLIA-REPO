@@ -155,8 +155,24 @@ export default function Layout({ children, currentPageName }) {
     
     const calUrl = 'https://cal.com/autellia-technology-43lknv';
     
-    // Use location.href for better mobile compatibility
-    window.location.href = calUrl;
+    // Prevent default behavior
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    // Use window.open for better mobile compatibility and fallback to location.href
+    try {
+      const newWindow = window.open(calUrl, '_blank', 'noopener,noreferrer');
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        // Popup blocked, fallback to same window
+        window.location.href = calUrl;
+      }
+    } catch (error) {
+      console.error('Error opening Cal.com:', error);
+      // Fallback to direct navigation
+      window.location.href = calUrl;
+    }
   };
 
   return (
@@ -361,15 +377,16 @@ export default function Layout({ children, currentPageName }) {
                   }`}>
                     {item.title}
                   </div>
-                  <div className="pl-4 space-y-2">
+                  <div className="pl-4 space-y-2 max-h-[60vh] overflow-y-auto">
                     {item.dropdownItems.map((dropdownItem) => (
                       <Link
                         key={dropdownItem.path}
                         to={createPageUrl(dropdownItem.path)}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block py-1.5 sm:py-2 text-xs sm:text-sm ${
+                        className={`block py-2 sm:py-2.5 text-sm sm:text-base leading-relaxed ${
                           isDark ? 'text-[--text-muted] hover:text-[--text-primary]' : 'text-gray-600 hover:text-gray-900'
-                        }`}
+                        } transition-colors duration-200 cursor-pointer touch-manipulation`}
+                        style={{ WebkitTapHighlightColor: 'transparent' }}
                       >
                         {dropdownItem.title
                           .replace('Automation Consulting & Strategy', 'Automation Consulting')
@@ -379,8 +396,8 @@ export default function Layout({ children, currentPageName }) {
                           .replace('Data Analytics & Visualization', 'Data Analytics')
                           .replace('Intelligent Document Processing (IDP)', 'Document Processing')
                           .replace('Custom Software Development', 'Software Development')
-                          .replace('Cloud Infrastructure & Automation', 'Cloud Automation')
-                          .replace('Managed Services & Support', 'Managed Services')
+                          .replace('Cloud-based Automation & Migration', 'Cloud Automation')
+                          .replace('Support & Managed Services', 'Managed Services')
                         }
                       </Link>
                     ))}
@@ -388,11 +405,14 @@ export default function Layout({ children, currentPageName }) {
                 </div>
               ) : item.isButton ? (
                 <button
-                  onClick={() => {
-                    handleBookDemo();
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleBookDemo(e);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full text-left py-3 px-4 sm:py-4 sm:px-6 rounded-lg font-semibold text-base sm:text-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+                  className="w-full text-left py-3 px-4 sm:py-4 sm:px-6 rounded-lg font-semibold text-base sm:text-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 cursor-pointer touch-manipulation"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {item.title}
                 </button>
@@ -495,10 +515,13 @@ export default function Layout({ children, currentPageName }) {
                 viewport={{ once: true }}
                 className="mt-12 sm:mt-14 lg:mt-16"
               >
-                <ExploreSolutionModal 
-                  triggerText="Book a Demo"
-                  triggerClassName="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:shadow-indigo-500/30 text-white font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105"
-                />
+                <button
+                  onClick={handleBookDemo}
+                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:shadow-indigo-500/30 text-white font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 touch-manipulation"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                >
+                  Book a Demo
+                </button>
               </motion.div>
             </motion.div>
           </div>
