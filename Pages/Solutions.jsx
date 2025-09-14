@@ -227,10 +227,13 @@ export default function Solutions() {
           }`}>
             Contact us today to discover how our comprehensive automation and AI solutions can drive your business forward.
           </p>
-          <ExploreSolutionModal 
-            triggerText="Get in Touch"
-            triggerClassName="group bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 max-w-sm mx-auto"
-          />
+          <button
+            onClick={() => window.location.href = 'https://cal.com/autellia-technology-43lknv'}
+            className="group bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 max-w-sm mx-auto touch-manipulation"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+          >
+            Get in Touch
+          </button>
         </div>
       </motion.section>
     </div>

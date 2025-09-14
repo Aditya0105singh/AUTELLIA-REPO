@@ -258,6 +258,9 @@ export const MobileNavToggle = ({ isOpen, onClick, className = "" }) => {
 };
 
 export const MobileNavMenu = ({ isOpen, onClose, children, className = "" }) => {
+  // Check if className contains positioning classes
+  const hasCustomPositioning = className.includes('fixed') || className.includes('absolute');
+  
   return (
     <AnimatePresence>
       {isOpen && (
@@ -266,14 +269,17 @@ export const MobileNavMenu = ({ isOpen, onClose, children, className = "" }) => 
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 overflow-hidden ${className}`}
+          className={hasCustomPositioning 
+            ? className 
+            : `bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 overflow-hidden ${className}`
+          }
         >
           <motion.nav
             initial={{ y: -20 }}
             animate={{ y: 0 }}
             exit={{ y: -20 }}
             transition={{ duration: 0.2, delay: 0.1 }}
-            className="flex flex-col space-y-1 p-4"
+            className="flex flex-col space-y-1 p-4 bg-white dark:bg-gray-800"
           >
             {children}
           </motion.nav>

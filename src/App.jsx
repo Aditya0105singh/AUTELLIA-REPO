@@ -6,6 +6,7 @@ import { ThemeProvider } from './contexts/ThemeContext.jsx'
 // Import Pages
 import Platform from '../Pages/Platform.jsx'
 import Solutions from '../Pages/Solutions.jsx'
+import SolutionsOverview from '../Pages/SolutionsOverview.jsx'
 import AIMLIntegration from '../Pages/AIMLIntegration.jsx'
 import AutomationConsulting from '../Pages/AutomationConsulting.jsx'
 import BOTDevelopment from '../Pages/BOTDevelopment.jsx'
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Layout><Platform /></Layout>} />
           <Route path="/platform" element={<Layout><Platform /></Layout>} />
           <Route path="/solutions" element={<Layout><Solutions /></Layout>} />
+          <Route path="/explore-solutions" element={<Layout><SolutionsOverview /></Layout>} />
           <Route path="/automation-consulting" element={<Layout><AutomationConsulting /></Layout>} />
           <Route path="/bot-development" element={<Layout><BOTDevelopment /></Layout>} />
           <Route path="/aiml-integration" element={<Layout><AIMLIntegration /></Layout>} />

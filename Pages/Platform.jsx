@@ -278,14 +278,21 @@ export default function Platform() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-4 justify-center items-center px-2 sm:px-0"
           >
-            <ExploreSolutionModal 
-              triggerText="Book a Free Consultation"
-              triggerClassName="inline-flex items-center px-8 py-4 font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25"
-            />
-            <ExploreSolutionModal 
-              triggerText="Explore Solutions"
-              triggerClassName="inline-flex items-center gap-2 px-8 py-4 font-semibold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white hover:shadow-indigo-500/25"
-            />
+            <button
+              onClick={() => window.location.href = 'https://cal.com/autellia-technology-43lknv'}
+              className="inline-flex items-center px-8 py-4 font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25 touch-manipulation"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+              Book a Free Consultation
+            </button>
+            <Link
+              to="/explore-solutions"
+              className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white hover:shadow-indigo-500/25 touch-manipulation"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+              Explore Solutions
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </motion.div>
         </div>
       </motion.section>
@@ -479,14 +486,17 @@ export default function Platform() {
             }`}>
               Ready to transform your business operations?
             </p>
-            <ExploreSolutionModal 
-              triggerText="Discover Our Solutions"
-              triggerClassName={`inline-flex items-center px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 hover:scale-105 shadow-lg ${
+            <Link
+              to="/explore-solutions"
+              className={`inline-flex items-center px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 hover:scale-105 shadow-lg touch-manipulation ${
                 isDark 
-                  ? 'bg-gradient-to-r from-[--accent] to-purple-500 hover:from-[--accent]/90 hover:to-purple-500/90 text-white hover:shadow-[--accent]/25'
-                  : 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-lg'
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white' 
+                  : 'bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white'
               }`}
-            />
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+              Discover Our Solutions
+            </Link>
           </motion.div>
         </div>
       </motion.section>
@@ -831,14 +841,17 @@ export default function Platform() {
             Explore a discovery workshop to identify top ROI use cases in 2 weeks 
             and stand up a pilot in 30–45 days with measurable outcomes.
           </p>
-          <ExploreSolutionModal 
-            triggerText="Schedule Discovery Workshop"
-            triggerClassName={`px-6 py-3 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-md ${
+          <button
+            onClick={() => window.location.href = 'https://cal.com/autellia-technology-43lknv'}
+            className={`px-6 py-3 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-md touch-manipulation ${
               isDark 
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25'
-                : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg'
+                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white' 
+                : 'bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white'
             }`}
-          />
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+          >
+            Schedule Discovery Workshop
+          </button>
         </div>
       </motion.section>
     </div>

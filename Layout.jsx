@@ -367,6 +367,7 @@ export default function Layout({ children, currentPageName }) {
         <MobileNavMenu 
           isOpen={isMobileMenuOpen} 
           onClose={() => setIsMobileMenuOpen(false)}
+          className="fixed top-16 left-0 right-0 z-[99997] max-h-[calc(100vh-4rem)] overflow-y-auto"
         >
           {navigationItems.map((item) => (
             <div key={item.title} className="py-2">
@@ -377,13 +378,13 @@ export default function Layout({ children, currentPageName }) {
                   }`}>
                     {item.title}
                   </div>
-                  <div className="pl-4 space-y-2 max-h-[60vh] overflow-y-auto">
+                  <div className="pl-4 space-y-1">
                     {item.dropdownItems.map((dropdownItem) => (
                       <Link
                         key={dropdownItem.path}
                         to={createPageUrl(dropdownItem.path)}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block py-2 sm:py-2.5 text-sm sm:text-base leading-relaxed ${
+                        className={`block py-2 text-sm leading-relaxed ${
                           isDark ? 'text-[--text-muted] hover:text-[--text-primary]' : 'text-gray-600 hover:text-gray-900'
                         } transition-colors duration-200 cursor-pointer touch-manipulation`}
                         style={{ WebkitTapHighlightColor: 'transparent' }}
