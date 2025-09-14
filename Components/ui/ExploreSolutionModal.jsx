@@ -5,16 +5,14 @@ import { ArrowRight } from 'lucide-react';
 const ExploreSolutionModal = ({ triggerText = "Explore Solutions", triggerClassName = "" }) => {
   const handleCalRedirect = () => {
     console.log('Redirecting to Cal.com');
-    window.open('https://cal.com/autellia-technology-43lknv', '_blank');
+    // Use location.href for better mobile compatibility
+    window.location.href = 'https://cal.com/autellia-technology-43lknv';
   };
 
   return (
     <button
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleCalRedirect();
-      }}
+      onClick={handleCalRedirect}
+      onTouchEnd={handleCalRedirect}
       className={cn(
         "group relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-10 py-6 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-indigo-700 transform hover:-translate-y-0.5",
         triggerClassName

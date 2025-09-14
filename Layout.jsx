@@ -151,17 +151,12 @@ export default function Layout({ children, currentPageName }) {
 
   // Cal.com booking handler
   const handleBookDemo = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    
     console.log('Book Demo clicked'); // Debug log
     
     const calUrl = 'https://cal.com/autellia-technology-43lknv';
     
-    // Direct redirect approach
-    window.open(calUrl, '_blank');
+    // Use location.href for better mobile compatibility
+    window.location.href = calUrl;
   };
 
   return (
