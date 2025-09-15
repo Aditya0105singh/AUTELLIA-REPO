@@ -201,9 +201,9 @@ const SolutionsOverview = () => {
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
-            className="text-center mb-20"
+            className="text-center mb-12 sm:mb-16 md:mb-20"
           >
-            <h1 className={`text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight ${
+            <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 sm:mb-8 leading-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
               <span className="block mb-4">Explore Our</span>
@@ -211,7 +211,7 @@ const SolutionsOverview = () => {
                 Solutions Portfolio
               </span>
             </h1>
-            <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed font-medium ${
+            <p className={`text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed font-medium px-4 ${
               isDark ? 'text-gray-200' : 'text-gray-700'
             }`}>
               Discover <span className="font-bold text-blue-600">comprehensive automation</span> and <span className="font-bold text-purple-600">AI solutions</span> designed to revolutionize your business operations
@@ -223,28 +223,28 @@ const SolutionsOverview = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20 max-w-5xl mx-auto px-4"
           >
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
                 <div
                   key={index}
-                  className={`p-6 rounded-2xl text-center transition-all duration-300 hover:scale-105 ${
+                  className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl text-center transition-all duration-300 hover:scale-105 ${
                     isDark 
                       ? 'bg-gray-800/60 border border-gray-700/50 hover:border-blue-500/50' 
                       : 'bg-white/80 border border-gray-200 hover:border-blue-400 hover:shadow-xl'
                   } backdrop-blur-sm`}
                 >
-                  <IconComponent className={`w-8 h-8 mx-auto mb-3 ${
+                  <IconComponent className={`w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2 sm:mb-3 ${
                     isDark ? 'text-blue-400' : 'text-blue-600'
                   }`} />
-                  <div className={`text-3xl font-bold mb-1 ${
+                  <div className={`text-xl sm:text-2xl md:text-3xl font-bold mb-1 ${
                     isDark ? 'text-white' : 'text-gray-900'
                   }`}>
                     {stat.number}
                   </div>
-                  <div className={`text-sm font-medium ${
+                  <div className={`text-xs sm:text-sm font-medium ${
                     isDark ? 'text-gray-400' : 'text-gray-600'
                   }`}>
                     {stat.label}
@@ -259,7 +259,7 @@ const SolutionsOverview = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 px-4"
           >
             {solutions.map((solution, index) => {
               const Icon = solution.icon;
@@ -274,7 +274,7 @@ const SolutionsOverview = () => {
                     to={createPageUrl(solution.path)}
                     className="block h-full"
                   >
-                    <div className={`h-full p-10 rounded-3xl border-2 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 ${
+                    <div className={`h-full p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border-2 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 ${
                       isDark 
                         ? `bg-gradient-to-br ${solution.darkBgGradient} border-gray-700/50 hover:border-blue-500/70` 
                         : `bg-gradient-to-br ${solution.bgGradient} border-gray-200 hover:border-blue-400/70 hover:shadow-2xl`
@@ -284,31 +284,31 @@ const SolutionsOverview = () => {
                       <div className={`absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br ${solution.gradient} opacity-0 group-hover:opacity-20 transition-all duration-700 rounded-full blur-3xl`} />
                       
                       {/* Enhanced Icon with Better Size */}
-                      <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${solution.gradient} p-5 mb-8 shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                      <div className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br ${solution.gradient} p-3 sm:p-4 md:p-5 mb-6 sm:mb-8 shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                         <Icon className="w-full h-full text-white" />
                       </div>
 
                       {/* Enhanced Content with Better Typography */}
-                      <h3 className={`text-2xl font-black mb-6 group-hover:text-blue-600 transition-colors duration-300 leading-tight ${
+                      <h3 className={`text-lg sm:text-xl md:text-2xl font-black mb-4 sm:mb-6 group-hover:text-blue-600 transition-colors duration-300 leading-tight ${
                         isDark ? 'text-white' : 'text-gray-900'
                       }`}>
                         {solution.title}
                       </h3>
                       
-                      <p className={`text-base mb-8 leading-relaxed font-medium ${
+                      <p className={`text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed font-medium ${
                         isDark ? 'text-gray-300' : 'text-gray-700'
                       }`}>
                         {solution.description}
                       </p>
 
                       {/* Enhanced Highlights */}
-                      <div className="space-y-3 mb-8">
+                      <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                         {solution.highlights.map((highlight, idx) => (
                           <div key={idx} className="flex items-center gap-3">
-                            <CheckCircle className={`w-5 h-5 flex-shrink-0 ${
+                            <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${
                               isDark ? 'text-green-400' : 'text-green-600'
                             }`} />
-                            <span className={`text-sm font-semibold ${
+                            <span className={`text-xs sm:text-sm font-semibold ${
                               isDark ? 'text-gray-400' : 'text-gray-600'
                             }`}>
                               {highlight}
@@ -319,12 +319,12 @@ const SolutionsOverview = () => {
 
                       {/* Enhanced Learn More Button */}
                       <div className="flex items-center gap-3 group/link">
-                        <span className={`text-lg font-bold transition-colors duration-300 ${
+                        <span className={`text-base sm:text-lg font-bold transition-colors duration-300 ${
                           isDark ? 'text-blue-400 group-hover/link:text-blue-300' : 'text-blue-600 group-hover/link:text-blue-700'
                         }`}>
                           Learn More
                         </span>
-                        <ArrowRight className={`w-6 h-6 transition-all duration-300 group-hover/link:translate-x-2 ${
+                        <ArrowRight className={`w-5 h-5 sm:w-6 sm:h-6 transition-all duration-300 group-hover/link:translate-x-2 ${
                           isDark ? 'text-blue-400' : 'text-blue-600'
                         }`} />
                       </div>
@@ -343,23 +343,23 @@ const SolutionsOverview = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="py-24 px-6"
+        className="py-16 sm:py-20 md:py-24 px-4 sm:px-6"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className={`text-4xl md:text-5xl font-black mb-6 ${
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
               What Our Clients Say
             </h2>
-            <p className={`text-xl max-w-3xl mx-auto ${
+            <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-4 ${
               isDark ? 'text-gray-300' : 'text-gray-600'
             }`}>
               Trusted by leading enterprises worldwide
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-4">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -367,7 +367,7 @@ const SolutionsOverview = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`p-8 rounded-3xl transition-all duration-300 hover:scale-105 ${
+                className={`p-6 sm:p-8 rounded-2xl sm:rounded-3xl transition-all duration-300 hover:scale-105 ${
                   isDark 
                     ? 'bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-gray-700/50' 
                     : 'bg-white border border-gray-200 hover:shadow-2xl'
@@ -409,7 +409,7 @@ const SolutionsOverview = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className={`py-32 px-6 text-center relative overflow-hidden ${
+            className={`py-20 sm:py-24 md:py-32 px-4 sm:px-6 text-center relative overflow-hidden ${
               isDark ? 'bg-gradient-to-r from-gray-900 via-blue-900/20 to-gray-900' : 'bg-gradient-to-r from-blue-50 via-indigo-100 to-blue-50'
             }`}
           >
@@ -421,26 +421,26 @@ const SolutionsOverview = () => {
             </div>
 
             <div className="max-w-5xl mx-auto relative z-10">
-              <h2 className={`text-5xl md:text-6xl font-black mb-8 ${
+              <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 ${
                 isDark ? 'text-white' : 'text-gray-900'
               }`}>
                 Ready to Get Started?
               </h2>
-              <p className={`text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed ${
+              <p className={`text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4 ${
                 isDark ? 'text-gray-200' : 'text-gray-700'
               }`}>
                 Explore a discovery workshop to identify top ROI use cases in 2 weeks and stand up a pilot in 30-45 days with measurable outcomes.
               </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
                 <button
                   onClick={() => window.location.href = 'https://cal.com/autellia-technology-43lknv'}
-                  className="px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-bold rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105"
+                  className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-base sm:text-lg font-bold rounded-xl sm:rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105"
                 >
                   Schedule Discovery Workshop
                 </button>
                 <Link
                   to={createPageUrl('Platform')}
-                  className={`px-10 py-5 text-lg font-bold rounded-2xl transition-all duration-300 border-2 hover:scale-105 ${
+                  className={`px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg font-bold rounded-xl sm:rounded-2xl transition-all duration-300 border-2 hover:scale-105 ${
                     isDark 
                       ? 'border-gray-600 text-gray-300 hover:bg-gray-800/50 hover:border-gray-500' 
                       : 'border-gray-300 text-gray-700 hover:bg-white hover:border-gray-400 hover:shadow-xl'
