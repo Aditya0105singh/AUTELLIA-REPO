@@ -9,37 +9,48 @@ const ThemeToggle = ({ className = '' }) => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className={`relative inline-flex items-center justify-start h-8 w-16 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
+      className={`relative w-12 h-12 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
         isDark 
-          ? 'bg-gradient-to-r from-indigo-600 to-purple-600' 
-          : 'bg-gradient-to-r from-orange-400 to-yellow-400'
-      } ${className}`}
-      whileTap={{ scale: 0.95 }}
+          ? 'bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 focus:ring-purple-500 border-2 border-gray-600' 
+          : 'bg-gradient-to-br from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 focus:ring-yellow-500 border-2 border-gray-300'
+      } ${className} shadow-lg hover:shadow-xl`}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      animate={{ rotate: isDark ? 360 : 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       role="switch"
       aria-checked={isDark}
     >
-      {/* Icon */}
-      <div className={`absolute transition-all duration-300 ${isDark ? 'left-2 opacity-100' : 'right-2 opacity-100'}`}>
-        {isDark ? (
-          <Moon className="w-4 h-4 text-white" />
-        ) : (
-          <Sun className="w-4 h-4 text-white" />
-        )}
-      </div>
-      
-      {/* Thumb */}
+      {/* Sun Icon */}
       <motion.div
-        className="absolute w-6 h-6 bg-white rounded-full shadow-lg top-1 left-1"
+        className="absolute inset-0 flex items-center justify-center"
         animate={{
-          x: isDark ? 17 : 0,
+          opacity: isDark ? 0 : 1,
+          scale: isDark ? 0.5 : 1,
+          rotate: isDark ? 180 : 0
         }}
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          damping: 25
+        transition={{ duration: 0.3 }}
+      >
+        <Sun className={`w-6 h-6 ${
+          isDark ? 'text-gray-400' : 'text-yellow-500'
+        }`} />
+      </motion.div>
+      
+      {/* Moon Icon */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        animate={{
+          opacity: isDark ? 1 : 0,
+          scale: isDark ? 1 : 0.5,
+          rotate: isDark ? 0 : -180
         }}
-      />
+        transition={{ duration: 0.3 }}
+      >
+        <Moon className={`w-6 h-6 ${
+          isDark ? 'text-purple-400' : 'text-gray-400'
+        }`} />
+      </motion.div>
     </motion.button>
   );
 };

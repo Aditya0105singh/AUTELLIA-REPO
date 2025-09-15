@@ -287,7 +287,7 @@ export default function Platform() {
             </button>
             <Link
               to="/explore-solutions"
-              className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg bg-transparent border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white hover:shadow-indigo-500/25 touch-manipulation"
+              className="inline-flex items-center gap-2 px-8 py-4 font-bold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white hover:shadow-purple-500/30 touch-manipulation"
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               Explore Solutions
@@ -488,7 +488,7 @@ export default function Platform() {
             </p>
             <Link
               to="/explore-solutions"
-              className={`inline-flex items-center px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 hover:scale-105 shadow-lg touch-manipulation ${
+              className={`inline-flex items-center px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg touch-manipulation ${
                 isDark 
                   ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white' 
                   : 'bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white'
@@ -831,12 +831,12 @@ export default function Platform() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className={`text-3xl font-bold mb-4 transition-colors duration-300 ${
-            isDark ? 'text-[--text-primary]' : 'text-gray-900'
+            isDark ? 'text-white' : 'text-gray-900'
           }`}>
             Ready to Get Started?
           </h2>
-          <p className={`text-gray-600 max-w-2xl mx-auto mb-8 transition-colors duration-300 ${
-            isDark ? 'text-[--text-muted]' : 'text-gray-600'
+          <p className={`max-w-2xl mx-auto mb-8 transition-colors duration-300 ${
+            isDark ? 'text-gray-300' : 'text-gray-600'
           }`}>
             Explore a discovery workshop to identify top ROI use cases in 2 weeks 
             and stand up a pilot in 30–45 days with measurable outcomes.
