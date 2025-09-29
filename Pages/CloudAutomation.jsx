@@ -133,49 +133,106 @@ export default function CloudAutomation() {
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${
-      isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
+      isDark ? 'bg-[--bg] text-[--text-primary]' : 'bg-gray-50 text-gray-900'
     }`}>
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')`
+          }}
+        />
+        <div className={`absolute inset-0 backdrop-blur-sm ${
+          isDark ? 'bg-gray-900/80' : 'bg-white/85'
+        }`} />
+        
+        {/* Animated gradient elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
       {/* Hero Section */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="pt-20 pb-16 relative overflow-hidden"
+        className="relative z-10 pt-24 pb-20"
       >
-        {/* Background Image with Blur Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80" 
-            alt="Cloud Automation Background" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-        </div>
-
-        {/* Animated Gradient Blobs */}
-        <div className="absolute inset-0 z-10">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-emerald-400/20 to-teal-600/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-teal-500/20 to-cyan-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-600 bg-clip-text text-transparent">
-            Cloud-based Automation & Migration
-          </h1>
-          <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
-            isDark ? 'text-gray-300' : 'text-gray-200'
-          }`}>
-            Harness the power of the cloud with our expert services for cloud-native 
-            automation and seamless migration of your existing workflows.
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div 
+              initial={{ scale: 0 }} 
+              animate={{ scale: 1 }} 
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-8 ${
+                isDark ? 'bg-emerald-500/20 border border-emerald-500/30' : 'bg-emerald-100 border border-emerald-200'
+              }`}
+            >
+              <Cloud className={`w-10 h-10 ${
+                isDark ? 'text-emerald-400' : 'text-emerald-600'
+              }`} />
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              Cloud-based Automation
+              <span className="block bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
+                & Migration
+              </span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className={`text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}
+            >
+              Harness the power of the cloud with our expert services for cloud-native 
+              automation and seamless migration of your existing workflows.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link 
+                to={createPageUrl('demo')}
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Get Started
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link 
+                to={createPageUrl('case-studies')}
+                className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                  isDark 
+                    ? 'border border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500' 
+                    : 'border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400'
+                }`}
+              >
+                View Case Studies
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
       {/* Cloud Automation Benefits */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16 relative"
+        className="relative z-10 py-20"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>
@@ -189,10 +246,10 @@ export default function CloudAutomation() {
                   key={index} 
                   variants={itemVariants}
                   whileHover={{ scale: 1.05 }}
-                  className={`rounded-2xl p-8 border transition-all duration-300 ${
+                  className={`group p-8 rounded-2xl transition-all duration-300 hover:scale-105 ${
                     isDark 
-                      ? 'bg-gray-800/50 border-gray-700/50 hover:border-emerald-500/50' 
-                      : 'bg-white/80 border-gray-200 hover:border-emerald-400/50 shadow-lg'
+                      ? 'bg-gray-800/50 border border-gray-700/50 hover:bg-gray-800/70 hover:border-gray-600' 
+                      : 'bg-white/80 border border-gray-200 hover:bg-white hover:border-gray-300 shadow-lg hover:shadow-xl'
                   }`}
                 >
                   <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6">
@@ -220,7 +277,7 @@ export default function CloudAutomation() {
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
         className="py-16 relative"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className={`text-3xl font-bold mb-6 ${
@@ -280,7 +337,7 @@ export default function CloudAutomation() {
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
         className="py-16 relative"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>
@@ -339,7 +396,7 @@ export default function CloudAutomation() {
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
         className="py-16 relative"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>

@@ -140,49 +140,105 @@ export default function SoftwareDevelopment() {
 
   return (
     <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
-      isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
+      isDark ? 'bg-[--bg] text-[--text-primary]' : 'bg-gray-50 text-gray-900'
     }`}>
-      
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80')`
+          }}
+        />
+        <div className={`absolute inset-0 backdrop-blur-sm ${
+          isDark ? 'bg-gray-900/80' : 'bg-white/85'
+        }`} />
+        
+        {/* Animated gradient elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
       {/* Hero Section */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="pt-20 pb-16 relative overflow-hidden"
+        className="relative z-10 pt-24 pb-20"
       >
-        {/* Background Image with Blur Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" 
-            alt="Software Development Background" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-        </div>
-
-        {/* Animated Gradient Blobs */}
-        <div className="absolute inset-0 z-10">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400/20 to-indigo-600/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
-            Custom Software Development
-          </h1>
-          <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
-            isDark ? 'text-gray-300' : 'text-gray-200'
-          }`}>
-            Bespoke software solutions that are scalable, secure, and tailored 
-            to your unique business requirements.
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div 
+              initial={{ scale: 0 }} 
+              animate={{ scale: 1 }} 
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-8 ${
+                isDark ? 'bg-blue-500/20 border border-blue-500/30' : 'bg-blue-100 border border-blue-200'
+              }`}
+            >
+              <Code className={`w-10 h-10 ${
+                isDark ? 'text-blue-400' : 'text-blue-600'
+              }`} />
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              Custom Software
+              <span className="block bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                Development
+              </span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className={`text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}
+            >
+              Bespoke software solutions that are scalable, secure, and tailored 
+              to your unique business requirements.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link 
+                to={createPageUrl('demo')}
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Get Started
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link 
+                to={createPageUrl('case-studies')}
+                className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                  isDark 
+                    ? 'border border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500' 
+                    : 'border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400'
+                }`}
+              >
+                View Case Studies
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
       {/* Benefits Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16"
+        className="relative z-10 py-20"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>Development Services</h2>
@@ -194,10 +250,10 @@ export default function SoftwareDevelopment() {
                   key={index} 
                   variants={itemVariants}
                   whileHover={{ scale: 1.05 }}
-                  className={`p-6 rounded-2xl border transition-all duration-300 ${
+                  className={`group p-8 rounded-2xl transition-all duration-300 hover:scale-105 ${
                     isDark 
-                      ? 'bg-gray-800/50 border-gray-700 hover:border-blue-500/50' 
-                      : 'bg-white border-gray-200 hover:border-blue-500/50 shadow-lg'
+                      ? 'bg-gray-800/50 border border-gray-700/50 hover:bg-gray-800/70 hover:border-gray-600' 
+                      : 'bg-white/80 border border-gray-200 hover:bg-white hover:border-gray-300 shadow-lg hover:shadow-xl'
                   }`}
                 >
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4">
@@ -221,7 +277,7 @@ export default function SoftwareDevelopment() {
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
         className="py-16"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`rounded-3xl p-12 border ${
             isDark 
               ? 'bg-gray-800/30 border-gray-700' 
@@ -278,7 +334,7 @@ export default function SoftwareDevelopment() {
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
         className="py-16"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>Technology Stack</h2>
@@ -331,7 +387,7 @@ export default function SoftwareDevelopment() {
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
         className="py-16"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>Development Process</h2>

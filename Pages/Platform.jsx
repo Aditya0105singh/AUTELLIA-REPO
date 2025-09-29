@@ -828,29 +828,36 @@ export default function Platform() {
       </motion.section>
 
       {/* Bottom CTA Section */}
-      <section className={`py-16 ${isDark ? 'bg-gray-50' : 'bg-white'}`}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`p-12 rounded-2xl text-center ${isDark ? 'bg-gray-800' : 'bg-gray-50 border border-gray-200'}`}>
-            <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              Ready to Get Started?
-            </h2>
-            <p className={`max-w-2xl mx-auto mb-8 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              Explore a discovery workshop to identify top ROI use cases in 2 weeks 
-              and stand up a pilot in 30–45 days with measurable outcomes.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a
-                href="https://cal.com/autellia-technology-43lknv"
-                className={`px-6 py-3 rounded-lg font-medium ${isDark ? 'bg-indigo-600 hover:bg-indigo-700 text-white' : 'bg-indigo-600 hover:bg-indigo-700 text-white'}`}
-              >
-                Schedule Discovery Workshop
-              </a>
-              <a
-                href="/platform"
-                className={`px-6 py-3 rounded-lg font-medium ${isDark ? 'border border-gray-600 text-gray-200 hover:bg-gray-700/50' : 'border border-gray-300 text-gray-700 hover:bg-gray-100'}`}
-              >
-                Learn About Our Platform
-              </a>
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl">
+            {/* Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-200 via-pink-100 to-indigo-200 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-indigo-900/30" />
+            
+            {/* Content */}
+            <div className="relative z-10 px-8 py-16 md:px-16 md:py-20 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                Ready to Get Started?
+              </h2>
+              <p className="max-w-3xl mx-auto mb-10 text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+                Explore a discovery workshop to identify top ROI use cases in 2 weeks 
+                and stand up a pilot in 30-45 days with measurable outcomes.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a
+                  href="https://cal.com/autellia-technology-43lknv"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  Schedule Discovery Workshop
+                </a>
+                <a
+                  href="/platform"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-gray-700 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white border border-gray-200 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg dark:text-gray-200 dark:bg-gray-800/80 dark:hover:bg-gray-800 dark:border-gray-700"
+                >
+                  Learn About Our Platform
+                </a>
+              </div>
             </div>
           </div>
         </div>
