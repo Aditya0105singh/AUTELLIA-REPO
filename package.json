@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "npx vite build",
-    "postinstall": "chmod +x node_modules/.bin/vite || true",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -38,7 +37,7 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
-    "vite": "5.4.9"
+    "vite": "^7.1.7"
   },
   "engines": {
     "node": ">=18 <23"

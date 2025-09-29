@@ -9,15 +9,7 @@ const ThemeToggle = ({ className = '' }) => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className={`relative w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-        isDark 
-          ? 'bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 focus:ring-purple-500 border-2 border-gray-600' 
-          : 'bg-gradient-to-br from-white to-gray-100 hover:from-gray-50 hover:to-gray-200 focus:ring-yellow-500 border-2 border-gray-300'
-      } ${className} shadow-lg hover:shadow-xl`}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      animate={{ rotate: isDark ? 360 : 0 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className={`relative w-16 h-16 rounded-full flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 ${isDark ? 'bg-gray-800' : 'bg-gray-200'} ${className}`}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       role="switch"
       aria-checked={isDark}
@@ -32,7 +24,7 @@ const ThemeToggle = ({ className = '' }) => {
         }}
         transition={{ duration: 0.3 }}
       >
-        <Sun className={`w-6 h-6 ${
+        <Sun className={`w-10 h-10 ${
           isDark ? 'text-gray-400' : 'text-yellow-500'
         }`} />
       </motion.div>
@@ -47,7 +39,7 @@ const ThemeToggle = ({ className = '' }) => {
         }}
         transition={{ duration: 0.3 }}
       >
-        <Moon className={`w-6 h-6 ${
+        <Moon className={`w-10 h-10 ${
           isDark ? 'text-purple-400' : 'text-gray-400'
         }`} />
       </motion.div>

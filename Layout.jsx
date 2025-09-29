@@ -518,10 +518,18 @@ export default function Layout({ children, currentPageName }) {
               >
                 <button
                   onClick={handleBookDemo}
-                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:shadow-indigo-500/30 text-white font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 touch-manipulation"
+                  className="inline-flex items-center gap-2 px-8 py-4 font-bold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-purple-500/30 touch-manipulation"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
-                  Book a Demo
+                  <span>Book a Demo</span>
+                  <motion.span 
+                    className="text-lg ml-1.5"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                  >
+                    →
+                  </motion.span>
                 </button>
               </motion.div>
             </motion.div>

@@ -8,6 +8,7 @@ import { Timeline } from "../Components/ui/Timeline.jsx";
 import { Grid } from "../Components/ui/grid-pattern.jsx";
 import { useTheme } from "../src/contexts/ThemeContext.jsx";
 import ExploreSolutionModal from "../Components/ui/ExploreSolutionModal.jsx";
+import GetStartedCTA from "../Components/ui/GetStartedCTA";
 // import LazyImage from "../src/components/LazyImage.jsx";
 
 export default function Platform() {
@@ -290,8 +291,15 @@ export default function Platform() {
               className="inline-flex items-center gap-2 px-8 py-4 font-bold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white hover:shadow-purple-500/30 touch-manipulation"
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
-              Explore Solutions
-              <ArrowRight className="w-5 h-5" />
+              <span>Explore Solutions</span>
+              <motion.span 
+                className="text-lg ml-1.5"
+                initial={{ x: 0 }}
+                whileHover={{ x: 5 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+              >
+                →
+              </motion.span>
             </Link>
           </motion.div>
         </div>
@@ -819,41 +827,34 @@ export default function Platform() {
         </div>
       </motion.section>
 
-      
-
-       {/* Bottom CTA Section */}
-      <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className={`py-16 transition-colors duration-500 ${
-          isDark ? 'bg-[--bg]' : 'bg-white border-t border-gray-100'
-        }`}
-        data-aos="fade-up"
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className={`text-3xl font-bold mb-4 transition-colors duration-300 ${
-            isDark ? 'text-white' : 'text-gray-900'
-          }`}>
-            Ready to Get Started?
-          </h2>
-          <p className={`max-w-2xl mx-auto mb-8 transition-colors duration-300 ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            Explore a discovery workshop to identify top ROI use cases in 2 weeks 
-            and stand up a pilot in 30–45 days with measurable outcomes.
-          </p>
-          <button
-            onClick={() => window.location.href = 'https://cal.com/autellia-technology-43lknv'}
-            className={`px-6 py-3 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-md touch-manipulation ${
-              isDark 
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white' 
-                : 'bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white'
-            }`}
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-          >
-            Schedule Discovery Workshop
-          </button>
+      {/* Bottom CTA Section */}
+      <section className={`py-16 ${isDark ? 'bg-gray-50' : 'bg-white'}`}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`p-12 rounded-2xl text-center ${isDark ? 'bg-gray-800' : 'bg-gray-50 border border-gray-200'}`}>
+            <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              Ready to Get Started?
+            </h2>
+            <p className={`max-w-2xl mx-auto mb-8 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+              Explore a discovery workshop to identify top ROI use cases in 2 weeks 
+              and stand up a pilot in 30–45 days with measurable outcomes.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="https://cal.com/autellia-technology-43lknv"
+                className={`px-6 py-3 rounded-lg font-medium ${isDark ? 'bg-indigo-600 hover:bg-indigo-700 text-white' : 'bg-indigo-600 hover:bg-indigo-700 text-white'}`}
+              >
+                Schedule Discovery Workshop
+              </a>
+              <a
+                href="/platform"
+                className={`px-6 py-3 rounded-lg font-medium ${isDark ? 'border border-gray-600 text-gray-200 hover:bg-gray-700/50' : 'border border-gray-300 text-gray-700 hover:bg-gray-100'}`}
+              >
+                Learn About Our Platform
+              </a>
+            </div>
+          </div>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
