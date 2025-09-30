@@ -138,10 +138,14 @@ export default function BlogKnowledgeHub() {
         className="pt-20 pb-16 bg-transparent relative"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className={`text-5xl md:text-6xl font-bold mb-6 ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
             Knowledge Hub
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
+          <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             Stay ahead with the latest insights, best practices, and thought leadership 
             in intelligent automation and AI/ML technologies
           </p>
@@ -154,14 +158,20 @@ export default function BlogKnowledgeHub() {
         className="py-16 bg-transparent"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Featured Articles</h2>
+          <h2 className={`text-3xl font-bold mb-12 text-center ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>Featured Articles</h2>
           
           <div className="grid lg:grid-cols-3 gap-8">
             {featuredArticles.map((article, index) => (
               <motion.article 
                 key={article.id} 
                 variants={itemVariants}
-                className="border border-gray-700 rounded-2xl p-6 hover:shadow-xl hover:shadow-cyan-900/20 transition-all duration-300 hover:border-cyan-500/30"
+                className={`border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 ${
+                  isDark
+                    ? 'border-gray-700 hover:shadow-cyan-900/20 hover:border-cyan-500/30'
+                    : 'border-gray-300 hover:shadow-cyan-200 hover:border-cyan-400 bg-white'
+                }`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs font-medium text-cyan-400">
@@ -173,23 +183,33 @@ export default function BlogKnowledgeHub() {
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-white mb-3 leading-tight">
+                <h3 className={`text-xl font-bold mb-3 leading-tight ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>
                   {article.title}
                 </h3>
                 
-                <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                <p className={`text-sm leading-relaxed mb-4 ${
+                  isDark ? 'text-gray-400' : 'text-gray-600'
+                }`}>
                   {article.excerpt}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {article.tags.map((tag, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-gray-800 border border-gray-700 rounded text-xs text-gray-300">
+                    <span key={idx} className={`px-2 py-1 rounded text-xs ${
+                      isDark
+                        ? 'bg-gray-800 border border-gray-700 text-gray-300'
+                        : 'bg-gray-100 border border-gray-300 text-gray-700'
+                    }`}>
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-700">
+                <div className={`flex items-center justify-between pt-4 border-t ${
+                  isDark ? 'border-gray-700' : 'border-gray-300'
+                }`}>
                   <div className="flex items-center gap-4 text-xs text-gray-500">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
@@ -220,15 +240,25 @@ export default function BlogKnowledgeHub() {
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Categories */}
             <motion.div variants={itemVariants} className="lg:col-span-1">
-              <h3 className="text-xl font-bold text-white mb-6">Categories</h3>
+              <h3 className={`text-xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>Categories</h3>
               <div className="space-y-3">
                 {categories.map((category, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 border border-gray-700 rounded-lg hover:border-gray-600 transition-colors cursor-pointer">
+                  <div key={index} className={`flex items-center justify-between p-3 border rounded-lg transition-colors cursor-pointer ${
+                    isDark
+                      ? 'border-gray-700 hover:border-gray-600'
+                      : 'border-gray-300 hover:border-gray-400 bg-white'
+                  }`}>
                     <div className="flex items-center gap-3">
                       <div className={`w-3 h-3 rounded-full bg-${category.color}-400`}></div>
-                      <span className="text-gray-300">{category.name}</span>
+                      <span className={`${
+                        isDark ? 'text-gray-300' : 'text-gray-700'
+                      }`}>{category.name}</span>
                     </div>
-                    <span className="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">
+                    <span className={`text-xs px-2 py-1 rounded ${
+                      isDark ? 'text-gray-500 bg-gray-800' : 'text-gray-600 bg-gray-100'
+                    }`}>
                       {category.count}
                     </span>
                   </div>
@@ -238,14 +268,24 @@ export default function BlogKnowledgeHub() {
 
             {/* Recent Articles */}
             <motion.div variants={itemVariants} className="lg:col-span-3">
-              <h3 className="text-xl font-bold text-white mb-6">Recent Articles</h3>
+              <h3 className={`text-xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>Recent Articles</h3>
               <div className="space-y-4">
                 {recentArticles.map((article, index) => (
-                  <div key={index} className="border border-gray-700 rounded-lg p-4 hover:border-gray-600 transition-colors cursor-pointer">
+                  <div key={index} className={`border rounded-lg p-4 transition-colors cursor-pointer ${
+                    isDark
+                      ? 'border-gray-700 hover:border-gray-600'
+                      : 'border-gray-300 hover:border-gray-400 bg-white'
+                  }`}>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="px-2 py-1 bg-gray-800 border border-gray-700 rounded text-xs text-gray-400">
+                          <span className={`px-2 py-1 rounded text-xs ${
+                            isDark
+                              ? 'bg-gray-800 border border-gray-700 text-gray-400'
+                              : 'bg-gray-100 border border-gray-300 text-gray-600'
+                          }`}>
                             {article.category}
                           </span>
                           <div className="flex items-center gap-4 text-xs text-gray-500">
@@ -263,7 +303,9 @@ export default function BlogKnowledgeHub() {
                             </div>
                           </div>
                         </div>
-                        <h4 className="text-white font-semibold hover:text-cyan-400 transition-colors">
+                        <h4 className={`font-semibold hover:text-cyan-400 transition-colors ${
+                          isDark ? 'text-white' : 'text-gray-900'
+                        }`}>
                           {article.title}
                         </h4>
                       </div>
@@ -284,8 +326,12 @@ export default function BlogKnowledgeHub() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Additional Resources</h2>
-            <p className="text-xl text-gray-400">Tools and guides to accelerate your automation journey</p>
+            <h2 className={`text-3xl font-bold mb-4 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Additional Resources</h2>
+            <p className={`text-xl ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>Tools and guides to accelerate your automation journey</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -295,9 +341,15 @@ export default function BlogKnowledgeHub() {
                 <motion.div 
                   key={index} 
                   variants={itemVariants}
-                  className="border border-gray-700 rounded-2xl p-6 text-center hover:shadow-xl hover:shadow-cyan-900/20 transition-all duration-300 hover:border-cyan-500/30"
+                  className={`border rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 ${
+                    isDark
+                      ? 'border-gray-700 hover:shadow-cyan-900/20 hover:border-cyan-500/30'
+                      : 'border-gray-300 hover:shadow-cyan-200 hover:border-cyan-400 bg-white'
+                  }`}
                 >
-                  <div className="w-16 h-16 bg-gray-800 border border-gray-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 ${
+                    isDark ? 'bg-gray-800 border border-gray-700' : 'bg-gray-100 border border-gray-300'
+                  }`}>
                     <IconComponent className="w-8 h-8 text-cyan-400" />
                   </div>
                   <div className="mb-2">
@@ -305,8 +357,12 @@ export default function BlogKnowledgeHub() {
                       {resource.type}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-3">{resource.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-4">{resource.description}</p>
+                  <h3 className={`text-lg font-bold mb-3 ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>{resource.title}</h3>
+                  <p className={`text-sm leading-relaxed mb-4 ${
+                    isDark ? 'text-gray-400' : 'text-gray-600'
+                  }`}>{resource.description}</p>
                   <button className="text-cyan-400 hover:text-cyan-300 font-medium text-sm flex items-center gap-1 mx-auto">
                     Access Resource
                     <ArrowRight className="w-3 h-3" />
@@ -324,16 +380,28 @@ export default function BlogKnowledgeHub() {
         className="py-16 bg-transparent"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="border border-gray-700 rounded-3xl p-12 text-white hover:shadow-xl hover:shadow-blue-900/20 transition-all duration-300">
-            <h2 className="text-3xl font-bold mb-6">Stay Updated</h2>
-            <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+          <div className={`border rounded-3xl p-12 hover:shadow-xl transition-all duration-300 ${
+            isDark
+              ? 'border-gray-700 text-white hover:shadow-blue-900/20'
+              : 'border-gray-300 text-gray-900 hover:shadow-blue-200 bg-white'
+          }`}>
+            <h2 className={`text-3xl font-bold mb-6 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Stay Updated</h2>
+            <p className={`text-xl mb-8 leading-relaxed ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               Subscribe to our newsletter for the latest insights, case studies, and automation trends delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <input 
                 type="email" 
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500"
+                className={`flex-1 px-4 py-3 rounded-lg focus:outline-none focus:border-cyan-500 ${
+                  isDark
+                    ? 'bg-gray-800 border border-gray-600 text-white placeholder-gray-400'
+                    : 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500'
+                }`}
               />
               <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105">
                 Subscribe

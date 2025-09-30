@@ -168,15 +168,25 @@ export default function Careers() {
         className="py-16 bg-transparent relative z-10"
       >
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="border border-[--border] bg-[--surface] rounded-3xl p-12 text-center">
-            <h2 className="text-3xl font-bold text-[--text-primary] mb-6">Shape the Future of Work</h2>
-            <p className="text-lg text-[--text-muted] leading-relaxed mb-8">
+          <div className={`border rounded-3xl p-12 text-center ${
+            isDark
+              ? 'border-gray-700 bg-gray-800/50'
+              : 'border-indigo-200 bg-gradient-to-br from-indigo-50 to-purple-50'
+          }`}>
+            <h2 className={`text-3xl font-bold mb-6 ${
+              isDark ? 'text-white' : 'text-indigo-900'
+            }`}>Shape the Future of Work</h2>
+            <p className={`text-lg leading-relaxed mb-8 ${
+              isDark ? 'text-gray-400' : 'text-indigo-700'
+            }`}>
               At Autellia, we're building the next generation of autonomous enterprise solutions. Our team combines 
               deep technical expertise with business acumen to deliver transformational outcomes for leading organizations 
               worldwide. Join us in revolutionizing how businesses operate through intelligent automation, agentic AI, 
               and data-driven insights.
             </p>
-            <p className="text-lg text-[--text-muted] leading-relaxed">
+            <p className={`text-lg leading-relaxed ${
+              isDark ? 'text-gray-400' : 'text-indigo-600'
+            }`}>
               We're looking for passionate individuals who thrive in a collaborative, innovation-driven environment 
               and want to make a meaningful impact on the future of enterprise operations.
             </p>
@@ -190,17 +200,29 @@ export default function Careers() {
         className="py-16 bg-transparent relative z-10"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[--text-primary] mb-12 text-center">Our Values & Culture</h2>
+          <h2 className={`text-3xl font-bold mb-12 text-center ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>Our Values & Culture</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
-                <motion.div key={index} variants={itemVariants} className="rounded-2xl p-8 border border-[--border] bg-[--surface] text-center hover:border-[--accent]/50 hover:shadow-[var(--shadow)] transition-all duration-300 relative overflow-hidden">
-                  <div className="w-12 h-12 bg-[--panel] border border-[--border] rounded-xl flex items-center justify-center mx-auto mb-6 relative z-10">
-                    <IconComponent className="w-6 h-6 text-[--accent]" />
+                <motion.div key={index} variants={itemVariants} className={`rounded-2xl p-8 border text-center transition-all duration-300 relative overflow-hidden transform hover:-translate-y-1 hover:shadow-xl ${
+                  isDark
+                    ? 'border-gray-700 bg-gray-800/50 hover:border-cyan-500/50'
+                    : 'border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 hover:border-purple-300'
+                }`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 relative z-10 ${
+                    isDark ? 'bg-gray-700 border border-gray-600' : 'bg-gradient-to-br from-indigo-100 to-purple-100 border border-indigo-200'
+                  }`}>
+                    <IconComponent className={`w-6 h-6 ${isDark ? 'text-cyan-400' : 'text-indigo-600'}`} />
                   </div>
-                  <h3 className="text-lg font-bold text-[--text-primary] mb-4 relative z-10">{value.title}</h3>
-                  <p className="text-[--text-muted] leading-relaxed text-sm relative z-10">{value.description}</p>
+                  <h3 className={`text-lg font-bold mb-4 relative z-10 ${
+                    isDark ? 'text-white' : 'text-indigo-900'
+                  }`}>{value.title}</h3>
+                  <p className={`leading-relaxed text-sm relative z-10 ${
+                    isDark ? 'text-gray-400' : 'text-indigo-600'
+                  }`}>{value.description}</p>
                 </motion.div>
               );
             })}
@@ -483,7 +505,9 @@ export default function Careers() {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                  <label htmlFor="name" className={`block text-sm font-semibold mb-2 ${
+                    isDark ? 'text-gray-300' : 'text-gray-700'
+                  }`}>
                     Full Name *
                   </label>
                   <input
@@ -493,12 +517,18 @@ export default function Careers() {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-[--border] bg-[--panel] text-[--text-primary] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200 placeholder-[--text-muted]"
+                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 ${
+                      isDark
+                        ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400'
+                        : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500'
+                    }`}
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                  <label htmlFor="email" className={`block text-sm font-semibold mb-2 ${
+                    isDark ? 'text-gray-300' : 'text-gray-700'
+                  }`}>
                     Email Address *
                   </label>
                   <input
@@ -508,14 +538,20 @@ export default function Careers() {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-[--border] bg-[--panel] text-[--text-primary] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200 placeholder-[--text-muted]"
+                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 ${
+                      isDark
+                        ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400'
+                        : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500'
+                    }`}
                     placeholder="john@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="resume" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                <label htmlFor="resume" className={`block text-sm font-semibold mb-2 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
                   Resume/LinkedIn URL
                 </label>
                 <input
@@ -524,13 +560,19 @@ export default function Careers() {
                   name="resume"
                   value={formData.resume}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-[--border] bg-[--panel] text-[--text-primary] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200 placeholder-[--text-muted]"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 ${
+                    isDark
+                      ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400'
+                      : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500'
+                  }`}
                   placeholder="https://linkedin.com/in/yourprofile or resume URL"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-[--text-primary] mb-2">
+                <label htmlFor="message" className={`block text-sm font-semibold mb-2 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
                   Tell Us About Yourself *
                 </label>
                 <textarea
@@ -540,7 +582,11 @@ export default function Careers() {
                   rows={5}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-[--border] bg-[--panel] text-[--text-primary] rounded-xl focus:ring-2 focus:ring-[--accent] focus:border-transparent transition-all duration-200 resize-none placeholder-[--text-muted]"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 resize-none ${
+                    isDark
+                      ? 'border-gray-600 bg-gray-700 text-white placeholder-gray-400'
+                      : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500'
+                  }`}
                   placeholder="Share your experience, interests, and why you'd like to join Autellia..."
                 />
               </div>

@@ -49,10 +49,14 @@ export default function Demo() {
       {/* Hero Section */}
       <section className="pt-16 lg:pt-20 pb-12 lg:pb-16 bg-transparent backdrop-blur-sm relative z-10" role="banner">
         <div className="container-responsive text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 lg:mb-6 text-[--text-primary] text-high-contrast">
+          <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 lg:mb-6 text-high-contrast ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
             Book a Demo
           </h1>
-          <p className="text-xl text-[--text-muted] leading-relaxed max-w-3xl mx-auto">
+          <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             Schedule a strategy session to accelerate your automation journey
           </p>
         </div>
@@ -61,18 +65,30 @@ export default function Demo() {
       {/* Introduction */}
       <section className="py-16 bg-transparent backdrop-blur-sm relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-[--border] bg-[--surface] rounded-3xl p-12 text-center shadow-[var(--shadow)]">
-            <div className="w-16 h-16 bg-[--panel] border border-[--border] rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Calendar className="w-8 h-8 text-[--accent]" />
+          <div className={`border rounded-3xl p-12 text-center shadow-lg ${
+            isDark
+              ? 'border-gray-700 bg-gray-800/50'
+              : 'border-gray-200 bg-white'
+          }`}>
+            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
+              isDark ? 'bg-gray-700 border border-gray-600' : 'bg-gray-100 border border-gray-200'
+            }`}>
+              <Calendar className={`w-8 h-8 ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`} />
             </div>
-            <h2 className="text-3xl font-bold text-[--text-primary] mb-6">Discovery Workshop & Strategy Session</h2>
-            <p className="text-lg text-[--text-muted] leading-relaxed mb-8">
+            <h2 className={`text-3xl font-bold mb-6 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Discovery Workshop & Strategy Session</h2>
+            <p className={`text-lg leading-relaxed mb-8 ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               Book a comprehensive strategy session where we'll work together to scope your automation roadmap, 
               design the optimal Center of Excellence (CoE) model, and guide platform choices that align with 
               your business objectives. Our proven methodology helps identify high-impact use cases and establish 
               a foundation for scalable automation success.
             </p>
-            <p className="text-lg text-[--text-muted] leading-relaxed">
+            <p className={`text-lg leading-relaxed ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               In this collaborative session, we'll assess your current state, define target outcomes, 
               and create a tactical plan to achieve measurable ROI within the first 90 days.
             </p>
@@ -83,17 +99,29 @@ export default function Demo() {
       {/* Benefits */}
       <section className="py-16 bg-transparent backdrop-blur-sm relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[--text-primary] mb-12 text-center">What You'll Get</h2>
+          <h2 className={`text-3xl font-bold mb-12 text-center ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>What You'll Get</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
-                <div key={index} className="border border-[--border] bg-[--surface] rounded-2xl p-8 shadow-[var(--shadow)] text-center hover:border-[--accent]/30 hover:shadow-[var(--shadow)] transition-all duration-300">
-                  <div className="w-12 h-12 bg-[--panel] border border-[--border] rounded-xl flex items-center justify-center mx-auto mb-6">
-                    <IconComponent className="w-6 h-6 text-[--accent]" />
+                <div key={index} className={`border rounded-2xl p-8 shadow-lg text-center transition-all duration-300 ${
+                  isDark
+                    ? 'border-gray-700 bg-gray-800/50 hover:border-cyan-500/30'
+                    : 'border-gray-200 bg-white hover:border-cyan-400'
+                }`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 ${
+                    isDark ? 'bg-gray-700 border border-gray-600' : 'bg-gray-100 border border-gray-200'
+                  }`}>
+                    <IconComponent className={`w-6 h-6 ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`} />
                   </div>
-                  <h3 className="text-xl font-bold text-[--text-primary] mb-4">{benefit.title}</h3>
-                  <p className="text-[--text-muted] leading-relaxed">{benefit.description}</p>
+                  <h3 className={`text-xl font-bold mb-4 ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>{benefit.title}</h3>
+                  <p className={`leading-relaxed ${
+                    isDark ? 'text-gray-400' : 'text-gray-600'
+                  }`}>{benefit.description}</p>
                 </div>
               );
             })}
@@ -104,39 +132,65 @@ export default function Demo() {
       {/* Process Timeline */}
       <section className="py-16 bg-transparent backdrop-blur-sm relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[--text-primary] mb-12 text-center">Our Process</h2>
+          <h2 className={`text-3xl font-bold mb-12 text-center ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>Our Process</h2>
           <div className="space-y-8">
-            <div className="flex items-start gap-6 p-6 border border-[--border] bg-[--surface] rounded-xl shadow-[var(--shadow)]">
-              <div className="w-12 h-12 bg-[--accent] rounded-full flex items-center justify-center flex-shrink-0">
+            <div className={`flex items-start gap-6 p-6 border rounded-xl shadow-lg ${
+              isDark
+                ? 'border-gray-700 bg-gray-800/50'
+                : 'border-gray-200 bg-white'
+            }`}>
+              <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-bold">1</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[--text-primary] mb-2">Initial Consultation (Week 1)</h3>
-                <p className="text-[--text-muted] leading-relaxed">
+                <h3 className={`text-xl font-bold mb-2 ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>Initial Consultation (Week 1)</h3>
+                <p className={`leading-relaxed ${
+                  isDark ? 'text-gray-400' : 'text-gray-600'
+                }`}>
                   Deep-dive assessment of your current processes, pain points, and automation readiness. 
                   We'll identify quick wins and long-term opportunities.
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-6 p-6 border border-[--border] bg-[--surface] rounded-xl shadow-[var(--shadow)]">
-              <div className="w-12 h-12 bg-[--accent] rounded-full flex items-center justify-center flex-shrink-0">
+            <div className={`flex items-start gap-6 p-6 border rounded-xl shadow-lg ${
+              isDark
+                ? 'border-gray-700 bg-gray-800/50'
+                : 'border-gray-200 bg-white'
+            }`}>
+              <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-bold">2</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[--text-primary] mb-2">Process Analysis & Use Case Prioritization (Week 2)</h3>
-                <p className="text-[--text-muted] leading-relaxed">
+                <h3 className={`text-xl font-bold mb-2 ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>Process Analysis & Use Case Prioritization (Week 2)</h3>
+                <p className={`leading-relaxed ${
+                  isDark ? 'text-gray-400' : 'text-gray-600'
+                }`}>
                   Detailed process mapping and ROI analysis to prioritize use cases by business impact, 
                   technical feasibility, and implementation timeline.
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-6 p-6 border border-[--border] bg-[--surface] rounded-xl shadow-[var(--shadow)]">
-              <div className="w-12 h-12 bg-[--accent] rounded-full flex items-center justify-center flex-shrink-0">
+            <div className={`flex items-start gap-6 p-6 border rounded-xl shadow-lg ${
+              isDark
+                ? 'border-gray-700 bg-gray-800/50'
+                : 'border-gray-200 bg-white'
+            }`}>
+              <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-bold">3</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[--text-primary] mb-2">Pilot Development & Launch (Weeks 3-6)</h3>
-                <p className="text-[--text-muted] leading-relaxed">
+                <h3 className={`text-xl font-bold mb-2 ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>Pilot Development & Launch (Weeks 3-6)</h3>
+                <p className={`leading-relaxed ${
+                  isDark ? 'text-gray-400' : 'text-gray-600'
+                }`}>
                   Rapid development and deployment of your first automation pilot with clear success metrics 
                   and governance framework in place.
                 </p>
@@ -149,13 +203,23 @@ export default function Demo() {
       {/* Contact Form */}
       <section className="py-16 bg-transparent backdrop-blur-sm relative z-10">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-[--border] bg-[--surface] rounded-3xl p-12 shadow-[var(--shadow)]">
+          <div className={`border rounded-3xl p-12 shadow-lg ${
+            isDark
+              ? 'border-gray-700 bg-gray-800/50'
+              : 'border-gray-200 bg-white'
+          }`}>
             <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-[--panel] border border-[--border] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Send className="w-8 h-8 text-[--accent]" />
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
+                isDark ? 'bg-gray-700 border border-gray-600' : 'bg-gray-100 border border-gray-200'
+              }`}>
+                <Send className={`w-8 h-8 ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`} />
               </div>
-              <h2 className="text-3xl font-bold text-[--text-primary] mb-4">Let's Get Started</h2>
-              <p className="text-[--text-muted] leading-relaxed">
+              <h2 className={`text-3xl font-bold mb-4 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>Let's Get Started</h2>
+              <p className={`leading-relaxed ${
+                isDark ? 'text-gray-400' : 'text-gray-600'
+              }`}>
                 Schedule your discovery workshop and take the first step toward autonomous operations.
               </p>
             </div>
@@ -169,7 +233,9 @@ export default function Demo() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-[--text-primary] mb-2">
+                  <label htmlFor="name" className={`block text-sm font-medium mb-2 ${
+                    isDark ? 'text-gray-300' : 'text-gray-700'
+                  }`}>
                     Full Name *
                   </label>
                   <input
@@ -178,14 +244,20 @@ export default function Demo() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[44px]"
+                    className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 min-h-[44px] ${
+                      isDark
+                        ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:border-cyan-500'
+                        : 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-cyan-500'
+                    }`}
                     placeholder="Enter your full name"
                     required
                     aria-required="true"
                   />
                 </div>
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-[--text-primary] mb-2">
+                  <label htmlFor="company" className={`block text-sm font-medium mb-2 ${
+                    isDark ? 'text-gray-300' : 'text-gray-700'
+                  }`}>
                     Company *
                   </label>
                   <input
@@ -194,7 +266,11 @@ export default function Demo() {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[44px]"
+                    className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 min-h-[44px] ${
+                      isDark
+                        ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:border-cyan-500'
+                        : 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-cyan-500'
+                    }`}
                     placeholder="Enter your company name"
                     required
                     aria-required="true"
@@ -203,7 +279,9 @@ export default function Demo() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[--text-primary] mb-2">
+                <label htmlFor="email" className={`block text-sm font-medium mb-2 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
                   Email Address *
                 </label>
                 <input
@@ -212,7 +290,11 @@ export default function Demo() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[44px]"
+                  className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 min-h-[44px] ${
+                    isDark
+                      ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:border-cyan-500'
+                      : 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-cyan-500'
+                  }`}
                   placeholder="Enter your email address"
                   required
                   aria-required="true"
@@ -220,7 +302,9 @@ export default function Demo() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-[--text-primary] mb-2">
+                <label htmlFor="message" className={`block text-sm font-medium mb-2 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
                   Tell Us About Your Automation Goals *
                 </label>
                 <textarea
@@ -228,7 +312,11 @@ export default function Demo() {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[--panel] border border-[--border] rounded-lg text-[--text-primary] placeholder-[--text-muted] focus:border-[--accent] focus:ring-2 focus:ring-[--accent]/20 transition-all duration-200 min-h-[120px]"
+                  className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 min-h-[120px] ${
+                    isDark
+                      ? 'bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:border-cyan-500'
+                      : 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-cyan-500'
+                  }`}
                   placeholder="Describe your current challenges, automation goals, and what you'd like to achieve..."
                   required
                   aria-required="true"

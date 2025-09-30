@@ -134,10 +134,14 @@ export default function CallToAction() {
         className="pt-20 pb-16 bg-transparent relative"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className={`text-5xl md:text-6xl font-bold mb-6 ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
             Ready to Transform Your Business?
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
+          <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
+            isDark ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             Take the next step towards intelligent automation. Choose how you'd like to get started 
             with Autellia's enterprise automation solutions.
           </p>
@@ -157,47 +161,69 @@ export default function CallToAction() {
                 <motion.div 
                   key={index} 
                   variants={itemVariants}
-                  className={`rounded-3xl p-8 border transition-all duration-300 hover:shadow-xl ${
-                    option.primary 
-                      ? 'border-cyan-500/50 bg-cyan-900/10 hover:shadow-cyan-900/20' 
-                      : 'border-gray-700 hover:border-cyan-500/30 hover:shadow-cyan-900/10'
+                  className={`rounded-3xl p-8 border transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2 ${
+                    isDark
+                      ? option.primary 
+                        ? 'border-cyan-500/50 bg-cyan-900/10 hover:shadow-cyan-900/20' 
+                        : 'border-gray-700 hover:border-cyan-500/30 hover:shadow-cyan-900/10'
+                      : option.primary
+                        ? 'border-cyan-500/30 bg-white hover:shadow-cyan-200'
+                        : 'border-gray-300 hover:border-cyan-400 hover:shadow-lg bg-white'
                   }`}
                 >
                   <div className="text-center mb-8">
                     <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
-                      option.primary ? 'bg-cyan-500/20 border border-cyan-500/30' : 'bg-gray-800 border border-gray-700'
+                      isDark
+                        ? option.primary ? 'bg-cyan-500/20 border border-cyan-500/30' : 'bg-gray-800 border border-gray-700'
+                        : option.primary ? 'bg-cyan-100 border border-cyan-300' : 'bg-gray-100 border border-gray-300'
                     }`}>
-                      <IconComponent className={`w-8 h-8 ${option.primary ? 'text-cyan-400' : 'text-gray-400'}`} />
+                      <IconComponent className={`w-8 h-8 ${
+                        isDark
+                          ? option.primary ? 'text-cyan-400' : 'text-gray-400'
+                          : option.primary ? 'text-cyan-600' : 'text-gray-600'
+                      }`} />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">{option.title}</h3>
-                    <p className="text-gray-400 leading-relaxed mb-6">{option.description}</p>
+                    <h3 className={`text-2xl font-bold mb-4 ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>{option.title}</h3>
+                    <p className={`leading-relaxed mb-6 ${
+                      isDark ? 'text-gray-400' : 'text-gray-600'
+                    }`}>{option.description}</p>
                   </div>
 
                   <div className="space-y-3 mb-8">
                     {option.benefits.map((benefit, idx) => (
                       <div key={idx} className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                        <span className="text-gray-300 text-sm">{benefit}</span>
+                        <span className={`text-sm ${
+                          isDark ? 'text-gray-300' : 'text-gray-700'
+                        }`}>{benefit}</span>
                       </div>
                     ))}
                   </div>
 
-                  {option.primary ? (
-                    <Link 
-                      to={createPageUrl(option.buttonLink)} 
-                      className="relative inline-flex h-12 w-full overflow-hidden rounded-xl p-[1px] focus:outline-none group"
-                    >
-                      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#1e293b_50%,#06b6d4_100%)]" />
-                      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white backdrop-blur-3xl gap-2">
+                  <div className="flex justify-center">
+                    {option.primary ? (
+                      <Link 
+                        to={createPageUrl(option.buttonLink)} 
+                        className="relative inline-flex h-12 w-full max-w-xs overflow-hidden rounded-xl p-[1px] focus:outline-none group"
+                      >
+                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#1e293b_50%,#06b6d4_100%)]" />
+                        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white backdrop-blur-3xl gap-2">
+                          {option.buttonText}
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </span>
+                      </Link>
+                    ) : (
+                      <button className={`w-full max-w-xs px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 ${
+                        isDark
+                          ? 'bg-gray-700/50 border border-gray-600 text-gray-200 hover:bg-gray-600/50 hover:border-gray-500'
+                          : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200 hover:border-gray-400'
+                      }`}>
                         {option.buttonText}
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </span>
-                    </Link>
-                  ) : (
-                    <button className="w-full bg-gray-700/50 border border-gray-600 text-gray-200 px-6 py-3 rounded-xl font-semibold text-sm hover:bg-gray-600/50 hover:border-gray-500 transition-all duration-300 transform hover:scale-105">
-                      {option.buttonText}
-                    </button>
-                  )}
+                      </button>
+                    )}
+                  </div>
                 </motion.div>
               );
             })}
@@ -212,8 +238,12 @@ export default function CallToAction() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Proven Process</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <h2 className={`text-3xl font-bold mb-4 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Our Proven Process</h2>
+            <p className={`text-xl max-w-3xl mx-auto ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               From initial assessment to ongoing optimization, we guide you through every step of your automation journey
             </p>
           </div>
@@ -222,17 +252,24 @@ export default function CallToAction() {
             {processSteps.map((step, index) => {
               const IconComponent = step.icon;
               return (
-                <motion.div key={index} variants={itemVariants} className="text-center">
-                  <div className="relative mb-6">
-                    <div className="w-16 h-16 bg-gray-800 border border-gray-700 rounded-2xl flex items-center justify-center mx-auto">
+                <motion.div key={index} variants={itemVariants} className={`text-center p-6 rounded-2xl border transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 ${
+                  isDark
+                    ? 'border-gray-700 bg-gray-800/50 hover:border-cyan-500/30'
+                    : 'border-gray-200 bg-white hover:border-cyan-400 shadow-sm'
+                }`}>
+                  <div className="mb-6">
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto ${
+                      isDark ? 'bg-gray-800 border border-gray-700' : 'bg-gray-100 border border-gray-300'
+                    }`}>
                       <IconComponent className="w-8 h-8 text-cyan-400" />
                     </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-xs font-bold text-white">
-                      {step.step}
-                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+                  <h3 className={`text-lg font-bold mb-3 ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>{step.title}</h3>
+                  <p className={`text-sm leading-relaxed ${
+                    isDark ? 'text-gray-400' : 'text-gray-600'
+                  }`}>{step.description}</p>
                 </motion.div>
               );
             })}
@@ -247,8 +284,12 @@ export default function CallToAction() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-gray-400">Real results from real enterprises</p>
+            <h2 className={`text-3xl font-bold mb-4 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>What Our Clients Say</h2>
+            <p className={`text-xl ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>Real results from real enterprises</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -256,7 +297,11 @@ export default function CallToAction() {
               <motion.div 
                 key={index} 
                 variants={itemVariants}
-                className="border border-gray-700 rounded-2xl p-6 hover:shadow-xl hover:shadow-cyan-900/20 transition-all duration-300"
+                className={`border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 ${
+                  isDark 
+                    ? 'border-gray-700 hover:shadow-cyan-900/20' 
+                    : 'border-gray-300 hover:shadow-cyan-200 bg-white'
+                }`}
               >
                 <div className="mb-4">
                   <div className="flex text-cyan-400 mb-3">
@@ -266,12 +311,22 @@ export default function CallToAction() {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-gray-300 italic leading-relaxed">"{testimonial.quote}"</p>
+                  <p className={`italic leading-relaxed ${
+                    isDark ? 'text-gray-300' : 'text-gray-700'
+                  }`}>"{testimonial.quote}"</p>
                 </div>
-                <div className="border-t border-gray-700 pt-4">
-                  <div className="font-semibold text-white">{testimonial.author}</div>
-                  <div className="text-sm text-gray-400">{testimonial.title}</div>
-                  <div className="text-xs text-gray-500">{testimonial.company}</div>
+                <div className={`border-t pt-4 ${
+                  isDark ? 'border-gray-700' : 'border-gray-300'
+                }`}>
+                  <div className={`font-semibold ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>{testimonial.author}</div>
+                  <div className={`text-sm ${
+                    isDark ? 'text-gray-400' : 'text-gray-600'
+                  }`}>{testimonial.title}</div>
+                  <div className={`text-xs ${
+                    isDark ? 'text-gray-500' : 'text-gray-500'
+                  }`}>{testimonial.company}</div>
                 </div>
               </motion.div>
             ))}
@@ -285,9 +340,17 @@ export default function CallToAction() {
         className="py-16 bg-transparent"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="border border-gray-700 rounded-3xl p-12 text-white hover:shadow-xl hover:shadow-blue-900/20 transition-all duration-300">
-            <h2 className="text-3xl font-bold mb-6">Don't Wait - Start Your Transformation Today</h2>
-            <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+          <div className={`border rounded-3xl p-12 hover:shadow-xl transition-all duration-300 ${
+            isDark 
+              ? 'border-gray-700 text-white hover:shadow-blue-900/20' 
+              : 'border-gray-300 text-gray-900 hover:shadow-blue-200 bg-white'
+          }`}>
+            <h2 className={`text-3xl font-bold mb-6 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Don't Wait - Start Your Transformation Today</h2>
+            <p className={`text-xl mb-8 leading-relaxed ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
               Join the hundreds of enterprises already benefiting from intelligent automation. 
               Your competitors are already moving - don't get left behind.
             </p>
