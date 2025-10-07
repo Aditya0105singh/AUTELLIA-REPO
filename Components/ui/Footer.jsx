@@ -9,6 +9,7 @@ import {
   ShoppingCart,
   Linkedin,
   Youtube,
+  Instagram,
   Mail,
   Phone,
   MapPin
@@ -57,6 +58,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, url: 'https://www.linkedin.com/company/autellia/', label: 'LinkedIn' },
     { icon: Youtube, url: 'https://youtube.com/@autellia-technology', label: 'YouTube' },
+    { icon: Instagram, url: 'https://www.instagram.com/autelliatechnology?igsh=MTF2eW5nYTJsbWRsNw==', label: 'Instagram' },
     { icon: XIcon, url: 'https://x.com/autellia_tech', label: 'X (formerly Twitter)' }
   ];
 
@@ -242,10 +244,10 @@ const Footer = () => {
               >
                 <Mail className="w-4 h-4 text-gray-400 flex-shrink-0 group-hover:text-pink-400 transition-colors duration-300" />
                 <a 
-                  href="mailto:autelliatechnology@gmail.com"
+                  href="mailto:support@autellia.com"
                   className="text-gray-400 hover:text-[#7c3aed] transition-colors duration-300 text-sm leading-relaxed"
                 >
-                  autelliatechnology@gmail.com
+                  support@autellia.com
                 </a>
               </motion.li>
               <motion.li 
@@ -265,7 +267,7 @@ const Footer = () => {
               >
                 <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0 group-hover:text-pink-400 transition-colors duration-300" />
                 <span className="text-gray-400 text-sm leading-relaxed">
-                  Silicon Valley, CA
+                  Gurugram, Haryana, India
                 </span>
               </motion.li>
             </ul>
