@@ -12,6 +12,9 @@ export default function SoftwareDevelopment() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
+
+  // Fallback for reduced motion
+  const shouldReduceMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -19,14 +22,18 @@ export default function SoftwareDevelopment() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.3
+        delayChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
   };
 
   const benefits = [
@@ -140,7 +147,7 @@ export default function SoftwareDevelopment() {
 
   return (
     <div className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${
-      isDark ? 'bg-[--bg] text-[--text-primary]' : 'bg-gray-50 text-gray-900'
+      isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
     }`}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 overflow-hidden">
@@ -151,7 +158,7 @@ export default function SoftwareDevelopment() {
           }}
         />
         <div className={`absolute inset-0 backdrop-blur-sm ${
-          isDark ? 'bg-gray-900/80' : 'bg-white/85'
+          isDark ? 'bg-gray-900/85' : 'bg-white/85'
         }`} />
         
         {/* Animated gradient elements */}
@@ -235,8 +242,8 @@ export default function SoftwareDevelopment() {
 
       {/* Benefits Section */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="relative z-10 py-20"
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={containerVariants}
+        className="relative z-20 py-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
@@ -274,8 +281,8 @@ export default function SoftwareDevelopment() {
 
       {/* Strategic Overview */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
-        className="py-16"
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeIn}
+        className="relative z-20 py-16"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`rounded-3xl p-12 border ${
@@ -331,8 +338,8 @@ export default function SoftwareDevelopment() {
 
       {/* Technology Stack */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16"
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={containerVariants}
+        className="relative z-20 py-16"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
@@ -384,8 +391,8 @@ export default function SoftwareDevelopment() {
 
       {/* Development Process Timeline */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16"
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={containerVariants}
+        className="relative z-20 py-16"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
@@ -428,8 +435,8 @@ export default function SoftwareDevelopment() {
 
       {/* Expected Results */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
-        className="py-16"
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeIn}
+        className="relative z-20 py-16"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center ${
@@ -464,8 +471,8 @@ export default function SoftwareDevelopment() {
 
       {/* CTA Section */}
       <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
-        className="py-16 relative overflow-hidden"
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeIn}
+        className="py-16 relative z-20 overflow-hidden"
       >
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20"></div>

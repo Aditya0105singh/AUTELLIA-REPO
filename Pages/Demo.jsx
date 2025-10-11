@@ -49,7 +49,7 @@ export default function Demo() {
       {/* Hero Section */}
       <section className="pt-16 lg:pt-20 pb-12 lg:pb-16 bg-transparent backdrop-blur-sm relative z-10" role="banner">
         <div className="container-responsive text-center">
-          <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 lg:mb-6 text-high-contrast ${
+          <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 lg:mb-6 ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>
             Book a Demo

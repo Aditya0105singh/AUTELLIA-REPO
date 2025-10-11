@@ -9,6 +9,7 @@ import { Grid } from "../Components/ui/grid-pattern.jsx";
 import { useTheme } from "../src/contexts/ThemeContext.jsx";
 import ExploreSolutionModal from "../Components/ui/ExploreSolutionModal.jsx";
 import GetStartedCTA from "../Components/ui/GetStartedCTA";
+import TestimonialCarousel from "../Components/TestimonialCarousel.jsx";
 // import LazyImage from "../src/components/LazyImage.jsx";
 
 export default function Platform() {
@@ -767,64 +768,38 @@ export default function Platform() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Client Reviews - Testimonial Carousel Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className={`py-16 transition-colors duration-500 ${
-          isDark ? 'bg-[--bg]' : 'bg-white'
+        className={`py-20 transition-colors duration-500 relative overflow-hidden ${
+          isDark ? 'bg-gradient-to-b from-[--bg] via-gray-900/50 to-[--bg]' : 'bg-gradient-to-b from-gray-50 via-white to-gray-50'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className={`text-4xl font-bold mb-4 transition-colors duration-300 ${
-              isDark ? 'text-[--text-primary]' : 'text-gray-900'
-            }`}>What Our Clients Say</h2>
-          </div>
-          
-          {/* Clean White Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                text: "Autellia's RPA bots handle our entire order-to-cash process. The reliability and accuracy are exceptional.",
-                name: "David Park",
-                title: "Operations Manager, RetailPlus",
-              },
-              {
-                text: "The process optimization consulting helped us identify bottlenecks we didn't know existed. ROI was achieved in just 6 weeks.",
-                name: "Lisa Thompson",
-                title: "Process Excellence Lead, HealthCare United",
-              },
-              {
-                text: "Autellia transformed our operations with intelligent automation. We achieved 80% cost reduction in our invoice processing within 3 months.",
-                name: "Sarah Johnson",
-                title: "CFO, Global Manufacturing Corp",
-              },
-            ].map((testimonial, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className={`p-6 rounded-xl transition-all duration-300 hover:shadow-lg ${
-                  isDark 
-                    ? 'bg-gradient-to-br from-[--surface] to-[--panel] border border-[--border] hover:border-[--accent]/40'
-                    : 'bg-white border border-gray-100 shadow-md hover:shadow-lg'
-                }`}
-              >
-                <p className={`text-lg italic mb-4 transition-colors duration-300 ${
-                  isDark ? 'text-[--text-muted]' : 'text-gray-700'
-                }`}>"{testimonial.text}"</p>
-                <div className={`font-semibold transition-colors duration-300 ${
-                  isDark ? 'text-[--text-primary]' : 'text-gray-900'
-                }`}>{testimonial.name}</div>
-                <div className={`text-sm transition-colors duration-300 ${
-                  isDark ? 'text-[--text-muted]' : 'text-gray-500'
-                }`}>{testimonial.title}</div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Section Header */}
+        <div className="text-center mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 transition-colors duration-300 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>
+              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                Client Success Stories
+              </span>
+            </h2>
+            <p className={`text-lg max-w-2xl mx-auto ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
+              Discover how leading enterprises transform their operations with our intelligent automation solutions
+            </p>
+          </motion.div>
         </div>
+        
+        {/* Testimonial Carousel */}
+        <TestimonialCarousel />
       </motion.section>
 
       {/* Bottom CTA Section */}

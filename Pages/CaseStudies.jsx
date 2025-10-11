@@ -99,7 +99,7 @@ export default function CaseStudies() {
       {/* Hero Section */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="pt-20 pb-16 bg-transparent relative"
+        className="pt-16 sm:pt-20 pb-16 bg-transparent relative"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className={`text-5xl md:text-6xl font-bold mb-6 transition-colors duration-300 ${
@@ -122,7 +122,7 @@ export default function CaseStudies() {
         className="py-16 bg-transparent"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {metrics.map((metric, index) => {
               const IconComponent = metric.icon;
               return (

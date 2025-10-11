@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from '../Layout.jsx'
 import { ThemeProvider } from './contexts/ThemeContext.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 // Import Pages
 import Platform from '../Pages/Platform.jsx'
@@ -31,6 +32,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout><Platform /></Layout>} />
           <Route path="/platform" element={<Layout><Platform /></Layout>} />

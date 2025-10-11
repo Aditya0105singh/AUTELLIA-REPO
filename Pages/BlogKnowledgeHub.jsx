@@ -135,7 +135,7 @@ export default function BlogKnowledgeHub() {
       {/* Hero Section */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="pt-20 pb-16 bg-transparent relative"
+        className="pt-16 sm:pt-20 pb-16 bg-transparent relative"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className={`text-5xl md:text-6xl font-bold mb-6 ${
@@ -162,7 +162,7 @@ export default function BlogKnowledgeHub() {
             isDark ? 'text-white' : 'text-gray-900'
           }`}>Featured Articles</h2>
           
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {featuredArticles.map((article, index) => (
               <motion.article 
                 key={article.id} 
@@ -220,7 +220,10 @@ export default function BlogKnowledgeHub() {
                       {article.readTime}
                     </div>
                   </div>
-                  <button className="text-cyan-400 hover:text-cyan-300 text-sm font-medium flex items-center gap-1">
+                  <button 
+                    onClick={() => window.open(`/blog/${article.id}`, '_blank')}
+                    className="text-cyan-400 hover:text-cyan-300 text-sm font-medium flex items-center gap-1 transition-colors duration-200"
+                  >
                     Read More
                     <ArrowRight className="w-3 h-3" />
                   </button>
@@ -237,7 +240,7 @@ export default function BlogKnowledgeHub() {
         className="py-16 bg-transparent"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Categories */}
             <motion.div variants={itemVariants} className="lg:col-span-1">
               <h3 className={`text-xl font-bold mb-6 ${
@@ -334,7 +337,7 @@ export default function BlogKnowledgeHub() {
             }`}>Tools and guides to accelerate your automation journey</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {resources.map((resource, index) => {
               const IconComponent = resource.icon;
               return (
@@ -374,42 +377,6 @@ export default function BlogKnowledgeHub() {
         </div>
       </motion.section>
 
-      {/* Newsletter Signup */}
-      <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
-        className="py-16 bg-transparent"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className={`border rounded-3xl p-12 hover:shadow-xl transition-all duration-300 ${
-            isDark
-              ? 'border-gray-700 text-white hover:shadow-blue-900/20'
-              : 'border-gray-300 text-gray-900 hover:shadow-blue-200 bg-white'
-          }`}>
-            <h2 className={`text-3xl font-bold mb-6 ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>Stay Updated</h2>
-            <p className={`text-xl mb-8 leading-relaxed ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              Subscribe to our newsletter for the latest insights, case studies, and automation trends delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input 
-                type="email" 
-                placeholder="Enter your email"
-                className={`flex-1 px-4 py-3 rounded-lg focus:outline-none focus:border-cyan-500 ${
-                  isDark
-                    ? 'bg-gray-800 border border-gray-600 text-white placeholder-gray-400'
-                    : 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500'
-                }`}
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </motion.section>
     </div>
   );
 }

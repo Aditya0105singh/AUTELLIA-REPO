@@ -446,7 +446,7 @@ export default function Layout({ children, currentPageName }) {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="pt-20"
+          className="pt-24 md:pt-28"
           role="main"
         >
           {children}
