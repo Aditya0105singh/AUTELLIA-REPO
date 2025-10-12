@@ -131,7 +131,7 @@ export default function CallToAction() {
       {/* Hero Section */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="pt-16 sm:pt-20 pb-16 bg-transparent relative"
+        className="pt-24 sm:pt-20 pb-16 bg-transparent relative"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className={`text-5xl md:text-6xl font-bold mb-6 ${

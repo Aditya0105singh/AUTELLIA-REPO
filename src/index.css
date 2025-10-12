@@ -563,6 +563,95 @@ code {
   }
 }
 
+/* Fix white border/margin issues on mobile */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure full width coverage on all screen sizes */
+* {
+  box-sizing: border-box;
+}
+
+/* Fix container width issues */
+.container-responsive {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Aggressive fixes for screens smaller than 644px */
+@media (max-width: 644px) {
+  html, body {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  #root {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Force all containers to full width */
+  .container, .container-responsive, .max-w-7xl, .max-w-6xl, .max-w-4xl {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Fix any potential padding issues */
+  .px-4, .px-6, .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Ensure sections take full width */
+  section, div[class*="section"], .min-h-screen {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Fix any grid or flex containers */
+  .grid, .flex {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Force body and html to never exceed viewport */
+  body {
+    position: relative !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Prevent any element from causing horizontal overflow */
+  * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Specific fixes for common problematic elements */
+  img, video, iframe, canvas, svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
 /* Improve touch interactions */
 @media (hover: none) and (pointer: coarse) {
   .hover\:scale-105:hover {
