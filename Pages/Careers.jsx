@@ -9,6 +9,7 @@ export default function Careers() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    position: '',
     resume: '',
     message: ''
   });
@@ -345,36 +346,44 @@ export default function Careers() {
           <div className="space-y-6">
             {[
               {
-                title: "Senior AI/ML Engineer",
+                title: "App Development Intern",
                 department: "Engineering",
-                location: "Remote / San Francisco",
-                type: "Full-time",
-                description: "Lead the development of next-generation AI models for enterprise automation platforms.",
-                requirements: ["5+ years ML experience", "Python/TensorFlow", "Cloud platforms", "PhD preferred"]
+                location: "Remote / Hybrid",
+                type: "Internship",
+                description: "Join our mobile development team to build cutting-edge automation apps for enterprise clients.",
+                requirements: ["React Native/Flutter", "Mobile development basics", "Problem-solving skills", "Eager to learn"]
               },
               {
-                title: "RPA Developer",
+                title: "Web Development Intern (Full Stack)",
+                department: "Engineering",
+                location: "Remote / Hybrid",
+                type: "Internship", 
+                description: "Work on full-stack web applications using modern technologies to deliver automation solutions.",
+                requirements: ["React/Node.js basics", "Database knowledge", "Git version control", "Full-stack interest"]
+              },
+              {
+                title: "UI/UX Intern",
+                department: "Design",
+                location: "Remote / Hybrid",
+                type: "Internship",
+                description: "Design intuitive user experiences for complex automation platforms and enterprise dashboards.",
+                requirements: ["Figma/Adobe Creative Suite", "User research", "Design systems", "Portfolio required"]
+              },
+              {
+                title: "AI Intern",
+                department: "AI/ML",
+                location: "Remote / Hybrid",
+                type: "Internship",
+                description: "Assist in developing AI models and machine learning solutions for intelligent automation.",
+                requirements: ["Python basics", "ML fundamentals", "Data analysis", "Academic background in AI/CS"]
+              },
+              {
+                title: "RPA Intern",
                 department: "Automation",
-                location: "Remote / New York",
-                type: "Full-time", 
-                description: "Design and implement robotic process automation solutions for Fortune 500 clients.",
-                requirements: ["3+ years RPA experience", "UiPath/Blue Prism", "Process analysis", "Client-facing skills"]
-              },
-              {
-                title: "Data Scientist",
-                department: "Analytics",
-                location: "Remote / London",
-                type: "Full-time",
-                description: "Extract insights from complex datasets to drive automation strategy and optimization.",
-                requirements: ["PhD in Data Science", "R/Python/SQL", "Statistical modeling", "Business acumen"]
-              },
-              {
-                title: "Solutions Architect",
-                department: "Consulting",
-                location: "Remote / Global",
-                type: "Full-time",
-                description: "Design end-to-end automation architectures for enterprise digital transformation.",
-                requirements: ["7+ years enterprise architecture", "Cloud expertise", "Automation platforms", "Leadership skills"]
+                location: "Remote / Hybrid",
+                type: "Internship",
+                description: "Learn robotic process automation tools and help implement automation solutions for clients.",
+                requirements: ["Process analysis", "Logical thinking", "UiPath/Automation Anywhere interest", "Detail-oriented"]
               }
             ].map((job, index) => (
               <motion.div
@@ -546,6 +555,33 @@ export default function Careers() {
                     placeholder="john@example.com"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label htmlFor="position" className={`block text-sm font-semibold mb-2 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  Position Applying For *
+                </label>
+                <select
+                  id="position"
+                  name="position"
+                  required
+                  value={formData.position}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 ${
+                    isDark
+                      ? 'border-gray-600 bg-gray-700 text-white'
+                      : 'border-gray-300 bg-white text-gray-900'
+                  }`}
+                >
+                  <option value="">Select a position</option>
+                  <option value="App Development Intern">App Development Intern</option>
+                  <option value="Web Development Intern (Full Stack)">Web Development Intern (Full Stack)</option>
+                  <option value="UI/UX Intern">UI/UX Intern</option>
+                  <option value="AI Intern">AI Intern</option>
+                  <option value="RPA Intern">RPA Intern</option>
+                </select>
               </div>
 
               <div>

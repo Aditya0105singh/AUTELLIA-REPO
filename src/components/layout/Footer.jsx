@@ -32,11 +32,6 @@ const footerLinks = {
   ],
   social: [
     {
-      name: 'Twitter',
-      href: 'https://twitter.com/autellia',
-      icon: Icons.twitter,
-    },
-    {
       name: 'GitHub',
       href: 'https://github.com/autellia',
       icon: Icons.github,
@@ -45,6 +40,16 @@ const footerLinks = {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/company/autellia/',
       icon: Icons.linkedin,
+    },
+    {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/autelliatechnology',
+      icon: Icons.instagram,
+    },
+    {
+      name: 'YouTube',
+      href: 'https://www.youtube.com/@AutelliaTechnology',
+      icon: Icons.youtube,
     },
   ],
 };

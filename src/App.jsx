@@ -21,6 +21,9 @@ import Careers from '../Pages/Careers.jsx'
 import Demo from '../Pages/Demo.jsx'
 import Perspectives from '../Pages/Perspectives.jsx'
 import CaseStudies from '../Pages/CaseStudies.jsx'
+import CaseStudyUnistrut from '../Pages/CaseStudyUnistrut.jsx'
+import CaseStudyHealthcare from '../Pages/CaseStudyHealthcare.jsx'
+import CaseStudyTravelCounsellors from '../Pages/CaseStudyTravelCounsellors.jsx'
 import CallToAction from '../Pages/CallToAction.jsx'
 import BlogKnowledgeHub from '../Pages/BlogKnowledgeHub.jsx'
 import NotFound from '../Pages/NotFound.jsx'
@@ -51,6 +54,9 @@ function App() {
           <Route path="/demo" element={<Layout><Demo /></Layout>} />
           <Route path="/perspectives" element={<Layout><Perspectives /></Layout>} />
           <Route path="/case-studies" element={<Layout><CaseStudies /></Layout>} />
+          <Route path="/case-study-unistrut" element={<Layout><CaseStudyUnistrut /></Layout>} />
+          <Route path="/case-study-healthcare" element={<Layout><CaseStudyHealthcare /></Layout>} />
+          <Route path="/case-study-travel-counsellors" element={<Layout><CaseStudyTravelCounsellors /></Layout>} />
           <Route path="/call-to-action" element={<Layout><CallToAction /></Layout>} />
           <Route path="/blog-knowledge-hub" element={<Layout><BlogKnowledgeHub /></Layout>} />
           <Route path="/terms-of-service" element={<Layout><TermsOfService /></Layout>} />

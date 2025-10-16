@@ -32,20 +32,20 @@ export default function CaseStudies() {
   const caseStudies = [
     {
       id: 1,
-      title: "Global Bank Transforms Loan Processing",
-      industry: "Banking & Finance",
+      title: "Unistrut Automates Journal Posting with RPA",
+      industry: "Finance & Accounting",
       icon: Building2,
-      challenge: "Manual loan processing taking 15+ days with high error rates",
-      solution: "End-to-end RPA with AI-powered document analysis and risk assessment",
+      challenge: "Manual journal posting taking multiple days each month with repetitive data entry and high error rates.",
+      solution: "End-to-end RPA in UiPath automating journal entry in the Infor XA system using Excel input files for General Ledger data.",
       results: [
-        "85% reduction in processing time (15 days to 2 days)",
-        "$2.3M annual cost savings",
-        "99.2% accuracy in document processing",
-        "40% improvement in customer satisfaction"
+        "90% reduction in manual effort (3 days to a few hours)",
+        "99% accuracy in journal entry processing",
+        "Improved audit compliance and transparency",
+        "ROI: 280% within the first 6 months"
       ],
-      technologies: ["UiPath", "Azure AI", "Power BI", "SQL Server"],
+      technologies: ["UiPath", "Excel", "Infor XA", "Outlook"],
       timeline: "6 months",
-      roi: "320%"
+      roi: "280%"
     },
     {
       id: 2,
@@ -66,20 +66,20 @@ export default function CaseStudies() {
     },
     {
       id: 3,
-      title: "Manufacturing Giant Optimizes Supply Chain",
-      industry: "Manufacturing",
+      title: "Travel Counsellors Streamline Retail Confirmations Using RPA",
+      industry: "Travel & Hospitality",
       icon: Building2,
-      challenge: "Inefficient inventory management and supplier coordination",
-      solution: "AI-driven demand forecasting with automated procurement workflows",
+      challenge: "Manual confirmation handling from multiple travel suppliers like TUI, Jet2, EasyJet, and Sandals — leading to delays, duplicate entries, and compliance gaps.",
+      solution: "UiPath automation integrated with ABBYY FlexiCapture, Freshdesk, and APIs to extract booking details, validate them, and auto-create confirmation tickets.",
       results: [
-        "60% improvement in demand accuracy",
-        "$5.2M inventory cost reduction",
-        "30% faster supplier onboarding",
-        "25% reduction in stockouts"
+        "95% reduction in manual intervention",
+        "4x faster booking confirmation process",
+        "Zero duplicate or missing confirmations",
+        "Improved customer communication & SLA compliance"
       ],
-      technologies: ["Blue Prism", "SAP", "Python ML Models", "Power Apps"],
-      timeline: "10 months",
-      roi: "450%"
+      technologies: ["UiPath" ,"ABBYY FlexiCapture", "Freshdesk", "Azure Logic App", "Email Automation"],
+      timeline: "4 months",
+      roi: "260%"
     }
   ];
 
@@ -99,7 +99,7 @@ export default function CaseStudies() {
       {/* Hero Section */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
-        className="pt-24 sm:pt-20 pb-16 bg-transparent relative"
+        className="pt-24 sm:pt-20 pb-16 bg-transparent relative z-10"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className={`text-5xl md:text-6xl font-bold mb-6 transition-colors duration-300 ${
@@ -119,7 +119,7 @@ export default function CaseStudies() {
       {/* Success Metrics */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16 bg-transparent"
+        className="py-16 bg-transparent relative z-10"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
@@ -150,7 +150,7 @@ export default function CaseStudies() {
       {/* Case Studies */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16 bg-transparent"
+        className="py-16 bg-transparent relative z-10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-12 text-center transition-colors duration-300 ${
@@ -267,6 +267,25 @@ export default function CaseStudies() {
                             <div className="text-green-400 font-semibold">{study.roi}</div>
                           </div>
                         </div>
+                        
+                        {/* Read More Button */}
+                        <div className="pt-4">
+                          <Link 
+                            to={createPageUrl(
+                              study.id === 1 ? "case-study-unistrut" : 
+                              study.id === 2 ? "case-study-healthcare" : 
+                              "case-study-travel-counsellors"
+                            )} 
+                            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:gap-3 ${
+                              isDark 
+                                ? 'bg-cyan-400/10 text-cyan-400 border border-cyan-400/20 hover:bg-cyan-400/20' 
+                                : 'bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100'
+                            }`}
+                          >
+                            Read Full Case Study
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -280,7 +299,7 @@ export default function CaseStudies() {
       {/* Call to Action */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
-        className="py-16 bg-transparent"
+        className="py-16 bg-transparent relative z-10"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className={`rounded-3xl p-12 hover:shadow-xl transition-all duration-300 ${

@@ -64,37 +64,38 @@ const testimonials = [
 const TestimonialCarousel = () => {
   const { isDark } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (isHovered) return;
     
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isHovered]);
 
   const handlePrevious = () => {
-    setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const handleNext = () => {
-    setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const handleDotClick = (index) => {
-    setIsAutoPlaying(false);
     setCurrentIndex(index);
   };
 
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div 
+      className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl opacity-20 ${
@@ -163,10 +164,6 @@ const TestimonialCarousel = () => {
                   transition={{ delay: 0.3 }}
                   className="flex items-center"
                 >
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${currentTestimonial.color} 
-                    flex items-center justify-center text-white font-bold text-xl mr-4 shadow-lg`}>
-                    {currentTestimonial.avatar}
-                  </div>
                   <div>
                     <div className={`font-bold text-lg ${
                       isDark ? 'text-white' : 'text-gray-900'
@@ -258,55 +255,8 @@ const TestimonialCarousel = () => {
             ))}
           </div>
 
-          {/* Auto-play indicator */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                isAutoPlaying
-                  ? isDark 
-                    ? 'bg-purple-600 text-white' 
-                    : 'bg-purple-600 text-white'
-                  : isDark
-                    ? 'bg-gray-800 text-gray-400'
-                    : 'bg-gray-200 text-gray-600'
-              }`}
-            >
-              {isAutoPlaying ? 'Auto-playing' : 'Paused'}
-            </button>
-          </div>
         </div>
 
-        {/* Mini testimonials preview */}
-        <div className="hidden lg:grid grid-cols-5 gap-4 mt-12">
-          {testimonials.map((testimonial, index) => (
-            <motion.button
-              key={testimonial.id}
-              onClick={() => handleDotClick(index)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`p-4 rounded-xl transition-all duration-300 ${
-                index === currentIndex
-                  ? isDark
-                    ? 'bg-purple-900/30 border-2 border-purple-500'
-                    : 'bg-purple-50 border-2 border-purple-500'
-                  : isDark
-                    ? 'bg-gray-800/30 border border-gray-700 hover:border-gray-600'
-                    : 'bg-white border border-gray-200 hover:border-gray-300'
-              }`}
-            >
-              <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.color} 
-                flex items-center justify-center text-white text-xs font-bold mx-auto mb-2`}>
-                {testimonial.avatar}
-              </div>
-              <div className={`text-xs font-medium ${
-                isDark ? 'text-gray-400' : 'text-gray-600'
-              }`}>
-                {testimonial.name.split(' ')[0]}
-              </div>
-            </motion.button>
-          ))}
-        </div>
       </div>
     </div>
   );

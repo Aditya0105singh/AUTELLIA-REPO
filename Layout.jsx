@@ -462,9 +462,9 @@ export default function Layout({ children, currentPageName }) {
               viewport={{ once: true }}
               className="space-y-8 sm:space-y-10 lg:space-y-12"
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight px-2 sm:px-0">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-relaxed px-2 sm:px-0">
                 <span className="block text-white mb-2">Transforming Enterprise</span>
-                <span className="block bg-gradient-to-r from-indigo-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-indigo-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent pb-2">
                   Operations
                 </span>
               </h2>
@@ -481,7 +481,7 @@ export default function Layout({ children, currentPageName }) {
                   viewport={{ once: true }}
                   className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/15 hover:border-purple-400/40 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[160px] sm:min-w-[200px] lg:min-w-[220px]"
                 >
-                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3">500+</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3">50+</div>
                   <div className="text-xs sm:text-sm lg:text-base text-gray-400 font-light">Automations Deployed</div>
                 </motion.div>
                 
@@ -492,7 +492,7 @@ export default function Layout({ children, currentPageName }) {
                   viewport={{ once: true }}
                   className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/15 hover:border-cyan-400/40 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1 transition-all duration-300 text-center min-w-[160px] sm:min-w-[200px] lg:min-w-[220px]"
                 >
-                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3">$50M+</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3">$1M+</div>
                   <div className="text-xs sm:text-sm lg:text-base text-gray-400 font-light">Cost Savings Generated</div>
                 </motion.div>
                 

@@ -57,9 +57,8 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Linkedin, url: 'https://www.linkedin.com/company/autellia/', label: 'LinkedIn' },
-    { icon: Youtube, url: 'https://youtube.com/@autellia-technology', label: 'YouTube' },
-    { icon: Instagram, url: 'https://www.instagram.com/autelliatechnology?igsh=MTF2eW5nYTJsbWRsNw==', label: 'Instagram' },
-    { icon: XIcon, url: 'https://x.com/autellia_tech', label: 'X (formerly Twitter)' }
+    { icon: Youtube, url: 'https://www.youtube.com/@AutelliaTechnology', label: 'YouTube' },
+    { icon: Instagram, url: 'https://www.instagram.com/autelliatechnology?igsh=MTF2eW5nYTJsbWRsNw==', label: 'Instagram' }
   ];
 
   return (
@@ -257,7 +256,7 @@ const Footer = () => {
               >
                 <Phone className="w-4 h-4 text-gray-400 flex-shrink-0 group-hover:text-pink-400 transition-colors duration-300" />
                 <span className="text-gray-400 text-sm leading-relaxed">
-                  +1 (555) 123-4567
+                  +91 8668365563
                 </span>
               </motion.li>
               <motion.li 

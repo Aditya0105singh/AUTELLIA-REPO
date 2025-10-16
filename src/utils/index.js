@@ -17,6 +17,9 @@ export const createPageUrl = (pageName) => {
     'Perspectives': '/perspectives',
     // Map submenu items to their dedicated routes
     'CaseStudies': '/case-studies',
+    'case-study-unistrut': '/case-study-unistrut',
+    'case-study-healthcare': '/case-study-healthcare', 
+    'case-study-travel-counsellors': '/case-study-travel-counsellors',
     'CallToAction': '/call-to-action',
     'BlogKnowledgeHub': '/blog-knowledge-hub',
     // Legal pages

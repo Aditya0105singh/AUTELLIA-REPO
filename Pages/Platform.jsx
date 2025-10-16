@@ -10,6 +10,7 @@ import { useTheme } from "../src/contexts/ThemeContext.jsx";
 import ExploreSolutionModal from "../Components/ui/ExploreSolutionModal.jsx";
 import GetStartedCTA from "../Components/ui/GetStartedCTA";
 import TestimonialCarousel from "../Components/TestimonialCarousel.jsx";
+import Orb from "../Components/Orb.jsx";
 // import LazyImage from "../src/components/LazyImage.jsx";
 
 export default function Platform() {
@@ -228,11 +229,22 @@ export default function Platform() {
         ? 'bg-[--bg] text-[--text-primary]' 
         : 'bg-white text-gray-900'
     }`}>
+      {/* Orb Background Animation - Only in Dark Mode */}
+      {isDark && (
+        <div className="fixed inset-0 w-full h-full opacity-40 pointer-events-auto" style={{ zIndex: 1 }}>
+          <Orb
+            hue={270}
+            hoverIntensity={0.3}
+            rotateOnHover={true}
+            forceHoverState={false}
+          />
+        </div>
+      )}
       {/* Hero Section - Modern Theme with Original Content */}
       <motion.section 
         initial="hidden" animate="visible" variants={fadeIn}
         className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 lg:px-8"
-        style={{ background: 'var(--gradient-hero)' }}
+        style={{ background: 'var(--gradient-hero)', zIndex: 10 }}
         data-aos="fade-up"
         role="banner"
         aria-labelledby="hero-heading"
@@ -576,9 +588,9 @@ export default function Platform() {
       </motion.section>
 
       {/* Why Choose Us - Redesigned */}
-      <section className={`py-16 sm:py-20 md:py-24 lg:py-32 transition-colors duration-500 ${
+      <section className={`relative py-16 sm:py-20 md:py-24 lg:py-32 transition-colors duration-500 ${
         isDark ? 'bg-[--bg]' : 'bg-white'
-      }`}>
+      }`} style={{ zIndex: 10 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 transition-colors duration-300 ${
@@ -774,6 +786,7 @@ export default function Platform() {
         className={`py-20 transition-colors duration-500 relative overflow-hidden ${
           isDark ? 'bg-gradient-to-b from-[--bg] via-gray-900/50 to-[--bg]' : 'bg-gradient-to-b from-gray-50 via-white to-gray-50'
         }`}
+        style={{ zIndex: 10 }}
       >
         {/* Section Header */}
         <div className="text-center mb-4">
@@ -803,7 +816,7 @@ export default function Platform() {
       </motion.section>
 
       {/* Bottom CTA Section */}
-      <section className="py-20">
+      <section className="relative py-20" style={{ zIndex: 10 }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl">
             {/* Gradient Background */}
