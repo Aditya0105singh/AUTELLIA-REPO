@@ -24,8 +24,16 @@ import CaseStudies from '../Pages/CaseStudies.jsx'
 import CaseStudyUnistrut from '../Pages/CaseStudyUnistrut.jsx'
 import CaseStudyHealthcare from '../Pages/CaseStudyHealthcare.jsx'
 import CaseStudyTravelCounsellors from '../Pages/CaseStudyTravelCounsellors.jsx'
+import CaseStudyEuromaster from '../Pages/CaseStudyEuromaster.jsx'
 import CallToAction from '../Pages/CallToAction.jsx'
 import BlogKnowledgeHub from '../Pages/BlogKnowledgeHub.jsx'
+import BlogPostRPAScaling from '../Pages/BlogPost_RPAScaling.jsx'
+import BlogPostDataSecurity from '../Pages/BlogPost_DataSecurity.jsx'
+import BlogPostChangeManagement from '../Pages/BlogPost_ChangeManagement.jsx'
+import BlogPostAIDocumentProcessing from '../Pages/BlogPost_AIDocumentProcessing.jsx'
+import BlogPostROIFramework from '../Pages/BlogPost_ROIFramework.jsx'
+import BlogPostRPAvsIA from '../Pages/BlogPost_RPAvsIA.jsx'
+import BlogPostAgenticAI from '../Pages/BlogPost_AgenticAI.jsx'
 import NotFound from '../Pages/NotFound.jsx'
 import TermsOfService from '../Pages/TermsOfService.jsx'
 import PrivacyPolicy from '../Pages/PrivacyPolicy.jsx'
@@ -57,8 +65,16 @@ function App() {
           <Route path="/case-study-unistrut" element={<Layout><CaseStudyUnistrut /></Layout>} />
           <Route path="/case-study-healthcare" element={<Layout><CaseStudyHealthcare /></Layout>} />
           <Route path="/case-study-travel-counsellors" element={<Layout><CaseStudyTravelCounsellors /></Layout>} />
+          <Route path="/case-study-euromaster" element={<Layout><CaseStudyEuromaster /></Layout>} />
           <Route path="/call-to-action" element={<Layout><CallToAction /></Layout>} />
           <Route path="/blog-knowledge-hub" element={<Layout><BlogKnowledgeHub /></Layout>} />
+          <Route path="/blog/rpa-scaling-best-practices" element={<Layout><BlogPostRPAScaling /></Layout>} />
+          <Route path="/blog/data-security-intelligent-automation" element={<Layout><BlogPostDataSecurity /></Layout>} />
+          <Route path="/blog/change-management-automation-success" element={<Layout><BlogPostChangeManagement /></Layout>} />
+          <Route path="/blog/ai-powered-document-processing" element={<Layout><BlogPostAIDocumentProcessing /></Layout>} />
+          <Route path="/blog/roi-calculation-framework" element={<Layout><BlogPostROIFramework /></Layout>} />
+          <Route path="/blog/rpa-vs-intelligent-automation" element={<Layout><BlogPostRPAvsIA /></Layout>} />
+          <Route path="/blog/agentic-ai-enterprise" element={<Layout><BlogPostAgenticAI /></Layout>} />
           <Route path="/terms-of-service" element={<Layout><TermsOfService /></Layout>} />
           <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
           <Route path="/thank-you" element={<Layout><ThankYou /></Layout>} />

@@ -115,7 +115,7 @@ export function Contact() {
 
           <div className="bg-card p-8 rounded-xl shadow-sm">
             <form 
-              action="https://formsubmit.co/autelliatechnology@gmail.com" 
+              action="https://formsubmit.co/support@autellia.com" 
               method="POST" 
               className="space-y-6"
             >

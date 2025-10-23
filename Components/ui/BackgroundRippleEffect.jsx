@@ -51,7 +51,7 @@ export const BackgroundRippleEffect = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 w-full h-full cursor-pointer overflow-hidden"
+      className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0"
       onClick={createRipple}
     >
       {/* Background boxes */}

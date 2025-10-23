@@ -96,7 +96,7 @@ export default function Careers() {
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
               <span className="block">Join the Future of</span>
-              <span className="block bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent pb-6">
                 Intelligent Automation
               </span>
             </h1>
@@ -503,7 +503,7 @@ export default function Careers() {
             </div>
 
             <form 
-              action="https://formsubmit.co/autelliatechnology@gmail.com" 
+              action="https://formsubmit.co/support@autellia.com" 
               method="POST"
               className="space-y-6"
             >

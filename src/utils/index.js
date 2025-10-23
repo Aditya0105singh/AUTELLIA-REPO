@@ -20,6 +20,7 @@ export const createPageUrl = (pageName) => {
     'case-study-unistrut': '/case-study-unistrut',
     'case-study-healthcare': '/case-study-healthcare', 
     'case-study-travel-counsellors': '/case-study-travel-counsellors',
+    'case-study-euromaster': '/case-study-euromaster',
     'CallToAction': '/call-to-action',
     'BlogKnowledgeHub': '/blog-knowledge-hub',
     // Legal pages

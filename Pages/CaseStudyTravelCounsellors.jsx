@@ -145,6 +145,47 @@ export default function CaseStudyTravelCounsellors() {
         </div>
       </motion.section>
 
+      {/* Video Section */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
+        className="py-16 bg-transparent relative z-10"
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`rounded-3xl p-8 lg:p-12 transition-all duration-300 ${
+            isDark 
+              ? 'border border-gray-700 bg-gray-900/50' 
+              : 'border border-gray-200 bg-white shadow-lg'
+          }`}>
+            <h2 className={`text-3xl font-bold mb-8 text-center transition-colors duration-300 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>See the Automation in Action</h2>
+            <div className="relative w-full max-w-6xl mx-auto">
+              <video 
+                className={`w-full h-auto rounded-xl shadow-lg transition-all duration-300 ${
+                  isDark ? 'border border-gray-600' : 'border border-gray-200'
+                }`}
+                controls
+                muted
+                loop
+                preload="metadata"
+              >
+                <source src="/1st%20(online-video-cutter.com).mp4" type="video/mp4" />
+                <div className={`flex items-center justify-center h-full transition-colors duration-300 ${
+                  isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'
+                }`}>
+                  Your browser does not support the video tag. Please update your browser to view this content.
+                </div>
+              </video>
+              <p className={`text-center mt-4 text-sm transition-colors duration-300 ${
+                isDark ? 'text-gray-400' : 'text-gray-600'
+              }`}>
+                Watch how our RPA solution automates the entire retail confirmation process for Travel Counsellors
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Challenge & Solution */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
@@ -195,13 +236,25 @@ export default function CaseStudyTravelCounsellors() {
                   isDark ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                  Monitors shared mailbox for new booking emails
+                  Monitors the shared mailbox (pro.servartner@travelcounsellors.com) for new booking emails
                 </li>
                 <li className={`flex items-start gap-3 transition-colors duration-300 ${
                   isDark ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                  Identifies suppliers based on email patterns
+                  Identifies suppliers based on email patterns (sender, subject, and body)
+                </li>
+                <li className={`flex items-start gap-3 transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  Converts email content and attachments into structured data (PDF)
+                </li>
+                <li className={`flex items-start gap-3 transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  Triggers a new item in UiPath Orchestrator Queue using Azure Logic App
                 </li>
               </ul>
               <div className={`text-sm font-semibold mb-3 transition-colors duration-300 ${
@@ -212,13 +265,31 @@ export default function CaseStudyTravelCounsellors() {
                   isDark ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                  Uses ABBYY FlexiCapture to extract booking details
+                  Retrieves queue items and uses ABBYY FlexiCapture to extract booking details from PDFs
                 </li>
                 <li className={`flex items-start gap-3 transition-colors duration-300 ${
                   isDark ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                  Creates tickets automatically in Freshdesk
+                  Fetches booking data from the Travel Counsellors API for cross-verification
+                </li>
+                <li className={`flex items-start gap-3 transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  Compares extracted and reference data for discrepancies
+                </li>
+                <li className={`flex items-start gap-3 transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  Creates tickets automatically in Freshdesk with all matched booking information
+                </li>
+                <li className={`flex items-start gap-3 transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  Sends automated status reports to the operations team
                 </li>
               </ul>
             </motion.div>
@@ -256,8 +327,16 @@ export default function CaseStudyTravelCounsellors() {
                   </ul>
                 </div>
                 <div>
+                  <h4 className={`text-sm font-semibold mb-2 ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>Technology Stack:</h4>
+                  <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>UiPath | ABBYY FlexiCapture | Freshdesk | Azure Logic App | SMTP/POP3 | Excel</p>
+                </div>
+                <div>
                   <h4 className={`text-sm font-semibold mb-2 ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>Automation Level:</h4>
                   <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>100% of the Retail Confirmations process</p>
+                </div>
+                <div>
+                  <h4 className={`text-sm font-semibold mb-2 ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>Error Handling:</h4>
+                  <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Business and system exceptions managed via UiPath REFramework and Orchestrator</p>
                 </div>
               </div>
             </motion.div>

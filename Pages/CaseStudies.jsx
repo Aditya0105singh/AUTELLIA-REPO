@@ -80,6 +80,23 @@ export default function CaseStudies() {
       technologies: ["UiPath" ,"ABBYY FlexiCapture", "Freshdesk", "Azure Logic App", "Email Automation"],
       timeline: "4 months",
       roi: "260%"
+    },
+    {
+      id: 4,
+      title: "Euromaster Automates Parc Update with RPA",
+      industry: "Automotive & Fleet Management",
+      icon: Building2,
+      challenge: "Complex vehicle data updates across multiple Excel and Tyrecheck systems required hours of manual effort by the data maintenance team every week.",
+      solution: "An unattended UiPath bot automates the entire Parc update workflow — from data cleansing and file generation to uploading in Tyrecheck and sending completion reports.",
+      results: [
+        "85% reduction in manual effort",
+        "100% accuracy in vehicle record updates",
+        "Automated report generation and email notifications",
+        "Improved compliance with fleet data standards"
+      ],
+      technologies: ["UiPath" ,"Microsoft Excel" ,"Tyrecheck", "Outlook" , "Shared Drive"],
+      timeline: "5 months",
+      roi: "240%"
     }
   ];
 
@@ -274,7 +291,8 @@ export default function CaseStudies() {
                             to={createPageUrl(
                               study.id === 1 ? "case-study-unistrut" : 
                               study.id === 2 ? "case-study-healthcare" : 
-                              "case-study-travel-counsellors"
+                              study.id === 3 ? "case-study-travel-counsellors" :
+                              "case-study-euromaster"
                             )} 
                             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:gap-3 ${
                               isDark 
@@ -292,6 +310,299 @@ export default function CaseStudies() {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* RPA Success Stories */}
+      <motion.section 
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeIn}
+        className="py-16 bg-transparent relative z-10"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className={`text-4xl font-bold mb-4 transition-colors duration-300 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>RPA Success Stories</h2>
+            <p className={`text-xl transition-colors duration-300 ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
+              Here are a few examples of how our automation solutions have delivered measurable impact across industries.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* IT Ticketing Solutions */}
+            <motion.div variants={itemVariants} className={`rounded-3xl p-8 transition-all duration-300 hover:scale-[1.02] ${
+              isDark 
+                ? 'border border-gray-700 bg-gray-900/50 hover:border-cyan-400/50' 
+                : 'border border-gray-200 bg-white shadow-lg hover:border-blue-400/50'
+            }`}>
+              <h3 className={`text-2xl font-bold mb-6 transition-colors duration-300 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>IT Ticketing Solutions</h3>
+              
+              <div className="mb-6">
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-red-400' : 'text-red-600'
+                }`}>Problem:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Time bound activity</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Business critical</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Emergency request</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>SAP user creation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Delay in SLAs</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-green-400' : 'text-green-600'
+                }`}>Outcome:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Business continuity</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Meeting SLAs</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Zero touch automation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Prompt reports and notifications</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Scheduled BOTs</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Email Distribution Maintenance */}
+            <motion.div variants={itemVariants} className={`rounded-3xl p-8 transition-all duration-300 hover:scale-[1.02] ${
+              isDark 
+                ? 'border border-gray-700 bg-gray-900/50 hover:border-cyan-400/50' 
+                : 'border border-gray-200 bg-white shadow-lg hover:border-blue-400/50'
+            }`}>
+              <h3 className={`text-2xl font-bold mb-6 transition-colors duration-300 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>Email Distribution Maintenance</h3>
+              
+              <div className="mb-6">
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-red-400' : 'text-red-600'
+                }`}>Problem:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Complexity in handling manual</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Multiple asks in single request</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Communication critical</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Systems limitation</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-green-400' : 'text-green-600'
+                }`}>Outcome:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Decreased complexity</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Reduced duplication</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Zero touch automation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Exception and failure report</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Master Data – Material Processing */}
+            <motion.div variants={itemVariants} className={`rounded-3xl p-8 transition-all duration-300 hover:scale-[1.02] ${
+              isDark 
+                ? 'border border-gray-700 bg-gray-900/50 hover:border-cyan-400/50' 
+                : 'border border-gray-200 bg-white shadow-lg hover:border-blue-400/50'
+            }`}>
+              <h3 className={`text-2xl font-bold mb-6 transition-colors duration-300 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>Master Data – Material Processing</h3>
+              
+              <div className="mb-6">
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-red-400' : 'text-red-600'
+                }`}>Problem:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Tedious data creation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>High manual dependency in the approval process</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Data validation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>End-to-end solution</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-green-400' : 'text-green-600'
+                }`}>Outcome:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>~80% of time reduction</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>End-to-end solution for master data creation and validation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Availability of independent and combined BOTs</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Reducing manual intervention to 50% with AI/ML-enabled auto-approval process</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Added intelligence on iMDX product</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Validated quality data</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Life Insurance Claims Processing */}
+            <motion.div variants={itemVariants} className={`rounded-3xl p-8 transition-all duration-300 hover:scale-[1.02] ${
+              isDark 
+                ? 'border border-gray-700 bg-gray-900/50 hover:border-cyan-400/50' 
+                : 'border border-gray-200 bg-white shadow-lg hover:border-blue-400/50'
+            }`}>
+              <h3 className={`text-2xl font-bold mb-6 transition-colors duration-300 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>Life Insurance Claims Processing</h3>
+              
+              <div className="mb-6">
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-red-400' : 'text-red-600'
+                }`}>Problem:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Competitive SLA timelines</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Structured and unstructured data</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>Long integration process</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-red-400">•</span>
+                    <span>External dependency</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className={`text-lg font-semibold mb-3 transition-colors duration-300 ${
+                  isDark ? 'text-green-400' : 'text-green-600'
+                }`}>Outcome:</h4>
+                <ul className={`space-y-2 text-sm transition-colors duration-300 ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Up to 50% SLA timeline reduction</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Effective utilization of process idle time</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Effective data handling using Document Understanding</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Distributed handling of long integration process</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>Increased new business</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
           </div>
         </div>
       </motion.section>

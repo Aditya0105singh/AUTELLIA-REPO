@@ -55,7 +55,7 @@ export default function CallToAction() {
         "ROI calculation framework"
       ],
       buttonText: "Download Guide",
-      buttonLink: "#",
+      buttonLink: "https://cal.com/autellia-technology-43lknv",
       primary: false
     },
     {
@@ -69,7 +69,7 @@ export default function CallToAction() {
         "Partnership discussion"
       ],
       buttonText: "Contact Us",
-      buttonLink: "#",
+      buttonLink: "https://cal.com/autellia-technology-43lknv",
       primary: false
     }
   ];
@@ -161,7 +161,7 @@ export default function CallToAction() {
                 <motion.div 
                   key={index} 
                   variants={itemVariants}
-                  className={`rounded-3xl p-8 border transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2 ${
+                  className={`rounded-3xl p-8 border transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2 flex flex-col h-full ${
                     isDark
                       ? option.primary 
                         ? 'border-cyan-500/50 bg-cyan-900/10 hover:shadow-cyan-900/20' 
@@ -202,26 +202,31 @@ export default function CallToAction() {
                     ))}
                   </div>
 
-                  <div className="flex justify-center">
+                  <div className="flex justify-center mt-auto">
                     {option.primary ? (
                       <Link 
                         to={createPageUrl(option.buttonLink)} 
-                        className="relative inline-flex h-12 w-full max-w-xs overflow-hidden rounded-xl p-[1px] focus:outline-none group"
+                        className={`w-full max-w-xs px-8 py-4 rounded-xl font-semibold text-lg text-center transition-all duration-300 transform hover:scale-105 ${
+                          isDark
+                            ? 'bg-gray-700/50 border border-gray-600 text-gray-200 hover:bg-gray-600/50 hover:border-gray-500'
+                            : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200 hover:border-gray-400'
+                        }`}
                       >
-                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#1e293b_50%,#06b6d4_100%)]" />
-                        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white backdrop-blur-3xl gap-2">
-                          {option.buttonText}
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </span>
+                        {option.buttonText}
                       </Link>
                     ) : (
-                      <button className={`w-full max-w-xs px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 ${
-                        isDark
-                          ? 'bg-gray-700/50 border border-gray-600 text-gray-200 hover:bg-gray-600/50 hover:border-gray-500'
-                          : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200 hover:border-gray-400'
-                      }`}>
+                      <a 
+                        href={option.buttonLink}
+                        target={option.buttonLink.startsWith('http') ? '_blank' : '_self'}
+                        rel={option.buttonLink.startsWith('http') ? 'noopener noreferrer' : ''}
+                        className={`w-full max-w-xs px-8 py-4 rounded-xl font-semibold text-lg text-center transition-all duration-300 transform hover:scale-105 inline-block ${
+                          isDark
+                            ? 'bg-gray-700/50 border border-gray-600 text-gray-200 hover:bg-gray-600/50 hover:border-gray-500'
+                            : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200 hover:border-gray-400'
+                        }`}
+                      >
                         {option.buttonText}
-                      </button>
+                      </a>
                     )}
                   </div>
                 </motion.div>
