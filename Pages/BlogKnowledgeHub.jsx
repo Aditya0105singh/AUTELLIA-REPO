@@ -123,9 +123,9 @@ export default function BlogKnowledgeHub() {
             Knowledge Hub
           </h1>
           <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+            isDark ? 'text-gray-300' : 'text-gray-700'
           }`}>
-            Stay ahead with the latest insights, best practices, and thought leadership 
+            Stay ahead with the latest insights, best practices, and thought leadership
             in intelligent automation and AI/ML technologies
           </p>
         </div>
@@ -170,7 +170,7 @@ export default function BlogKnowledgeHub() {
                   </h3>
                   
                   <p className={`text-sm leading-relaxed mb-4 ${
-                    isDark ? 'text-gray-400' : 'text-gray-600'
+                    isDark ? 'text-gray-300' : 'text-gray-700'
                   }`}>
                     {article.excerpt}
                   </p>
@@ -298,8 +298,8 @@ export default function BlogKnowledgeHub() {
                           <div className="flex items-center gap-3 mb-2">
                             <span className={`px-2 py-1 rounded text-xs ${
                               isDark
-                                ? 'bg-gray-800 border border-gray-700 text-gray-400'
-                                : 'bg-gray-100 border border-gray-300 text-gray-600'
+                                ? 'bg-gray-800 border border-gray-700 text-gray-300'
+                                : 'bg-gray-100 border border-gray-300 text-gray-700'
                             }`}>
                               {article.category}
                             </span>

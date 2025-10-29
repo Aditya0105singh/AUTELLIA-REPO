@@ -186,16 +186,17 @@ export default function SoftwareDevelopment() {
               }`} />
             </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${
+              className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 overflow-visible ${
                 isDark ? 'text-white' : 'text-gray-900'
               }`}
+              style={{ lineHeight: '1.2' }}
             >
               Custom Software
-              <span className="block bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent pb-2">
                 Development
               </span>
             </motion.h1>

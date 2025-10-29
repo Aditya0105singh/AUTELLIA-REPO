@@ -145,16 +145,17 @@ export default function BOTDevelopment() {
               }`} />
             </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className={`text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight ${
+              className={`text-5xl md:text-7xl lg:text-8xl font-bold mb-8 overflow-visible ${
                 isDark ? 'text-white' : 'text-gray-900'
               }`}
+              style={{ lineHeight: '1.15' }}
             >
               Intelligent BOT
-              <span className="block bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent animate-pulse">
+              <span className="block bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent animate-pulse pb-2">
                 Development
               </span>
             </motion.h1>
