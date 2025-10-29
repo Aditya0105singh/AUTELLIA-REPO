@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autellia - x.ai Style Footer</title>
+  <style>
+    :root {
+      --bg-top: #0b0b0c;
+      --bg-bottom: #080808;
+      --glow: #e08b4d;
+      --text: #f0f3f8;
+      --muted: #9ca3af;
+      --border: #22272b;
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    body {
+      font: 16px/1.6 system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(60% 35% at 50% 115%, rgba(224,139,77,0.35) 0%, rgba(224,139,77,0.15) 35%, rgba(13,13,13,0) 70%),
+        radial-gradient(130% 90% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 85%, rgba(0,0,0,0.65) 100%),
+        radial-gradient(50% 20% at 50% -10%, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 60%),
+        linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Noise overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    /* Stars */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .stars.hidden {
+      opacity: 0;
+    }
+    
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(255,255,255,0.8);
+    }
+    
+    .star:nth-child(1) { left: 10%; top: 20%; animation: twinkle 3s infinite alternate; }
+    .star:nth-child(2) { left: 25%; top: 40%; animation: twinkle 4s infinite alternate-reverse; background: #ccc; }
+    .star:nth-child(3) { left: 70%; top: 15%; animation: twinkle 2.5s infinite alternate; }
+    .star:nth-child(4) { left: 85%; top: 35%; animation: twinkle 3.5s infinite alternate-reverse; background: #999; }
+    .star:nth-child(5) { left: 45%; top: 60%; animation: twinkle 4.2s infinite alternate; }
+    .star:nth-child(6) { left: 60%; top: 80%; animation: twinkle 3.8s infinite alternate-reverse; background: #eee; }
+    .star:nth-child(7) { left: 15%; top: 70%; animation: twinkle 2.8s infinite alternate; background: #ddd; }
+    .star:nth-child(8) { left: 90%; top: 60%; animation: twinkle 4.5s infinite alternate-reverse; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+    }
+
+    /* Content styles */
+    .content {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ffffff, #a855f7, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    
+    .content p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    
+    .toggle-btn {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 4rem;
+    }
+    
+    .toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 6rem;
+      padding: 4rem 2rem 2rem;
+      position: relative;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    footer h4 {
+      font-size: .85rem;
+      color: #a7b1b9;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    footer a {
+      display: block;
+      color: var(--text);
+      opacity: 0.8;
+      text-decoration: none;
+      margin: .4rem 0;
+      transition: all 0.2s ease;
+      padding: 0.25rem 0;
+    }
+    
+    footer a:hover { 
+      opacity: 1; 
+      text-decoration: underline;
+      transform: translateX(4px);
+      color: var(--glow);
+    }
+    
+    .footer-note {
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: .9rem;
+      text-align: center;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .content h1 { font-size: 2rem; }
+    }
+    
+    @media (max-width: 560px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .content h1 { font-size: 1.5rem; }
+      .content { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <div class="content">
+    <h1>Autellia Technology</h1>
+    <p>Experience the x.ai-inspired footer design with layered gradients, warm orange glow, and twinkling stars.</p>
+    <button class="toggle-btn" onclick="toggleStars()">Toggle Stars ✨</button>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <section>
+        <div class="logo-section">
+          <div class="logo">A</div>
+          <div>
+            <h4>Autellia</h4>
+            <p style="font-size: 0.8rem; color: var(--muted); margin: 0;">Technology Solutions</p>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--muted); line-height: 1.5;">
+          Empowering enterprises with intelligent automation and AI/ML solutions.
+        </p>
+      </section>
+      
+      <section>
+        <h4>Services</h4>
+        <a href="#">Automation Consulting</a>
+        <a href="#">BOT Development</a>
+        <a href="#">AI/ML Integration</a>
+        <a href="#">Process Optimization</a>
+      </section>
+      
+      <section>
+        <h4>Company</h4>
+        <a href="#">Platform</a>
+        <a href="#">Solutions</a>
+        <a href="#">Perspectives</a>
+        <a href="#">Careers</a>
+      </section>
+      
+      <section>
+        <h4>Resources</h4>
+        <a href="#">Documentation</a>
+        <a href="#">Case Studies</a>
+        <a href="#">Support</a>
+        <a href="#">Book a Demo</a>
+      </section>
+    </div>
+    
+    <div class="footer-note">
+      © 2025 Autellia Technology. All rights reserved. | Innovating the future of enterprise technology
+    </div>
+  </footer>
+
+  <script>
+    function toggleStars() {
+      const stars = document.getElementById('stars');
+      stars.classList.toggle('hidden');
+      
+      const btn = document.querySelector('.toggle-btn');
+      if (stars.classList.contains('hidden')) {
+        btn.textContent = 'Show Stars ✨';
+      } else {
+        btn.textContent = 'Toggle Stars ✨';
+      }
+    }
+
+    // Optional: Add more dynamic stars
+    function createRandomStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      document.getElementById('stars').appendChild(star);
+    }
+
+    // Add some random stars on load
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => createRandomStar(), i * 500);
+    }
+  </script>
+</body>
+</html>

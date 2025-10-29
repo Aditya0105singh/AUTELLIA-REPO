@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Rounded Favicon</title>
+</head>
+<body>
+    <canvas id="canvas" width="32" height="32" style="border: 1px solid #ccc; transform: scale(10);"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Create rounded rectangle background
+        function roundRect(x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+        
+        // Create gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 32, 32);
+        gradient.addColorStop(0, '#4F46E5');
+        gradient.addColorStop(1, '#06B6D4');
+        
+        // Draw rounded background
+        roundRect(2, 2, 28, 28, 6);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Draw the Autellia logo curves in white
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        
+        // First curve
+        ctx.beginPath();
+        ctx.moveTo(8, 12);
+        ctx.quadraticCurveTo(16, 6, 24, 12);
+        ctx.stroke();
+        
+        // Second curve
+        ctx.beginPath();
+        ctx.moveTo(8, 20);
+        ctx.quadraticCurveTo(16, 26, 24, 20);
+        ctx.stroke();
+        
+        // Download the favicon
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.download = 'favicon-rounded.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }, 100);
+    </script>
+</body>
+</html>
