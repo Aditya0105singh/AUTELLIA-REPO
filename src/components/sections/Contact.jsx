@@ -114,15 +114,15 @@ export function Contact() {
           </div>
 
           <div className="bg-card p-8 rounded-xl shadow-sm">
-            <form 
-              action="https://formsubmit.co/support@autellia.com" 
-              method="POST" 
+            <form
+              action="https://formsubmit.co/support@autellia.com"
+              method="POST"
               className="space-y-6"
             >
               <input type="hidden" name="_subject" value="New Contact Form Submission - Autellia" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://autellia.com/thank-you" />
+              <input type="hidden" name="_next" value={`${window.location.origin}/thank-you`} />
               {submitStatus.message && (
                 <div className={`p-4 rounded-md ${submitStatus.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
                   {submitStatus.message}

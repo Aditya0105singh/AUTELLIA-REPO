@@ -225,23 +225,12 @@ export default function Platform() {
 
   return (
     <div className={`transition-colors duration-500 ${
-      isDark 
-        ? 'bg-[--bg] text-[--text-primary]' 
+      isDark
+        ? 'bg-[--bg] text-[--text-primary]'
         : 'bg-white text-gray-900'
     }`}>
-      {/* Orb Background Animation - Only in Dark Mode */}
-      {isDark && (
-        <div className="fixed inset-0 w-full h-full opacity-40 pointer-events-auto" style={{ zIndex: 1 }}>
-          <Orb
-            hue={270}
-            hoverIntensity={0.3}
-            rotateOnHover={true}
-            forceHoverState={false}
-          />
-        </div>
-      )}
       {/* Hero Section - Modern Theme with Original Content */}
-      <motion.section 
+      <motion.section
         initial="hidden" animate="visible" variants={fadeIn}
         className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 lg:px-8"
         style={{ background: 'var(--gradient-hero)', zIndex: 10 }}
@@ -249,42 +238,39 @@ export default function Platform() {
         role="banner"
         aria-labelledby="hero-heading"
       >
-        {/* Background Image with Blur Overlay */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')`
-            }}
-          />
-          
-          {/* Blur Overlay */}
-          <div className={`absolute inset-0 backdrop-blur-sm ${
-            isDark 
-              ? 'bg-gray-900/70' 
-              : 'bg-gray-900/70'
-          }`} />
-          
-          {/* Animated gradient elements */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/15 to-cyan-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Orb Animation Background with Dark Professional Overlay */}
+        <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-black">
+          <div style={{ width: '100%', height: '100%', position: 'absolute', opacity: 0.6 }}>
+            <Orb
+              hoverIntensity={0.5}
+              rotateOnHover={true}
+              hue={270}
+              forceHoverState={false}
+            />
+          </div>
+
+          {/* Subtle gradient overlay for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40" />
+
+          {/* Animated accent elements */}
+          <div className="absolute top-20 right-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <motion.h1 
+          <motion.h1
             id="hero-heading"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-5 lg:mb-6 leading-tight px-2 sm:px-0"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-7 lg:mb-8 leading-tight px-2 sm:px-0"
           >
-            <span className={`text-high-contrast transition-colors duration-300 ${
-              isDark ? 'text-white' : 'text-black'
-            }`}>Empowering Enterprises </span>
-            <span className="gradient-text">with AI & Intelligent Automation</span>
+            <span className="block text-white mb-2">Empowering Enterprises</span>
+            <span className="block bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              with AI & Intelligent Automation
+            </span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className={`text-sm sm:text-base md:text-lg lg:text-xl font-medium leading-relaxed mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto px-2 sm:px-4 transition-colors duration-300 text-white`}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-8 sm:mb-10 lg:mb-12 max-w-4xl mx-auto px-2 sm:px-4 text-gray-300 font-light"
           >
             Transform your enterprise with cutting-edge AI and intelligent automation solutions. We deliver breakthrough efficiency, accelerated growth, and data-driven insights that revolutionize how modern businesses operate and compete.
           </motion.p>

@@ -45,20 +45,6 @@ export default function CallToAction() {
       primary: true
     },
     {
-      icon: FileText,
-      title: "Download Our Automation Guide",
-      description: "Get our comprehensive guide covering RPA, AI/ML, and intelligent automation best practices.",
-      benefits: [
-        "Industry use cases",
-        "Technology comparison",
-        "Implementation checklist",
-        "ROI calculation framework"
-      ],
-      buttonText: "Download Guide",
-      buttonLink: "https://cal.com/autellia-technology-43lknv",
-      primary: false
-    },
-    {
       icon: MessageSquare,
       title: "Start a Conversation",
       description: "Connect with our automation experts to discuss your specific challenges and requirements.",
@@ -149,12 +135,12 @@ export default function CallToAction() {
       </motion.section>
 
       {/* CTA Options */}
-      <motion.section 
+      <motion.section
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
         className="py-16 bg-transparent"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {ctaOptions.map((option, index) => {
               const IconComponent = option.icon;
               return (

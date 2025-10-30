@@ -101,7 +101,7 @@ export default function CaseStudies() {
   ];
 
   const metrics = [
-    { icon: TrendingUp, value: "500+", label: "Successful Implementations" },
+    { icon: TrendingUp, value: "100+", label: "Successful Implementations" },
     { icon: DollarSign, value: "$50M+", label: "Client Cost Savings" },
     { icon: Clock, value: "75%", label: "Average Time Reduction" },
     { icon: Users, value: "98%", label: "Client Satisfaction Rate" }
@@ -125,9 +125,9 @@ export default function CaseStudies() {
             Case Studies
           </h1>
           <p className={`text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300 ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+            isDark ? 'text-gray-300' : 'text-gray-700'
           }`}>
-            Real-world success stories showcasing how our automation and AI solutions 
+            Real-world success stories showcasing how our automation and AI solutions
             have transformed enterprise operations across industries
           </p>
         </div>
@@ -325,7 +325,7 @@ export default function CaseStudies() {
               isDark ? 'text-white' : 'text-gray-900'
             }`}>RPA Success Stories</h2>
             <p className={`text-xl transition-colors duration-300 ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
+              isDark ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Here are a few examples of how our automation solutions have delivered measurable impact across industries.
             </p>
@@ -622,7 +622,7 @@ export default function CaseStudies() {
               isDark ? 'text-white' : 'text-gray-900'
             }`}>Ready to Write Your Success Story?</h2>
             <p className={`text-xl mb-8 leading-relaxed transition-colors duration-300 ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
+              isDark ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Join hundreds of enterprises who have transformed their operations with our automation solutions.
             </p>

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { BackgroundRippleEffect } from "../Components/ui/BackgroundRippleEffect.jsx";
-import { BookOpen, TrendingUp, Users, Calendar, ArrowRight, Tag, Clock, Eye } from "lucide-react";
+import { Calendar, ArrowRight, Clock, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../src/utils/index.js";
 import { useTheme } from "../src/contexts/ThemeContext.jsx";
@@ -105,27 +105,6 @@ export default function BlogKnowledgeHub() {
     { name: "Business", count: 10, color: "yellow" }
   ];
 
-  const resources = [
-    {
-      title: "Automation Readiness Assessment",
-      description: "Evaluate your organization's readiness for automation initiatives",
-      type: "Tool",
-      icon: TrendingUp
-    },
-    {
-      title: "RPA Implementation Checklist",
-      description: "Step-by-step checklist for successful RPA deployments",
-      type: "Guide",
-      icon: BookOpen
-    },
-    {
-      title: "AI/ML Use Case Library",
-      description: "Comprehensive library of AI/ML use cases across industries",
-      type: "Database",
-      icon: Users
-    }
-  ];
-
   return (
     <div className={`min-h-screen transition-colors duration-500 ${
       isDark ? 'bg-transparent text-gray-200' : 'bg-white text-gray-900'
@@ -144,9 +123,9 @@ export default function BlogKnowledgeHub() {
             Knowledge Hub
           </h1>
           <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+            isDark ? 'text-gray-300' : 'text-gray-700'
           }`}>
-            Stay ahead with the latest insights, best practices, and thought leadership 
+            Stay ahead with the latest insights, best practices, and thought leadership
             in intelligent automation and AI/ML technologies
           </p>
         </div>
@@ -191,7 +170,7 @@ export default function BlogKnowledgeHub() {
                   </h3>
                   
                   <p className={`text-sm leading-relaxed mb-4 ${
-                    isDark ? 'text-gray-400' : 'text-gray-600'
+                    isDark ? 'text-gray-300' : 'text-gray-700'
                   }`}>
                     {article.excerpt}
                   </p>
@@ -319,8 +298,8 @@ export default function BlogKnowledgeHub() {
                           <div className="flex items-center gap-3 mb-2">
                             <span className={`px-2 py-1 rounded text-xs ${
                               isDark
-                                ? 'bg-gray-800 border border-gray-700 text-gray-400'
-                                : 'bg-gray-100 border border-gray-300 text-gray-600'
+                                ? 'bg-gray-800 border border-gray-700 text-gray-300'
+                                : 'bg-gray-100 border border-gray-300 text-gray-700'
                             }`}>
                               {article.category}
                             </span>
@@ -352,61 +331,6 @@ export default function BlogKnowledgeHub() {
                 })}
               </div>
             </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Resources */}
-      <motion.section 
-        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
-        className="py-16 bg-transparent"
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className={`text-3xl font-bold mb-4 ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>Additional Resources</h2>
-            <p className={`text-xl ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
-            }`}>Tools and guides to accelerate your automation journey</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {resources.map((resource, index) => {
-              const IconComponent = resource.icon;
-              return (
-                <motion.div 
-                  key={index} 
-                  variants={itemVariants}
-                  className={`border rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 ${
-                    isDark
-                      ? 'border-gray-700 hover:shadow-cyan-900/20 hover:border-cyan-500/30'
-                      : 'border-gray-300 hover:shadow-cyan-200 hover:border-cyan-400 bg-white'
-                  }`}
-                >
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 ${
-                    isDark ? 'bg-gray-800 border border-gray-700' : 'bg-gray-100 border border-gray-300'
-                  }`}>
-                    <IconComponent className="w-8 h-8 text-cyan-400" />
-                  </div>
-                  <div className="mb-2">
-                    <span className="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs font-medium text-purple-400">
-                      {resource.type}
-                    </span>
-                  </div>
-                  <h3 className={`text-lg font-bold mb-3 ${
-                    isDark ? 'text-white' : 'text-gray-900'
-                  }`}>{resource.title}</h3>
-                  <p className={`text-sm leading-relaxed mb-4 ${
-                    isDark ? 'text-gray-400' : 'text-gray-600'
-                  }`}>{resource.description}</p>
-                  <button className="text-cyan-400 hover:text-cyan-300 font-medium text-sm flex items-center gap-1 mx-auto">
-                    Access Resource
-                    <ArrowRight className="w-3 h-3" />
-                  </button>
-                </motion.div>
-              );
-            })}
           </div>
         </div>
       </motion.section>

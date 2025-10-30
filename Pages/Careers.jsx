@@ -143,9 +143,9 @@ export default function Careers() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
-              { number: "50+", label: "Team Members" },
-              { number: "15+", label: "Countries" },
-              { number: "500+", label: "Projects Delivered" },
+              { number: "10+", label: "Team Members" },
+              { number: "3+", label: "Countries" },
+              { number: "100+", label: "Projects Delivered" },
               { number: "98%", label: "Employee Satisfaction" }
             ].map((stat, index) => (
               <div key={index} className="text-center">
@@ -196,7 +196,8 @@ export default function Careers() {
       </motion.section>
 
       {/* Values */}
-      <motion.section 
+      <motion.section
+        id="culture"
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}
         className="py-16 bg-transparent relative z-10"
       >
@@ -502,15 +503,15 @@ export default function Careers() {
               </p>
             </div>
 
-            <form 
-              action="https://formsubmit.co/support@autellia.com" 
+            <form
+              action="https://formsubmit.co/support@autellia.com"
               method="POST"
               className="space-y-6"
             >
               <input type="hidden" name="_subject" value="New Career Application - Autellia" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://autellia.com/thank-you" />
+              <input type="hidden" name="_next" value={`${window.location.origin}/thank-you`} />
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>

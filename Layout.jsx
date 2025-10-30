@@ -8,6 +8,7 @@ import ThemeToggle from './Components/ui/ThemeToggle.jsx';
 import ExploreSolutionModal from './Components/ui/ExploreSolutionModal.jsx';
 import { BackgroundBeams } from './Components/ui/background-beams.jsx';
 import Footer from './Components/ui/Footer.jsx';
+import { Chatbot } from './Components/Chatbot/index.js';
  
 import {
   Navbar,
@@ -100,15 +101,6 @@ export default function Layout({ children, currentPageName }) {
   const showBeams = beamsRoutes.has(location.pathname);
 
   useEffect(() => {
-    // Chat widget script
-    const chatScript = document.createElement('script');
-    chatScript.src = "https://automatic.chat/embed.js";
-    chatScript.async = true;
-    chatScript.id = 'cmeygesdy00kmeep6iqegyw98';
-    chatScript.setAttribute('open', 'true');
-    chatScript.setAttribute('openDelay', '5000');
-    document.body.appendChild(chatScript);
-
     // Cal.com booking script
     const calScript = document.createElement('script');
     calScript.src = "https://app.cal.com/embed/embed.js";
@@ -123,9 +115,6 @@ export default function Layout({ children, currentPageName }) {
     document.head.appendChild(calScript);
 
     return () => {
-      const existingChatScript = document.getElementById('cmeygesdy00kmeep6iqegyw98');
-      if (existingChatScript) document.body.removeChild(existingChatScript);
-      
       const existingCalScript = document.getElementById('cal-embed-script');
       if (existingCalScript) document.head.removeChild(existingCalScript);
     };
@@ -538,6 +527,9 @@ export default function Layout({ children, currentPageName }) {
 
         {/* Modern Footer */}
         <Footer />
+
+        {/* Custom Chatbot */}
+        <Chatbot />
       </div>
     </>
   );

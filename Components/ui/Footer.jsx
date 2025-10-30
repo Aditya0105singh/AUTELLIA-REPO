@@ -38,7 +38,11 @@ const Footer = () => {
     { title: 'Platform', url: createPageUrl("Platform") },
     { title: 'Solutions', url: createPageUrl("Solutions") },
     { title: 'Our Perspectives', url: createPageUrl("Perspectives") },
+<<<<<<< HEAD
     { title: 'Come Join Us', url: createPageUrl("Careers") }
+=======
+    { title: 'Careers', url: createPageUrl("Careers") }
+>>>>>>> 701900e0615f169fd65c1cc2c725940a53784bb9
   ];
 
   const industries = [
@@ -280,18 +284,31 @@ const Footer = () => {
             {/* Copyright and Legal Links */}
           <div className="text-center md:text-left space-y-2">
             <p className="text-gray-400 text-sm">
+<<<<<<< HEAD
               2025 Autellia Technology. All Rights Reserved. Innovating the future of enterprise technology.
             </p>
             <div className="flex flex-wrap justify-center md:justify-start gap-4 text-xs">
               <Link 
                 to={createPageUrl("TermsOfService")} 
+=======
+              © 2025 Autellia Technology. All Rights Reserved.
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 text-xs">
+              <Link
+                to={createPageUrl("TermsOfService")}
+>>>>>>> 701900e0615f169fd65c1cc2c725940a53784bb9
                 className="text-gray-500 hover:text-purple-400 transition-colors duration-300"
               >
                 Terms of Service
               </Link>
               <span className="text-gray-600">•</span>
+<<<<<<< HEAD
               <Link 
                 to={createPageUrl("PrivacyPolicy")} 
+=======
+              <Link
+                to={createPageUrl("PrivacyPolicy")}
+>>>>>>> 701900e0615f169fd65c1cc2c725940a53784bb9
                 className="text-gray-500 hover:text-purple-400 transition-colors duration-300"
               >
                 Privacy Policy
