@@ -14,13 +14,17 @@ export const createPageUrl = (pageName) => {
     'ManagedServices': '/managed-services',
     'Careers': '/careers',
     'Demo': '/demo',
+    'demo': '/demo',
     'Perspectives': '/perspectives',
     // Map submenu items to their dedicated routes
     'CaseStudies': '/case-studies',
+    'case-studies': '/case-studies',
+    'solutions': '/solutions',
     'case-study-unistrut': '/case-study-unistrut',
     'case-study-healthcare': '/case-study-healthcare', 
     'case-study-travel-counsellors': '/case-study-travel-counsellors',
     'case-study-euromaster': '/case-study-euromaster',
+    'case-study-nlp-query-bot': '/case-study-nlp-query-bot',
     'CallToAction': '/call-to-action',
     'BlogKnowledgeHub': '/blog-knowledge-hub',
     // Legal pages

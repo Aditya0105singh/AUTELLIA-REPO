@@ -186,7 +186,7 @@ export default function BOTDevelopment() {
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
-                to={createPageUrl('CaseStudies')}
+                to={createPageUrl('case-studies')}
                 className={`inline-flex items-center px-10 py-5 font-bold text-lg rounded-2xl border-2 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm ${
                   isDark 
                     ? 'border-orange-500/50 text-orange-400 hover:bg-orange-500/10 bg-gray-800/30' 

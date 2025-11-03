@@ -25,6 +25,7 @@ import CaseStudyUnistrut from '../Pages/CaseStudyUnistrut.jsx'
 import CaseStudyHealthcare from '../Pages/CaseStudyHealthcare.jsx'
 import CaseStudyTravelCounsellors from '../Pages/CaseStudyTravelCounsellors.jsx'
 import CaseStudyEuromaster from '../Pages/CaseStudyEuromaster.jsx'
+import CaseStudyNLPQueryBot from '../Pages/CaseStudyNLPQueryBot.jsx'
 import CallToAction from '../Pages/CallToAction.jsx'
 import BlogKnowledgeHub from '../Pages/BlogKnowledgeHub.jsx'
 import BlogPostRPAScaling from '../Pages/BlogPost_RPAScaling.jsx'
@@ -66,6 +67,7 @@ function App() {
           <Route path="/case-study-healthcare" element={<Layout><CaseStudyHealthcare /></Layout>} />
           <Route path="/case-study-travel-counsellors" element={<Layout><CaseStudyTravelCounsellors /></Layout>} />
           <Route path="/case-study-euromaster" element={<Layout><CaseStudyEuromaster /></Layout>} />
+          <Route path="/case-study-nlp-query-bot" element={<Layout><CaseStudyNLPQueryBot /></Layout>} />
           <Route path="/call-to-action" element={<Layout><CallToAction /></Layout>} />
           <Route path="/blog-knowledge-hub" element={<Layout><BlogKnowledgeHub /></Layout>} />
           <Route path="/blog/rpa-scaling-best-practices" element={<Layout><BlogPostRPAScaling /></Layout>} />

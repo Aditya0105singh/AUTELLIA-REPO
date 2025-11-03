@@ -22,7 +22,15 @@ export default defineConfig({
     }
   },
   server: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api/sanity': {
+        target: 'https://r5o871tr.api.sanity.io',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/sanity/, ''),
+        secure: true
+      }
+    }
   },
   preview: {
     historyApiFallback: true

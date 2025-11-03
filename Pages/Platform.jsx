@@ -11,6 +11,7 @@ import ExploreSolutionModal from "../Components/ui/ExploreSolutionModal.jsx";
 import GetStartedCTA from "../Components/ui/GetStartedCTA";
 import TestimonialCarousel from "../Components/TestimonialCarousel.jsx";
 import Orb from "../Components/Orb.jsx";
+import HeroCarouselDirect from "../Components/HeroCarouselDirect.jsx";
 // import LazyImage from "../src/components/LazyImage.jsx";
 
 export default function Platform() {
@@ -43,6 +44,12 @@ export default function Platform() {
     { icon: Heart, title: "Healthcare" },
     { icon: ShoppingCart, title: "Retail & E-commerce" },
     { icon: Truck, title: "Manufacturing" }
+  ];
+
+  const statsData = [
+    { value: "500+", label: "Projects Delivered" },
+    { value: "98%", label: "Success Rate" },
+    { value: "10x", label: "Average ROI" }
   ];
   
   const whyChooseUsContent = [
@@ -232,67 +239,73 @@ export default function Platform() {
       {/* Hero Section - Modern Theme with Original Content */}
       <motion.section
         initial="hidden" animate="visible" variants={fadeIn}
-        className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 lg:px-8"
+        className="relative min-h-[100vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 lg:px-8"
         style={{ background: 'var(--gradient-hero)', zIndex: 10 }}
         data-aos="fade-up"
         role="banner"
         aria-labelledby="hero-heading"
       >
-        {/* Orb Animation Background with Dark Professional Overlay */}
-        <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-black">
-          <div style={{ width: '100%', height: '100%', position: 'absolute', opacity: 0.6 }}>
-            <Orb
-              hoverIntensity={0.5}
-              rotateOnHover={true}
-              hue={270}
-              forceHoverState={false}
-            />
+        {/* Hero Background with Carousel or Orb */}
+        <HeroCarouselDirect>
+          {/* Orb Animation Background (fallback when no images) */}
+          <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-black">
+            <div style={{ width: '100%', height: '100%', position: 'absolute', opacity: 0.6 }}>
+              <Orb
+                hoverIntensity={0.5}
+                rotateOnHover={true}
+                hue={270}
+                forceHoverState={false}
+              />
+            </div>
+
+            {/* Subtle gradient overlay for depth */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40" />
+
+            {/* Animated accent elements */}
+            <div className="absolute top-20 right-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
           </div>
+        </HeroCarouselDirect>
 
-          {/* Subtle gradient overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40" />
-
-          {/* Animated accent elements */}
-          <div className="absolute top-20 right-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-0">
           <motion.h1
             id="hero-heading"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-7 lg:mb-8 leading-tight px-2 sm:px-0"
+            className="text-[2rem] leading-[1.2] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-5 lg:mb-6 sm:leading-[1.1] px-0 sm:px-0"
           >
-            <span className="block text-white mb-2">Empowering Enterprises</span>
-            <span className="block bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              with AI & Intelligent Automation
+            <span className="block text-white mb-2" style={{ textShadow: '0 2px 20px rgba(0, 0, 0, 0.8), 0 4px 40px rgba(0, 0, 0, 0.6)' }}>Empowering<br className="sm:hidden" /> Enterprises</span>
+            <span className="block bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent relative pt-1 sm:leading-[1.2] pb-2">
+              with AI &<br className="sm:hidden" /> Intelligent<br className="sm:hidden" /> Automation
             </span>
           </motion.h1>
+
           <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-8 sm:mb-10 lg:mb-12 max-w-4xl mx-auto px-2 sm:px-4 text-gray-300 font-light"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-[0.95rem] leading-[1.6] sm:text-lg lg:text-xl xl:text-2xl text-slate-200 dark:text-slate-300 max-w-[90%] sm:max-w-3xl mx-auto mb-8 sm:mb-8 lg:mb-10 sm:leading-relaxed px-0 sm:px-0"
+            style={{ textShadow: '0 2px 15px rgba(0, 0, 0, 0.8), 0 4px 30px rgba(0, 0, 0, 0.6)' }}
           >
             Transform your enterprise with cutting-edge AI and intelligent automation solutions. We deliver breakthrough efficiency, accelerated growth, and data-driven insights that revolutionize how modern businesses operate and compete.
           </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-4 justify-center items-center px-2 sm:px-0"
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 sm:gap-4 lg:gap-4 justify-center items-center px-0 sm:px-0"
           >
             <button
               onClick={() => window.location.href = 'https://cal.com/autellia-technology-43lknv'}
-              className="inline-flex items-center px-8 py-4 font-semibold text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25 touch-manipulation"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg rounded-lg border-none cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:shadow-indigo-500/25 touch-manipulation"
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               Book a Free Consultation
             </button>
             <Link
               to="/explore-solutions"
-              className="inline-flex items-center gap-2 px-8 py-4 font-bold text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white hover:shadow-purple-500/30 touch-manipulation"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg rounded-lg cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 touch-manipulation"
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <span>Explore Solutions</span>
               <motion.span 
-                className="text-lg ml-1.5"
+                className="ml-2"
                 initial={{ x: 0 }}
                 whileHover={{ x: 5 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 15 }}
@@ -511,18 +524,17 @@ export default function Platform() {
       {/* Industries We Serve */}
        <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
-        className={`py-8 sm:py-12 md:py-16 lg:py-24 transition-colors duration-500 ${
-          isDark ? 'bg-[--bg]' : 'bg-white'
+        className={`py-12 sm:py-12 md:py-16 lg:py-24 transition-colors duration-500 ${
+          isDark ? 'bg-[--bg]' : 'bg-gray-50'
         }`}
-        data-aos="fade-up"
+        role="region" aria-label="Value Propositions"
       >
-        <div className="container-responsive">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4 transition-colors duration-300 ${
-              isDark ? 'text-[--text-primary]' : 'text-gray-900'
-            }`}>Industries We Serve</h2>
-          </div>
-          <motion.div variants={staggerContainer} className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 variants={fadeIn} className="text-[1.75rem] leading-tight sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-10 lg:mb-12">
+            <span className={`block ${isDark ? 'text-white' : 'text-gray-900'}`}>Industries We Serve</span>
+          </motion.h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 lg:gap-8">
             {industries.map((industry) => {
               const IconComponent = industry.icon;
               return (
@@ -569,20 +581,20 @@ export default function Platform() {
                 </motion.div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </motion.section>
 
       {/* Why Choose Us - Redesigned */}
-      <section className={`relative py-16 sm:py-20 md:py-24 lg:py-32 transition-colors duration-500 ${
+      <section className={`relative py-12 sm:py-20 md:py-24 lg:py-32 transition-colors duration-500 ${
         isDark ? 'bg-[--bg]' : 'bg-white'
       }`} style={{ zIndex: 10 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 transition-colors duration-300 ${
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className={`text-[1.5rem] leading-tight sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 transition-colors duration-300 ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>Why Forward-Thinking Businesses Choose Autellia</h2>
-            <p className={`text-base sm:text-lg lg:text-xl max-w-3xl mx-auto transition-colors duration-300 ${
+            <p className={`text-[0.95rem] sm:text-lg lg:text-xl max-w-[90%] sm:max-w-3xl mx-auto transition-colors duration-300 ${
               isDark ? 'text-gray-400' : 'text-gray-700'
             }`}>We combine expertise, innovation, and trust to deliver scalable automation solutions.</p>
           </div>
@@ -592,31 +604,29 @@ export default function Platform() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={`mb-12 p-8 rounded-2xl border transition-all duration-300 ${
-              isDark 
-                ? 'bg-gradient-to-r from-purple-900/20 to-indigo-900/20 border-purple-700/30' 
-                : 'bg-gradient-to-r from-purple-50 to-indigo-50 border-purple-200'
-            }`}
+            className="mb-10 sm:mb-16"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
-                  isDark ? 'text-purple-400' : 'text-purple-600'
-                }`}>500+</div>
-                <div className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Projects Delivered</div>
-              </div>
-              <div>
-                <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
-                  isDark ? 'text-indigo-400' : 'text-indigo-600'
-                }`}>98%</div>
-                <div className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Success Rate</div>
-              </div>
-              <div>
-                <div className={`text-4xl lg:text-5xl font-bold mb-2 ${
-                  isDark ? 'text-cyan-400' : 'text-cyan-600'
-                }`}>10x</div>
-                <div className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Average ROI</div>
+            <div className={`rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10 border backdrop-blur-xl ${
+              isDark 
+                ? 'border-purple-500/20 bg-gradient-to-br from-purple-900/40 via-indigo-900/30 to-purple-900/40' 
+                : 'border-purple-200/50 bg-gradient-to-br from-purple-50/80 via-indigo-50/60 to-purple-50/80'
+            }`}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">{
+                statsData.map((stat, index) => {
+                  const colors = ['text-purple-400', 'text-indigo-400', 'text-cyan-400'];
+                  return (
+                    <div key={index} className="text-center group hover:scale-105 transition-all duration-300">
+                      <div className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2 ${colors[index]}`}>
+                        {stat.value}
+                      </div>
+                      <div className={`text-base sm:text-lg font-medium ${
+                        isDark ? 'text-gray-400' : 'text-gray-600'
+                      }`}>
+                        {stat.label}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
@@ -749,27 +759,24 @@ export default function Platform() {
           </div>
 
           {/* Trust Indicators */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className={`mt-12 text-center p-6 rounded-xl ${
-              isDark ? 'bg-gray-900/30' : 'bg-gray-50'
-            }`}
+            transition={{ duration: 0.6 }}
+            className="mt-12 text-center"
           >
-            <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>
-              <span className="font-semibold">Trusted by Fortune 500 companies</span> • 
-              <span className="ml-2">Serving clients across 12+ industries</span>
+            <p className={`text-sm sm:text-base lg:text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <span className="font-bold">Trusted by Fortune 500 companies</span> <span className="mx-2">•</span> Serving clients across 12+ industries
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Client Reviews - Testimonial Carousel Section */}
+      {/* Testimonials Section */}
       <motion.section 
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
-        className={`py-20 transition-colors duration-500 relative overflow-hidden ${
+        className={`py-12 sm:py-20 transition-colors duration-500 relative overflow-hidden ${
           isDark ? 'bg-gradient-to-b from-[--bg] via-gray-900/50 to-[--bg]' : 'bg-gradient-to-b from-gray-50 via-white to-gray-50'
         }`}
         style={{ zIndex: 10 }}
@@ -802,18 +809,18 @@ export default function Platform() {
       </motion.section>
 
       {/* Bottom CTA Section */}
-      <section className="relative py-20" style={{ zIndex: 10 }}>
+      <section className="relative py-12 sm:py-20" style={{ zIndex: 10 }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
             {/* Gradient Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-200 via-pink-100 to-indigo-200 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-indigo-900/30" />
             
             {/* Content */}
-            <div className="relative z-10 px-8 py-16 md:px-16 md:py-20 text-center">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            <div className="relative z-10 px-6 py-12 sm:px-8 sm:py-16 md:px-16 md:py-20 text-center">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
                 Ready to Get Started?
               </h2>
-              <p className="max-w-3xl mx-auto mb-10 text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="max-w-[90%] sm:max-w-3xl mx-auto mb-8 sm:mb-10 text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
                 Explore a discovery workshop to identify top ROI use cases in 2 weeks 
                 and stand up a pilot in 30-45 days with measurable outcomes.
               </p>

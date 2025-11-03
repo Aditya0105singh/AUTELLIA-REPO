@@ -8,8 +8,7 @@ import ThemeToggle from './Components/ui/ThemeToggle.jsx';
 import ExploreSolutionModal from './Components/ui/ExploreSolutionModal.jsx';
 import { BackgroundBeams } from './Components/ui/background-beams.jsx';
 import Footer from './Components/ui/Footer.jsx';
-import { Chatbot } from './Components/Chatbot/index.js';
- 
+
 import {
   Navbar,
   NavBody,
@@ -114,9 +113,21 @@ export default function Layout({ children, currentPageName }) {
     };
     document.head.appendChild(calScript);
 
+    // Automatic.chat chatbot script
+    const chatbotScript = document.createElement('script');
+    chatbotScript.src = "https://automatic.chat/embed.js";
+    chatbotScript.async = true;
+    chatbotScript.id = 'cmeygesdy00kmeep6iqegyw98';
+    chatbotScript.setAttribute('open', 'true');
+    chatbotScript.setAttribute('openDelay', '5000');
+    document.head.appendChild(chatbotScript);
+
     return () => {
       const existingCalScript = document.getElementById('cal-embed-script');
       if (existingCalScript) document.head.removeChild(existingCalScript);
+      
+      const existingChatbotScript = document.getElementById('cmeygesdy00kmeep6iqegyw98');
+      if (existingChatbotScript) document.head.removeChild(existingChatbotScript);
     };
   }, []);
 
@@ -285,15 +296,15 @@ export default function Layout({ children, currentPageName }) {
           <NavBody>
             {/* Logo */}
             <NavbarLogo>
-              <Link to={createPageUrl("Platform")} className="flex items-center space-x-3">
+              <Link to={createPageUrl("Platform")} className="flex items-center space-x-2 sm:space-x-3">
                 <motion.img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/c29fb92fd_logocopy.jpg" 
                   alt="Autellia Logo" 
-                  className="w-12 h-12 object-contain rounded-full"
+                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain rounded-full"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.95 }}
                 />
-                <span className={`text-[1.44rem] font-bold ${
+                <span className={`text-lg sm:text-xl md:text-[1.44rem] font-bold ${
                   isDark ? 'text-[--text-primary]' : 'text-gray-900'
                 }`}>
                   Autellia
@@ -527,9 +538,6 @@ export default function Layout({ children, currentPageName }) {
 
         {/* Modern Footer */}
         <Footer />
-
-        {/* Custom Chatbot */}
-        <Chatbot />
       </div>
     </>
   );

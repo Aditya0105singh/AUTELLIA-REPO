@@ -669,3 +669,83 @@ html, body {
     opacity: 0.8;
   }
 }
+
+/* Hide Automatic.chat branding */
+[class*="powered"],
+[class*="branding"],
+a[href*="automatic.chat"],
+div[class*="footer"] a[href*="automatic.chat"],
+iframe + div a[href*="automatic.chat"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Ensure chatbot close button is clickable */
+button[aria-label*="close"],
+button[aria-label*="Close"],
+[class*="close-button"],
+[class*="closeButton"],
+button[type="button"]:has(svg) {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 999999 !important;
+  position: relative !important;
+}
+
+/* Make sure chatbot elements are properly layered */
+iframe[id*="automatic"],
+div[id*="automatic"],
+[class*="chatbot"],
+[class*="chat-widget"] {
+  z-index: 999998 !important;
+}
+
+/* Ensure close button is visible and interactive */
+[class*="chat"] button[aria-label*="lose"] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  display: block !important;
+}
+
+/* Custom close button overlay for chatbot */
+.custom-chatbot-close {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 9999999 !important;
+  border: 2px solid white !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-chatbot-close:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+  transform: scale(1.1) !important;
+}
+
+.custom-chatbot-close::before,
+.custom-chatbot-close::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 20px !important;
+  height: 2px !important;
+  background: white !important;
+}
+
+.custom-chatbot-close::before {
+  transform: rotate(45deg) !important;
+}
+
+.custom-chatbot-close::after {
+  transform: rotate(-45deg) !important;
+}

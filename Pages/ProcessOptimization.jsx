@@ -215,7 +215,7 @@ export default function ProcessOptimization() {
                 className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
                   isDark 
                     ? 'border border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500' 
-                    : 'border border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400'
+                    : 'border-2 border-gray-400 text-gray-700 hover:bg-gray-100 hover:border-gray-600'
                 }`}
               >
                 View Case Studies

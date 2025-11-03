@@ -85,7 +85,7 @@ const Footer = () => {
               <h2 className="text-3xl font-bold bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent">
                 Autellia Technology
               </h2>
-              <p className="text-gray-400 text-sm">Innovating the future of enterprise technology</p>
+              <p className="text-gray-400 text-sm">Accelerating Tomorrow</p>
             </div>
           </div>
         </motion.div>
@@ -280,7 +280,7 @@ const Footer = () => {
             {/* Copyright and Legal Links */}
           <div className="text-center md:text-left space-y-2">
             <p className="text-gray-400 text-sm">
-              2025 Autellia Technology. All Rights Reserved. Innovating the future of enterprise technology.
+              2025 Autellia Technology. All Rights Reserved. Accelerating Tomorrow.
             </p>
             <div className="flex flex-wrap justify-center md:justify-start gap-4 text-xs">
               <Link 

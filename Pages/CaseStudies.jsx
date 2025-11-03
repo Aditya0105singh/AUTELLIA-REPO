@@ -97,6 +97,23 @@ export default function CaseStudies() {
       technologies: ["UiPath" ,"Microsoft Excel" ,"Tyrecheck", "Outlook" , "Shared Drive"],
       timeline: "5 months",
       roi: "240%"
+    },
+    {
+      id: 5,
+      title: "Natural Language Query Bot for Data Accessibility",
+      industry: "Enterprise Software / Data Analytics",
+      icon: Building2,
+      challenge: "Data in enterprises is often locked behind SQL queries that only technical teams can access — creating bottlenecks and slowing decision-making.",
+      solution: "An AI-powered Query Bot that converts natural language questions into SQL, fetches results, and displays data visually. Enables non-technical users to query databases directly.",
+      results: [
+        "Reduced analyst workload by 50%",
+        "Query response time improved from days to seconds",
+        "Eliminated dependency on BI tools for ad-hoc queries",
+        "Democratized data access across all departments"
+      ],
+      technologies: ["Python", "NLP", "SQL", "Flask", "Chart.js", "MySQL/PostgreSQL"],
+      timeline: "3 months",
+      roi: "300%"
     }
   ];
 
@@ -292,7 +309,8 @@ export default function CaseStudies() {
                               study.id === 1 ? "case-study-unistrut" : 
                               study.id === 2 ? "case-study-healthcare" : 
                               study.id === 3 ? "case-study-travel-counsellors" :
-                              "case-study-euromaster"
+                              study.id === 4 ? "case-study-euromaster" :
+                              "case-study-nlp-query-bot"
                             )} 
                             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:gap-3 ${
                               isDark 
