@@ -135,17 +135,17 @@ export default function HeroCarousel({ children }) {
         {children}
       </div>
 
-      {/* Image indicators */}
+      {/* Image indicators - Hidden on mobile, small on desktop */}
       {images.length > 1 && (
-        <div className="absolute bottom-4 sm:bottom-8 left-0 right-0 z-20 flex justify-center gap-1 sm:gap-2">
+        <div className="hidden sm:flex absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 gap-2">
           {images.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`!h-1.5 sm:!h-2 !min-h-0 !min-w-0 rounded-full transition-all duration-300 p-0 ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex 
-                  ? 'bg-white !w-6 sm:!w-8' 
-                  : 'bg-white/50 hover:bg-white/75 !w-1.5 sm:!w-2'
+                  ? 'bg-white w-8' 
+                  : 'bg-white/50 hover:bg-white/75 w-2'
               }`}
               aria-label={`Go to image ${index + 1}`}
             />
