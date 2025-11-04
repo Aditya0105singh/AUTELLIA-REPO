@@ -72,44 +72,56 @@ export default function HeroCarousel({ children }) {
   }
 
   return (
-    <div className="relative w-full h-full">
-      {/* Image Carousel */}
-      <AnimatePresence mode="wait">
-        {images.map((img, index) => (
-          index === currentIndex && (
-            <motion.div
-              key={img._id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
-              className="absolute inset-0 z-0"
-            >
-              {img.link ? (
-                <a href={img.link} className="block w-full h-full">
-                  <img
-                    src={urlFor(img.image).width(1920).quality(90).url()}
-                    alt={img.altText}
-                    className="w-full h-full object-cover"
+    <>
+      {/* Image Carousel Background - Below everything */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <AnimatePresence mode="wait">
+          {images.map((img, index) => (
+            index === currentIndex && (
+              <motion.div
+                key={img._id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0"
+              >
+                {/* Image */}
+                <picture>
+                  {/* Mobile image - portrait optimized */}
+                  <source 
+                    media="(max-width: 640px)" 
+                    srcSet={urlFor(img.image).width(750).height(1334).fit('crop').url()}
                   />
-                </a>
-              ) : (
-                <img
-                  src={urlFor(img.image).width(1920).quality(90).url()}
-                  alt={img.altText}
-                  className="w-full h-full object-cover"
-                />
-              )}
-              
-              {/* Gradient overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
-            </motion.div>
-          )
-        ))}
-      </AnimatePresence>
+                  {/* Desktop image */}
+                  <img
+                    src={urlFor(img.image).width(1920).height(1080).fit('crop').url()}
+                    alt={img.altText}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: 'center' }}
+                  />
+                </picture>
+                
+                {/* Dark Overlay for Text Visibility */}
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
+                
+                {/* Optional Link */}
+                {img.link && (
+                  <a 
+                    href={img.link} 
+                    className="absolute inset-0 z-10"
+                    aria-label={img.altText}
+                  />
+                )}
+              </motion.div>
+            )
+          ))}
+        </AnimatePresence>
+      </div>
 
-      {/* Content overlay (your existing hero content) */}
-      <div className="relative z-10">
+      {/* Fallback content (Orb) when no images - Above image layer */}
+      <div className="relative z-1">
         {children}
       </div>
 
@@ -130,6 +142,6 @@ export default function HeroCarousel({ children }) {
           ))}
         </div>
       )}
-    </div>
+    </>
   )
 }
