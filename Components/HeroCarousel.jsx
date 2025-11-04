@@ -24,17 +24,27 @@ export default function HeroCarousel({ children }) {
         
         const result = await client.fetch(query)
         console.log('Sanity response:', result)
+        console.log('Number of images from Sanity:', result?.length || 0)
         
         // Filter by date range
         const now = new Date()
         const activeImages = result.filter(img => {
+          if (!img.startDate) {
+            console.log('Image missing startDate:', img.title)
+            return false
+          }
+          
           const start = new Date(img.startDate)
           const end = img.endDate ? new Date(img.endDate) : null
           
-          return start <= now && (!end || end >= now)
+          const isActive = start <= now && (!end || end >= now)
+          console.log(`Image "${img.title}": Start=${start.toISOString()}, End=${end?.toISOString() || 'none'}, Active=${isActive}`)
+          
+          return isActive
         })
         
-        console.log('Active images after filtering:', activeImages)
+        console.log('Active images after filtering:', activeImages.length)
+        console.log('Active images data:', activeImages)
         setImages(activeImages)
         setLoading(false)
       } catch (error) {
