@@ -11,7 +11,7 @@ import ExploreSolutionModal from "../Components/ui/ExploreSolutionModal.jsx";
 import GetStartedCTA from "../Components/ui/GetStartedCTA";
 import TestimonialCarousel from "../Components/TestimonialCarousel.jsx";
 import Orb from "../Components/Orb.jsx";
-import HeroCarouselDirect from "../Components/HeroCarouselDirect.jsx";
+import HeroCarousel from "../Components/HeroCarousel.jsx";
 // import LazyImage from "../src/components/LazyImage.jsx";
 
 export default function Platform() {
@@ -246,7 +246,7 @@ export default function Platform() {
         aria-labelledby="hero-heading"
       >
         {/* Hero Background with Carousel or Orb */}
-        <HeroCarouselDirect>
+        <HeroCarousel>
           {/* Orb Animation Background (fallback when no images) */}
           <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-black">
             <div style={{ width: '100%', height: '100%', position: 'absolute', opacity: 0.6 }}>
@@ -265,7 +265,7 @@ export default function Platform() {
             <div className="absolute top-20 right-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-20 left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
           </div>
-        </HeroCarouselDirect>
+        </HeroCarousel>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-0">
           <motion.h1
